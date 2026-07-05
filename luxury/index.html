@@ -3,142 +3,239 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Élan Estates — Collection 2026</title>
+  <title>Élan Estates — Issue No. 26</title>
+  <meta name="description" content="Élan Estates curates the world's most exceptional luxury properties. Private sales, staging, and investment advisory.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Karla:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav class="mag-nav" aria-label="Main navigation">
-    <a href="#" class="mag-logo">Élan</a>
-    <span class="mag-issue">Collection 2026</span>
-    <a href="#inquire" class="mag-inquire">Inquire</a>
-  </nav>
+  <a href="#collections" class="skip-link">Skip to collections</a>
 
-  <section class="spread-hero" aria-label="Featured properties">
-    <div class="hero-parallax">
-      <div class="hero-slides">
-        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&h=1000&fit=crop&q=80" alt="Mediterranean villa at golden hour" class="active" data-index="0">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=1000&fit=crop&q=80" alt="Contemporary estate with infinity pool" data-index="1">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&h=1000&fit=crop&q=80" alt="Refined interior with natural light" data-index="2">
-      </div>
-      <div class="hero-veil"></div>
-    </div>
-    <div class="hero-caption">
-      <p class="hero-eyebrow">Extraordinary Living</p>
-      <h1>Élan Estates</h1>
-      <div class="hero-progress" aria-hidden="true">
-        <span class="progress-dot active"></span>
-        <span class="progress-dot"></span>
-        <span class="progress-dot"></span>
-      </div>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  <header class="masthead" role="banner">
+    <nav class="masthead-nav" aria-label="Main navigation">
+      <time class="masthead-date" datetime="2026-07">July 2026</time>
+      <a href="#" class="masthead-logo" aria-label="Élan Estates home">
+        <span class="logo-main">Élan</span>
+        <span class="logo-sub">Estates</span>
+      </a>
+      <a href="#inquire" class="masthead-inquire">Inquire</a>
+    </nav>
+  </header>
 
-  <section id="about" class="editors-letter reveal">
-    <div class="letter-inner">
-      <span class="section-tag">Editor's Letter</span>
-      <p class="letter-text">For over twenty-five years, Élan has represented the world's most exceptional properties. We do not simply list homes — we curate experiences. Each residence in our collection has been selected for its architectural significance, its setting, and its ability to inspire a life well lived.</p>
-      <p class="letter-text">This season, we invite you to discover spaces where light, proportion, and landscape converge — homes that feel less like acquisitions and more like inheritances.</p>
-      <p class="letter-sign">— Mercy Sithole, Curator</p>
-    </div>
-  </section>
+  <main>
+    <!-- Hero: Ken Burns Slideshow -->
+    <section class="hero" aria-label="Featured properties">
+      <div class="hero-slideshow">
+        <figure class="hero-slide is-active" data-slide="0">
+          <img
+            src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&h=1080&fit=crop&q=85"
+            alt="Mediterranean villa overlooking the sea at golden hour"
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+          >
+        </figure>
+        <figure class="hero-slide" data-slide="1">
+          <img
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop&q=85"
+            alt="Contemporary estate with infinity pool and panoramic views"
+            width="1920"
+            height="1080"
+          >
+        </figure>
+        <figure class="hero-slide" data-slide="2">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop&q=85"
+            alt="Architectural waterfront residence at dusk"
+            width="1920"
+            height="1080"
+          >
+        </figure>
+        <figure class="hero-slide" data-slide="3">
+          <img
+            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop&q=85"
+            alt="Refined interior with floor-to-ceiling windows and natural light"
+            width="1920"
+            height="1080"
+          >
+        </figure>
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
 
-  <section id="services" class="collections" aria-label="Collections">
-    <article class="collection-spread spread-left reveal">
-      <div class="spread-image">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&h=1200&fit=crop&q=80" alt="Private sales estate">
-        <span class="spread-number">I</span>
-      </div>
-      <div class="spread-text">
-        <span class="section-tag">Collection I</span>
-        <h2>Private Sales</h2>
-        <p>Exclusive off-market properties for qualified buyers. Every introduction is made with discretion — the foundation upon which our reputation was built.</p>
-        <a href="#inquire" class="spread-link">Request access</a>
-      </div>
-    </article>
-
-    <article class="collection-spread spread-right reveal">
-      <div class="spread-text">
-        <span class="section-tag">Collection II</span>
-        <h2>Interior Staging</h2>
-        <p>World-class staging to showcase every property at its absolute finest. We collaborate with leading designers to present homes as living works of art.</p>
-        <a href="#inquire" class="spread-link">Learn more</a>
-      </div>
-      <div class="spread-image">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=1200&fit=crop&q=80" alt="Staged luxury interior">
-        <span class="spread-number">II</span>
-      </div>
-    </article>
-
-    <article class="collection-spread spread-left reveal">
-      <div class="spread-image">
-        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&h=1200&fit=crop&q=80" alt="Investment property advisory">
-        <span class="spread-number">III</span>
-      </div>
-      <div class="spread-text">
-        <span class="section-tag">Collection III</span>
-        <h2>Investment Advisory</h2>
-        <p>Strategic guidance for luxury property portfolios across global markets. Insight, timing, and access — the three pillars of exceptional returns.</p>
-        <a href="#inquire" class="spread-link">Schedule consultation</a>
-      </div>
-    </article>
-  </section>
-
-  <section id="testimonials" class="portrait-quote reveal">
-    <div class="quote-image">
-      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=1100&fit=crop&q=80" alt="Waterfront estate at dusk">
-    </div>
-    <div class="quote-col">
-      <span class="section-tag light">Client Reflection</span>
-      <blockquote>"Élan found us the home of our dreams — a waterfront estate we didn't even know existed. Their discretion and taste are unmatched."</blockquote>
-      <cite>— The Harrington Family</cite>
-      <p class="quote-detail">Waterfront Collection · Pacific Northwest</p>
-    </div>
-  </section>
-
-  <section id="inquire" class="inquire-section reveal">
-    <div class="inquire-inner">
-      <span class="section-tag">Private Inquiry</span>
-      <h2>Begin the Conversation</h2>
-      <p class="inquire-contact">concierge@elanetates.com · <a href="tel:+905338610067">+90 533 861 0067</a></p>
-      <form class="inquire-form" novalidate>
-        <div class="field">
-          <label for="name">Full name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+      <div class="hero-caption">
+        <p class="hero-issue">Issue No. 26 · Summer Collection</p>
+        <h1 class="hero-title">Where architecture<br><em>becomes legacy.</em></h1>
+        <div class="hero-dots" role="tablist" aria-label="Slideshow navigation">
+          <button class="hero-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1" data-target="0"></button>
+          <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-target="1"></button>
+          <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-target="2"></button>
+          <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-target="3"></button>
         </div>
-        <div class="field">
-          <label for="interest">Property interest</label>
-          <select id="interest" name="interest" required>
-            <option value="" disabled selected>Select interest</option>
-            <option value="residential">Residential</option>
-            <option value="waterfront">Waterfront</option>
-            <option value="commercial">Commercial</option>
-            <option value="investment">Investment</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="contact">Preferred contact</label>
-          <select id="contact" name="contact">
-            <option value="email">Email</option>
-            <option value="phone">Phone</option>
-            <option value="whatsapp">WhatsApp</option>
-          </select>
-        </div>
-        <button type="submit" class="inquire-submit">Submit Inquiry</button>
-      </form>
-      <a href="../index.html" class="catalog-link">← Back to Catalog</a>
-    </div>
-  </section>
+      </div>
 
-  <footer class="mag-footer">
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <span class="scroll-bar"></span>
+      </div>
+    </section>
+
+    <!-- Three Collection Spreads -->
+    <section id="collections" class="collections" aria-label="Property collections">
+      <article class="spread spread--image-left reveal">
+        <div class="spread-visual">
+          <img
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=1600&fit=crop&q=85"
+            alt="Private villa with terraced gardens"
+            width="1200"
+            height="1600"
+            loading="lazy"
+          >
+          <span class="spread-index" aria-hidden="true">I</span>
+        </div>
+        <div class="spread-copy">
+          <span class="spread-label">Collection I</span>
+          <h2 class="spread-heading">Private Sales</h2>
+          <p class="spread-prose">Off-market residences reserved for a select few. Each introduction is made with absolute discretion — the quiet foundation upon which our reputation was built over twenty-five years.</p>
+          <a href="#inquire" class="spread-cta">Request access</a>
+        </div>
+      </article>
+
+      <article class="spread spread--image-right reveal">
+        <div class="spread-copy">
+          <span class="spread-label">Collection II</span>
+          <h2 class="spread-heading">Interior Staging</h2>
+          <p class="spread-prose">We collaborate with leading designers to present homes as living works of art. Every surface, every shadow, every proportion — considered until the property breathes on its own.</p>
+          <a href="#inquire" class="spread-cta">Learn more</a>
+        </div>
+        <div class="spread-visual">
+          <img
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=1600&fit=crop&q=85"
+            alt="Luxury staged living room with curated furnishings"
+            width="1200"
+            height="1600"
+            loading="lazy"
+          >
+          <span class="spread-index" aria-hidden="true">II</span>
+        </div>
+      </article>
+
+      <article class="spread spread--image-left reveal">
+        <div class="spread-visual">
+          <img
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=1600&fit=crop&q=85"
+            alt="Modern investment property with city skyline views"
+            width="1200"
+            height="1600"
+            loading="lazy"
+          >
+          <span class="spread-index" aria-hidden="true">III</span>
+        </div>
+        <div class="spread-copy">
+          <span class="spread-label">Collection III</span>
+          <h2 class="spread-heading">Investment Advisory</h2>
+          <p class="spread-prose">Strategic counsel for luxury portfolios across global markets. Insight, timing, and access — the three pillars of exceptional returns in an ever-shifting landscape.</p>
+          <a href="#inquire" class="spread-cta">Schedule consultation</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Portrait Testimonial -->
+    <section id="testimonial" class="portrait-testimonial reveal" aria-label="Client reflection">
+      <figure class="portrait-photo">
+        <img
+          src="https://images.unsplash.com/photo-1605276374101-de4c88777866?w=900&h=1200&fit=crop&q=85"
+          alt="Elegant estate entrance with manicured grounds"
+          width="900"
+          height="1200"
+          loading="lazy"
+        >
+      </figure>
+      <blockquote class="portrait-quote">
+        <span class="portrait-label">Client Reflection</span>
+        <p class="quote-text">&ldquo;Élan found us the home of our dreams — a waterfront estate we didn&rsquo;t even know existed. Their discretion and taste are unmatched in every sense.&rdquo;</p>
+        <footer class="quote-attribution">
+          <cite>The Harrington Family</cite>
+          <span class="quote-meta">Waterfront Collection · Pacific Northwest</span>
+        </footer>
+      </blockquote>
+    </section>
+
+    <!-- Editor's Letter -->
+    <section id="about" class="editors-letter reveal" aria-labelledby="letter-heading">
+      <div class="letter-grid">
+        <header class="letter-header">
+          <span class="letter-label">Editor&rsquo;s Letter</span>
+          <h2 id="letter-heading" class="letter-title">A note on<br>curated living.</h2>
+        </header>
+        <div class="letter-body">
+          <p>For over twenty-five years, Élan has represented the world&rsquo;s most exceptional properties. We do not simply list homes — we curate experiences. Each residence in our collection has been selected for its architectural significance, its setting, and its ability to inspire a life well lived.</p>
+          <p>This season, we invite you to discover spaces where light, proportion, and landscape converge — homes that feel less like acquisitions and more like inheritances passed down through generations of refined taste.</p>
+          <p class="letter-signature">— Mercy Sithole, Curator</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section id="inquire" class="inquiry reveal" aria-labelledby="inquiry-heading">
+      <div class="inquiry-wrap">
+        <header class="inquiry-header">
+          <span class="inquiry-label">Private Inquiry</span>
+          <h2 id="inquiry-heading" class="inquiry-title">Begin the<br>conversation.</h2>
+          <p class="inquiry-contact">
+            concierge@elanetates.com<br>
+            <a href="tel:+905338610067">+90 533 861 0067</a>
+          </p>
+        </header>
+
+        <form class="inquiry-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="interest">Property interest</label>
+              <select id="interest" name="interest" required>
+                <option value="" disabled selected>Select interest</option>
+                <option value="residential">Residential</option>
+                <option value="waterfront">Waterfront</option>
+                <option value="commercial">Commercial</option>
+                <option value="investment">Investment</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="contact">Preferred contact</label>
+              <select id="contact" name="contact">
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="whatsapp">WhatsApp</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field form-field--full">
+            <label for="message">Message <span class="optional">(optional)</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your vision"></textarea>
+          </div>
+          <button type="submit" class="inquiry-submit">Submit Inquiry</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <a href="../index.html" class="catalog-return">← Back to Catalog</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <span>Élan Estates © 2026</span>
-    <span class="footer-divider">·</span>
+    <span class="footer-sep" aria-hidden="true">·</span>
     <span>All rights reserved</span>
   </footer>
 

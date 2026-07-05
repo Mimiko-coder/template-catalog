@@ -3,131 +3,621 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TransFlow — Logistics Command Center</title>
+  <title>TransFlow Logistics — Command Center</title>
   <meta name="description" content="Real-time freight management across 50+ countries. Global logistics command center.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- 1. Live Ticker -->
   <div class="status-ticker" aria-label="Live shipment updates">
     <div class="ticker-track">
       <span class="live"><span class="pulse"></span> LIVE</span>
-      <span>Shipment #TF-4821 — <em>In Transit</em> — Istanbul → Berlin</span>
-      <span>Shipment #TF-4819 — <em>Delivered</em> — Ankara → London</span>
-      <span>Shipment #TF-4825 — <em>Loading</em> — Izmir Port</span>
-      <span>Shipment #TF-4817 — <em>Delivered</em> — Dubai → Munich</span>
-      <span>Shipment #TF-4823 — <em>In Transit</em> — Warsaw → Paris</span>
-      <span>Shipment #TF-4815 — <em>Customs</em> — Rotterdam Hub</span>
+      <span>TF-4821 · <em>In Transit</em> · Istanbul → Berlin · 847 km left</span>
+      <span>TF-4819 · <em>Delivered</em> · Ankara → London · On time</span>
+      <span>TF-4825 · <em>Loading</em> · Izmir Port · Bay 7</span>
+      <span>TF-4817 · <em>Delivered</em> · Dubai → Munich · 14h early</span>
+      <span>TF-4823 · <em>In Transit</em> · Warsaw → Paris · 62% complete</span>
+      <span>TF-4815 · <em>Customs</em> · Rotterdam Hub · Cleared</span>
       <span class="live"><span class="pulse"></span> LIVE</span>
-      <span>Shipment #TF-4821 — <em>In Transit</em> — Istanbul → Berlin</span>
-      <span>Shipment #TF-4819 — <em>Delivered</em> — Ankara → London</span>
-      <span>Shipment #TF-4825 — <em>Loading</em> — Izmir Port</span>
-      <span>Shipment #TF-4817 — <em>Delivered</em> — Dubai → Munich</span>
-      <span>Shipment #TF-4823 — <em>In Transit</em> — Warsaw → Paris</span>
-      <span>Shipment #TF-4815 — <em>Customs</em> — Rotterdam Hub</span>
+      <span>TF-4821 · <em>In Transit</em> · Istanbul → Berlin · 847 km left</span>
+      <span>TF-4819 · <em>Delivered</em> · Ankara → London · On time</span>
+      <span>TF-4825 · <em>Loading</em> · Izmir Port · Bay 7</span>
+      <span>TF-4817 · <em>Delivered</em> · Dubai → Munich · 14h early</span>
+      <span>TF-4823 · <em>In Transit</em> · Warsaw → Paris · 62% complete</span>
+      <span>TF-4815 · <em>Customs</em> · Rotterdam Hub · Cleared</span>
     </div>
   </div>
 
+  <!-- Top bar: logo + hamburger only -->
   <header class="top-bar">
     <a href="#" class="logo">TRANS<span>FLOW</span></a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="#tracking">Tracking</a>
-      <a href="#services">Services</a>
-      <a href="#fleet">Fleet</a>
-      <a href="#cases">Case Studies</a>
-      <a href="#contact">Quote</a>
-    </nav>
     <div class="header-actions">
       <a href="tel:+905338610067" class="header-phone">+90 533 861 0067</a>
-      <a href="#contact" class="track-btn">Track Shipment</a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <section class="map-hero">
-    <div class="map-bg">
-      <div class="map-grid"></div>
-      <div class="map-glow map-glow--cyan"></div>
-      <div class="map-glow map-glow--orange"></div>
+  <!-- Full-screen overlay drawer -->
+  <div class="nav-overlay" id="nav-drawer" aria-hidden="true">
+    <div class="nav-overlay-inner">
+      <nav class="drawer-nav" aria-label="Main navigation">
+        <a href="#fleet" class="drawer-link"><span class="drawer-num">01</span> Fleet</a>
+        <a href="#cases" class="drawer-link"><span class="drawer-num">02</span> Case Studies</a>
+        <a href="#services" class="drawer-link"><span class="drawer-num">03</span> Services</a>
+        <a href="#metrics" class="drawer-link"><span class="drawer-num">04</span> Metrics</a>
+        <a href="#contact" class="drawer-link"><span class="drawer-num">05</span> Get Quote</a>
+        <a href="../index.html" class="drawer-link drawer-link--catalog"><span class="drawer-num">←</span> Catalog</a>
+      </nav>
+      <div class="drawer-footer">
+        <p class="drawer-tagline">Logistics Command Center</p>
+        <a href="tel:+905338610067" class="drawer-phone">+90 533 861 0067</a>
+      </div>
     </div>
+  </div>
 
-    <svg class="route-svg" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#22d3ee"/>
-          <stop offset="100%" stop-color="#ff6b00"/>
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
-      <path class="route-path route-path--bg" d="M80,220 C200,180 350,280 480,200 S720,120 900,180 S1050,240 1120,160"/>
-      <path class="route-path route-path--active" d="M80,220 C200,180 350,280 480,200 S720,120 900,180 S1050,240 1120,160"/>
-      <circle class="route-node route-node--start" cx="80" cy="220" r="6"/>
-      <circle class="route-node route-node--end" cx="1120" cy="160" r="6"/>
-      <circle class="route-pulse" cx="620" cy="155" r="8"/>
-    </svg>
-
-    <div class="hero-content">
-      <div class="hero-panel reveal">
-        <p class="tag"><span class="tag-dot"></span> Global Logistics Network</p>
-        <h1>Every mile.<br>Every minute.<br><span class="highlight">Tracked.</span></h1>
-        <p class="hero-desc">Real-time freight management across 50+ countries. Command-center visibility on every shipment, every route, every hub.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="cta">Get a Quote</a>
-          <a href="#tracking" class="cta-secondary">View Metrics</a>
+  <!-- 2. Map Hero -->
+  <section class="map-hero" id="top">
+    <div class="map-split">
+      <div class="map-pane map-pane--visual">
+        <img
+          src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1400&h=900&fit=crop"
+          alt="Global logistics map network"
+          class="map-image"
+          loading="eager"
+        >
+        <div class="map-overlay"></div>
+        <svg class="route-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00e5ff"/>
+              <stop offset="100%" stop-color="#ff6b00"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path class="route-path route-path--bg" d="M120,380 C220,320 300,420 420,340 S580,260 680,300 S760,340 720,220"/>
+          <path class="route-path route-path--active" d="M120,380 C220,320 300,420 420,340 S580,260 680,300 S760,340 720,220"/>
+          <circle class="route-node route-node--start" cx="120" cy="380" r="5"/>
+          <circle class="route-node route-node--end" cx="720" cy="220" r="5"/>
+          <circle class="route-pulse" cx="480" cy="310" r="7"/>
+        </svg>
+        <div class="map-coords">
+          <span>41.0082° N</span>
+          <span>28.9784° E</span>
+          <span>GPS LOCK</span>
         </div>
       </div>
 
-      <div class="tracker-widget reveal" aria-label="Live shipment tracker">
-        <div class="widget-glow"></div>
-        <div class="widget-header">
-          <span class="widget-label"><span class="pulse"></span> Live Tracker</span>
-          <span class="widget-id">#TF-4821</span>
+      <div class="map-pane map-pane--content">
+        <div class="hero-panel reveal">
+          <p class="tag"><span class="tag-dot"></span> TransFlow Logistics</p>
+          <h1>Every mile.<br>Every minute.<br><span class="highlight">Tracked.</span></h1>
+          <p class="hero-desc">Real-time freight management across 50+ countries. Command-center visibility on every shipment, every route, every hub — built for operators who can't afford blind spots.</p>
+          <div class="hero-meta">
+            <div><strong>850+</strong><span>Vehicles</span></div>
+            <div><strong>50+</strong><span>Countries</span></div>
+            <div><strong>24/7</strong><span>Ops Desk</span></div>
+          </div>
+          <a href="#contact" class="cta">Request Quote</a>
         </div>
-        <div class="widget-route">
-          <div class="route-point">
-            <span class="dot active"></span>
-            <span class="city">Istanbul</span>
-            <span class="time">Departed 06:42</span>
+
+        <div class="tracker-widget reveal" aria-label="Live shipment tracker">
+          <div class="widget-scanline" aria-hidden="true"></div>
+          <div class="widget-header">
+            <span class="widget-label"><span class="pulse"></span> LIVE TRACKER</span>
+            <span class="widget-id">#TF-4821</span>
           </div>
-          <div class="route-line-wrap">
-            <div class="route-progress"></div>
+          <div class="widget-route">
+            <div class="route-point">
+              <span class="dot active"></span>
+              <span class="city">Istanbul</span>
+              <span class="time">Departed 06:42</span>
+            </div>
+            <div class="route-line-wrap">
+              <div class="route-progress"></div>
+              <span class="route-truck" aria-hidden="true">▶</span>
+            </div>
+            <div class="route-point">
+              <span class="dot"></span>
+              <span class="city">Berlin</span>
+              <span class="time">ETA 20:15</span>
+            </div>
           </div>
-          <div class="route-point">
-            <span class="dot"></span>
-            <span class="city">Berlin</span>
-            <span class="time">ETA 20:15</span>
+          <div class="widget-stats">
+            <div class="stat">
+              <strong data-live="847">847</strong>
+              <span>km left</span>
+            </div>
+            <div class="stat">
+              <strong>14h</strong>
+              <span>ETA</span>
+            </div>
+            <div class="stat stat--status">
+              <strong class="status-ok">On Time</strong>
+              <span>Status</span>
+            </div>
           </div>
+          <div class="widget-bar">
+            <div class="widget-bar-fill" style="width: 62%"></div>
+          </div>
+          <p class="widget-foot">Last ping: 2 min ago · GPS active · Temp 4°C</p>
         </div>
-        <div class="widget-stats">
-          <div class="stat">
-            <strong data-live="847">847</strong>
-            <span>km remaining</span>
-          </div>
-          <div class="stat">
-            <strong>14h</strong>
-            <span>ETA</span>
-          </div>
-          <div class="stat stat--status">
-            <strong class="status-ok">On Time</strong>
-            <span>Status</span>
-          </div>
-        </div>
-        <div class="widget-bar">
-          <div class="widget-bar-fill" style="width: 62%"></div>
-        </div>
-        <p class="widget-foot">Last ping: 2 min ago · GPS active</p>
       </div>
     </div>
   </section>
 
-  <section id="tracking" class="metrics-strip">
+  <!-- 3. Fleet Carousel -->
+  <section id="fleet" class="fleet-section">
+    <div class="section-head reveal">
+      <span class="section-label">ASSETS // FLEET</span>
+      <h2>Active Vehicle Units</h2>
+      <p class="section-sub">Scroll to browse deployed fleet across our network</p>
+    </div>
+    <div class="fleet-scroll-wrap">
+      <div class="fleet-scroll" tabindex="0" role="region" aria-label="Fleet carousel">
+        <article class="fleet-card reveal">
+          <div class="fleet-img">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop" alt="Heavy freight truck" loading="lazy">
+            <span class="fleet-status fleet-status--active">ACTIVE</span>
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-top">
+              <span class="fleet-id">UNIT-HT-001</span>
+              <span class="fleet-badge">Heavy</span>
+            </div>
+            <h3>Heavy Truck</h3>
+            <p>Long-haul continental freight with live GPS telemetry</p>
+            <dl class="fleet-specs">
+              <div><dt>Capacity</dt><dd>40T</dd></div>
+              <div><dt>Range</dt><dd>2,400 km</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="fleet-card reveal">
+          <div class="fleet-img">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop" alt="Refrigerated transport truck" loading="lazy">
+            <span class="fleet-status fleet-status--active">ACTIVE</span>
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-top">
+              <span class="fleet-id">UNIT-RC-042</span>
+              <span class="fleet-badge fleet-badge--cyan">Cold</span>
+            </div>
+            <h3>Refrigerated</h3>
+            <p>Pharma-grade temperature-controlled transport</p>
+            <dl class="fleet-specs">
+              <div><dt>Range</dt><dd>-25°C to +15°C</dd></div>
+              <div><dt>Units</dt><dd>120+</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="fleet-card reveal">
+          <div class="fleet-img">
+            <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?w=600&h=400&fit=crop" alt="Shipping containers at port" loading="lazy">
+            <span class="fleet-status">STANDBY</span>
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-top">
+              <span class="fleet-id">UNIT-CN-018</span>
+              <span class="fleet-badge">Ocean</span>
+            </div>
+            <h3>Container</h3>
+            <p>Standard and high-cube intermodal units</p>
+            <dl class="fleet-specs">
+              <div><dt>Sizes</dt><dd>20ft / 40ft</dd></div>
+              <div><dt>Hubs</dt><dd>12 ports</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="fleet-card reveal">
+          <div class="fleet-img">
+            <img src="https://images.unsplash.com/photo-1566576721346-d4a3aa4f7544?w=600&h=400&fit=crop" alt="Last mile delivery van" loading="lazy">
+            <span class="fleet-status fleet-status--active">ACTIVE</span>
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-top">
+              <span class="fleet-id">UNIT-LM-380</span>
+              <span class="fleet-badge fleet-badge--cyan">Urban</span>
+            </div>
+            <h3>Last Mile</h3>
+            <p>Same-day urban delivery with 2-hour windows</p>
+            <dl class="fleet-specs">
+              <div><dt>Coverage</dt><dd>45 cities</dd></div>
+              <div><dt>Fleet</dt><dd>380 vans</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="fleet-card reveal">
+          <div class="fleet-img">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop" alt="Cargo plane loading" loading="lazy">
+            <span class="fleet-status fleet-status--active">ACTIVE</span>
+          </div>
+          <div class="fleet-body">
+            <div class="fleet-top">
+              <span class="fleet-id">UNIT-AF-007</span>
+              <span class="fleet-badge">Air</span>
+            </div>
+            <h3>Air Freight</h3>
+            <p>Express air cargo for time-critical shipments</p>
+            <dl class="fleet-specs">
+              <div><dt>Transit</dt><dd>24–48h</dd></div>
+              <div><dt>Routes</dt><dd>80+</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <div class="fleet-scroll-hint" aria-hidden="true">← scroll →</div>
+    </div>
+  </section>
+
+  <!-- 4. Case Timeline (vertical) -->
+  <section id="cases" class="case-timeline">
+    <div class="section-head reveal">
+      <span class="section-label">RESULTS // CASES</span>
+      <h2>Deployment Timeline</h2>
+      <p class="section-sub">How clients moved from chaos to command-center control</p>
+    </div>
+    <ol class="timeline">
+      <li class="timeline-item reveal">
+        <div class="timeline-marker">
+          <span class="timeline-dot"></span>
+          <span class="timeline-line"></span>
+        </div>
+        <article class="timeline-content">
+          <header class="timeline-header">
+            <span class="case-id">CASE-001</span>
+            <time datetime="2024-03">MAR 2024</time>
+          </header>
+          <h3>RetailMax · E-Commerce Scale-Up</h3>
+          <p class="timeline-phase timeline-phase--before"><strong>Before:</strong> 78% on-time delivery, 30% above market shipping costs, zero international route visibility.</p>
+          <p class="timeline-phase timeline-phase--action"><strong>Action:</strong> Full command-center integration with real-time tracking and optimized routing across 12 hubs.</p>
+          <p class="timeline-phase timeline-phase--after"><strong>Result:</strong> 99.1% on-time · −30% cost · 100% tracked shipments within 90 days.</p>
+          <div class="timeline-tags">
+            <span>FTL</span><span>Cross-border</span><span>GPS</span>
+          </div>
+        </article>
+      </li>
+      <li class="timeline-item reveal">
+        <div class="timeline-marker">
+          <span class="timeline-dot"></span>
+          <span class="timeline-line"></span>
+        </div>
+        <article class="timeline-content">
+          <header class="timeline-header">
+            <span class="case-id">CASE-002</span>
+            <time datetime="2024-07">JUL 2024</time>
+          </header>
+          <h3>NordicParts · Manufacturing Supply Chain</h3>
+          <p class="timeline-phase timeline-phase--before"><strong>Before:</strong> 5-day customs delays, manual documentation, no GPS on international lanes.</p>
+          <p class="timeline-phase timeline-phase--action"><strong>Action:</strong> Automated customs pipeline, dedicated cross-border team, live GPS on every container.</p>
+          <p class="timeline-phase timeline-phase--after"><strong>Result:</strong> 2-day average delivery · live GPS · 99% first-pass customs clearance.</p>
+          <div class="timeline-tags">
+            <span>Customs</span><span>Cold Chain</span><span>Port-to-door</span>
+          </div>
+        </article>
+      </li>
+      <li class="timeline-item reveal">
+        <div class="timeline-marker">
+          <span class="timeline-dot"></span>
+          <span class="timeline-line timeline-line--last"></span>
+        </div>
+        <article class="timeline-content">
+          <header class="timeline-header">
+            <span class="case-id">CASE-003</span>
+            <time datetime="2025-01">JAN 2025</time>
+          </header>
+          <h3>MedCore Pharma · Cold Chain Compliance</h3>
+          <p class="timeline-phase timeline-phase--before"><strong>Before:</strong> Temperature excursions on 12% of shipments, no audit trail, regulatory risk.</p>
+          <p class="timeline-phase timeline-phase--action"><strong>Action:</strong> Deployed 120 refrigerated units with 24/7 sensor monitoring and automated compliance logs.</p>
+          <p class="timeline-phase timeline-phase--after"><strong>Result:</strong> 0.2% excursion rate · full audit trail · GDP certification maintained.</p>
+          <div class="timeline-tags">
+            <span>Pharma</span><span>−25°C</span><span>Compliance</span>
+          </div>
+        </article>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 5. Services — Ticket/Label Cards -->
+  <section id="services" class="services-section">
+    <div class="section-head reveal">
+      <span class="section-label">CAPABILITIES // SERVICES</span>
+      <h2>Shipping Labels</h2>
+      <p class="section-sub">Perforated service tickets — tear off what you need</p>
+    </div>
+    <div class="ticket-grid">
+      <article class="ticket-card reveal">
+        <div class="ticket-perforation ticket-perforation--top" aria-hidden="true"></div>
+        <div class="ticket-inner">
+          <div class="ticket-header">
+            <span class="ticket-code">SVC-001</span>
+            <span class="ticket-priority">PRIORITY</span>
+          </div>
+          <h3>Freight Shipping</h3>
+          <p>FTL &amp; LTL across Europe and Asia with live GPS on every load.</p>
+          <ul class="ticket-tags">
+            <li>FTL</li><li>LTL</li><li>Cross-border</li>
+          </ul>
+          <svg class="ticket-barcode" viewBox="0 0 200 40" aria-hidden="true">
+            <rect x="0" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="6" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="10" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="17" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="22" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="26" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="32" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="37" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="44" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="48" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="54" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="59" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="63" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="70" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="75" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="81" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="85" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="90" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="97" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="101" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="107" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="112" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="119" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="123" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="129" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="134" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="138" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="145" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="150" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="156" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="160" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="165" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="172" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="176" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="182" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="187" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="194" y="0" width="2" height="40" fill="currentColor"/>
+          </svg>
+          <span class="ticket-serial">TF-SVC-001-2026</span>
+        </div>
+        <div class="ticket-perforation ticket-perforation--bottom" aria-hidden="true"></div>
+      </article>
+
+      <article class="ticket-card reveal">
+        <div class="ticket-perforation ticket-perforation--top" aria-hidden="true"></div>
+        <div class="ticket-inner">
+          <div class="ticket-header">
+            <span class="ticket-code">SVC-002</span>
+            <span class="ticket-priority ticket-priority--std">STANDARD</span>
+          </div>
+          <h3>Warehousing</h3>
+          <p>Climate-controlled facilities with real-time inventory and automated picking.</p>
+          <ul class="ticket-tags">
+            <li>WMS</li><li>Pick &amp; Pack</li><li>120 hubs</li>
+          </ul>
+          <svg class="ticket-barcode" viewBox="0 0 200 40" aria-hidden="true">
+            <rect x="2" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="7" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="14" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="18" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="24" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="29" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="36" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="40" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="45" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="51" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="55" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="62" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="67" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="73" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="77" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="82" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="89" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="93" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="99" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="104" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="111" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="115" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="121" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="126" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="130" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="137" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="142" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="148" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="152" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="157" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="164" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="168" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="174" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="179" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="186" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="190" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="196" y="0" width="2" height="40" fill="currentColor"/>
+          </svg>
+          <span class="ticket-serial">TF-SVC-002-2026</span>
+        </div>
+        <div class="ticket-perforation ticket-perforation--bottom" aria-hidden="true"></div>
+      </article>
+
+      <article class="ticket-card reveal">
+        <div class="ticket-perforation ticket-perforation--top" aria-hidden="true"></div>
+        <div class="ticket-inner">
+          <div class="ticket-header">
+            <span class="ticket-code">SVC-003</span>
+            <span class="ticket-priority">EXPRESS</span>
+          </div>
+          <h3>Express Delivery</h3>
+          <p>Same-day and next-day options for time-critical shipments worldwide.</p>
+          <ul class="ticket-tags">
+            <li>Same-day</li><li>Next-day</li><li>2hr window</li>
+          </ul>
+          <svg class="ticket-barcode" viewBox="0 0 200 40" aria-hidden="true">
+            <rect x="1" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="8" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="13" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="17" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="23" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="30" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="34" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="39" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="45" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="49" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="56" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="61" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="67" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="71" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="76" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="83" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="87" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="93" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="98" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="105" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="109" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="115" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="120" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="124" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="131" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="136" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="142" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="146" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="151" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="158" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="162" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="168" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="173" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="180" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="184" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="190" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="195" y="0" width="1" height="40" fill="currentColor"/>
+          </svg>
+          <span class="ticket-serial">TF-SVC-003-2026</span>
+        </div>
+        <div class="ticket-perforation ticket-perforation--bottom" aria-hidden="true"></div>
+      </article>
+
+      <article class="ticket-card reveal">
+        <div class="ticket-perforation ticket-perforation--top" aria-hidden="true"></div>
+        <div class="ticket-inner">
+          <div class="ticket-header">
+            <span class="ticket-code">SVC-004</span>
+            <span class="ticket-priority ticket-priority--std">STANDARD</span>
+          </div>
+          <h3>Cross-Border Logistics</h3>
+          <p>Customs clearance, documentation, and compliance handled end-to-end.</p>
+          <ul class="ticket-tags">
+            <li>Customs</li><li>48h clearance</li><li>99% pass</li>
+          </ul>
+          <svg class="ticket-barcode" viewBox="0 0 200 40" aria-hidden="true">
+            <rect x="0" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="5" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="11" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="15" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="22" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="27" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="31" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="37" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="44" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="48" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="53" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="59" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="63" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="70" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="75" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="81" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="85" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="90" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="97" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="101" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="107" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="112" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="119" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="123" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="129" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="134" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="138" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="145" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="150" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="156" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="160" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="165" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="172" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="176" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="182" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="187" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="194" y="0" width="2" height="40" fill="currentColor"/>
+          </svg>
+          <span class="ticket-serial">TF-SVC-004-2026</span>
+        </div>
+        <div class="ticket-perforation ticket-perforation--bottom" aria-hidden="true"></div>
+      </article>
+
+      <article class="ticket-card reveal">
+        <div class="ticket-perforation ticket-perforation--top" aria-hidden="true"></div>
+        <div class="ticket-inner">
+          <div class="ticket-header">
+            <span class="ticket-code">SVC-005</span>
+            <span class="ticket-priority">CRITICAL</span>
+          </div>
+          <h3>Cold Chain</h3>
+          <p>Temperature-controlled transport from −25°C to +15°C with full sensor logs.</p>
+          <ul class="ticket-tags">
+            <li>Pharma</li><li>Food</li><li>24/7 monitor</li>
+          </ul>
+          <svg class="ticket-barcode" viewBox="0 0 200 40" aria-hidden="true">
+            <rect x="3" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="7" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="14" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="19" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="23" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="29" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="36" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="40" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="45" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="51" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="55" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="62" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="67" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="73" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="77" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="82" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="89" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="93" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="99" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="104" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="111" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="115" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="121" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="126" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="130" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="137" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="142" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="148" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="152" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="157" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="164" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="168" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="174" y="0" width="2" height="40" fill="currentColor"/>
+            <rect x="179" y="0" width="4" height="40" fill="currentColor"/>
+            <rect x="186" y="0" width="1" height="40" fill="currentColor"/>
+            <rect x="190" y="0" width="3" height="40" fill="currentColor"/>
+            <rect x="196" y="0" width="2" height="40" fill="currentColor"/>
+          </svg>
+          <span class="ticket-serial">TF-SVC-005-2026</span>
+        </div>
+        <div class="ticket-perforation ticket-perforation--bottom" aria-hidden="true"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 6. Metrics Strip -->
+  <section id="metrics" class="metrics-strip">
     <div class="metric reveal">
       <div class="metric-inner">
         <span class="metric-val" data-count="99.2" data-decimals="1">0</span><span class="metric-unit">%</span>
@@ -154,218 +644,15 @@
     </div>
   </section>
 
-  <section id="about" class="about-block">
-    <div class="about-inner reveal">
-      <span class="section-label">Command Center</span>
-      <h2>Logistics built for<br>real-time decisions</h2>
-      <p>We don't just move cargo — we run a connected logistics network with GPS on every shipment, dedicated hubs in every major market, and end-to-end supply chain management. Your operations desk, always on.</p>
-    </div>
-    <div class="about-visual reveal" aria-hidden="true">
-      <div class="radar">
-        <div class="radar-ring"></div>
-        <div class="radar-ring"></div>
-        <div class="radar-ring"></div>
-        <div class="radar-sweep"></div>
-        <div class="radar-blip"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="services-section">
-    <div class="section-head reveal">
-      <span class="section-label">Capabilities</span>
-      <h2>Services</h2>
-    </div>
-    <div class="bento-grid">
-      <article class="bento-card bento-card--hero reveal">
-        <div class="bento-bg" style="background-image: url('https://images.unsplash.com/photo-1566576721346-d4a3aa4f7544?w=800&h=600&fit=crop')"></div>
-        <div class="bento-overlay"></div>
-        <div class="bento-content">
-          <span class="card-code">SVC-001</span>
-          <h3>Freight Shipping</h3>
-          <p>FTL & LTL across Europe and Asia with live GPS tracking on every load.</p>
-          <ul class="bento-tags">
-            <li>FTL</li><li>LTL</li><li>Cross-border</li>
-          </ul>
-        </div>
-      </article>
-      <article class="bento-card bento-card--tall reveal">
-        <div class="bento-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <span class="card-code">SVC-002</span>
-        <h3>Warehousing</h3>
-        <p>Climate-controlled facilities with real-time inventory systems and automated picking.</p>
-      </article>
-      <article class="bento-card reveal">
-        <div class="bento-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <span class="card-code">SVC-003</span>
-        <h3>Express Delivery</h3>
-        <p>Same-day and next-day options for time-critical shipments.</p>
-      </article>
-      <article class="bento-card bento-card--wide reveal">
-        <div class="bento-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        </div>
-        <span class="card-code">SVC-004</span>
-        <h3>Cross-Border Logistics</h3>
-        <p>Customs clearance, documentation, and compliance handled end-to-end. No delays at the border.</p>
-        <div class="bento-stat-row">
-          <div><strong>48h</strong><span>Avg clearance</span></div>
-          <div><strong>99%</strong><span>First-pass rate</span></div>
-        </div>
-      </article>
-      <article class="bento-card reveal">
-        <div class="bento-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <span class="card-code">SVC-005</span>
-        <h3>Cold Chain</h3>
-        <p>Temperature-controlled transport from -25°C to +15°C.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="fleet" class="fleet-section">
-    <div class="section-head reveal">
-      <span class="section-label">Assets</span>
-      <h2>Our Fleet</h2>
-    </div>
-    <div class="fleet-scroll">
-      <article class="fleet-card reveal">
-        <div class="fleet-card-top">
-          <span class="fleet-type">01</span>
-          <span class="fleet-badge">Heavy</span>
-        </div>
-        <h3>Heavy Truck</h3>
-        <p class="fleet-desc">Long-haul freight across continental routes</p>
-        <dl class="fleet-specs">
-          <div><dt>Capacity</dt><dd>40T</dd></div>
-          <div><dt>Range</dt><dd>2,400 km</dd></div>
-          <div><dt>GPS</dt><dd>Real-time</dd></div>
-        </dl>
-      </article>
-      <article class="fleet-card reveal">
-        <div class="fleet-card-top">
-          <span class="fleet-type">02</span>
-          <span class="fleet-badge fleet-badge--cyan">Cold</span>
-        </div>
-        <h3>Refrigerated</h3>
-        <p class="fleet-desc">Pharma-grade temperature control</p>
-        <dl class="fleet-specs">
-          <div><dt>Range</dt><dd>-25°C to +15°C</dd></div>
-          <div><dt>Monitoring</dt><dd>24/7 sensors</dd></div>
-          <div><dt>Units</dt><dd>120+</dd></div>
-        </dl>
-      </article>
-      <article class="fleet-card reveal">
-        <div class="fleet-card-top">
-          <span class="fleet-type">03</span>
-          <span class="fleet-badge">Ocean</span>
-        </div>
-        <h3>Container</h3>
-        <p class="fleet-desc">Standard and high-cube intermodal</p>
-        <dl class="fleet-specs">
-          <div><dt>Sizes</dt><dd>20ft / 40ft</dd></div>
-          <div><dt>Tracking</dt><dd>Port-to-door</dd></div>
-          <div><dt>Hubs</dt><dd>12 ports</dd></div>
-        </dl>
-      </article>
-      <article class="fleet-card reveal">
-        <div class="fleet-card-top">
-          <span class="fleet-type">04</span>
-          <span class="fleet-badge fleet-badge--cyan">Urban</span>
-        </div>
-        <h3>Last Mile</h3>
-        <p class="fleet-desc">Same-day urban delivery fleet</p>
-        <dl class="fleet-specs">
-          <div><dt>Coverage</dt><dd>45 cities</dd></div>
-          <div><dt>Window</dt><dd>2-hour slots</dd></div>
-          <div><dt>Fleet</dt><dd>380 vans</dd></div>
-        </dl>
-      </article>
-    </div>
-  </section>
-
-  <section id="cases" class="case-studies">
-    <div class="section-head reveal">
-      <span class="section-label">Results</span>
-      <h2>Before & After</h2>
-    </div>
-    <div class="timeline">
-      <article class="timeline-item reveal">
-        <div class="timeline-meta">
-          <span class="case-id">CASE-001</span>
-          <span class="case-client">RetailMax · E-Commerce</span>
-        </div>
-        <div class="timeline-grid">
-          <div class="tl-before">
-            <h4>Before</h4>
-            <p>RetailMax spent 30% above market on shipping with a 78% on-time delivery rate. No visibility on international routes.</p>
-            <div class="tl-metrics tl-metrics--before">
-              <span>78% on-time</span>
-              <span>+30% cost</span>
-              <span>0% tracking</span>
-            </div>
-          </div>
-          <div class="tl-divider">
-            <div class="tl-line"></div>
-            <span class="tl-arrow">→</span>
-          </div>
-          <div class="tl-after">
-            <h4>After TransFlow</h4>
-            <p>Full command-center integration with real-time tracking on every order and optimized routing across 12 hubs.</p>
-            <div class="tl-metrics tl-metrics--after">
-              <span><strong>99.1%</strong> on-time</span>
-              <span><strong>-30%</strong> cost</span>
-              <span><strong>100%</strong> tracked</span>
-            </div>
-          </div>
-        </div>
-      </article>
-      <article class="timeline-item reveal">
-        <div class="timeline-meta">
-          <span class="case-id">CASE-002</span>
-          <span class="case-client">NordicParts · Manufacturing</span>
-        </div>
-        <div class="timeline-grid">
-          <div class="tl-before">
-            <h4>Before</h4>
-            <p>No visibility on international shipments. 5-day average delays at customs with manual documentation.</p>
-            <div class="tl-metrics tl-metrics--before">
-              <span>5-day delays</span>
-              <span>Manual docs</span>
-              <span>No GPS</span>
-            </div>
-          </div>
-          <div class="tl-divider">
-            <div class="tl-line"></div>
-            <span class="tl-arrow">→</span>
-          </div>
-          <div class="tl-after">
-            <h4>After TransFlow</h4>
-            <p>Live GPS tracking, automated customs handling, and dedicated cross-border team reduced delays dramatically.</p>
-            <div class="tl-metrics tl-metrics--after">
-              <span><strong>2-day</strong> delivery</span>
-              <span><strong>Live GPS</strong></span>
-              <span><strong>Auto</strong> customs</span>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
+  <!-- 7. Contact Quote Form -->
   <section id="contact" class="quote-section">
     <div class="quote-grid">
       <div class="quote-info reveal">
-        <span class="section-label">Estimate</span>
+        <span class="section-label">ESTIMATE // QUOTE</span>
         <h2>Request a Quote</h2>
-        <p>Get an instant freight estimate. Our team responds within 24 hours with a detailed breakdown.</p>
+        <p>Get an instant freight estimate. Our ops team responds within 24 hours with a detailed breakdown.</p>
         <a href="tel:+905338610067" class="quote-phone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           +90 533 861 0067
         </a>
       </div>

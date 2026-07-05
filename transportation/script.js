@@ -1,116 +1,240 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  'use strict';
 
-  // Mobile nav
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.main-nav');
+  /* ── Full-screen drawer menu ── */
+  const navToggle = document.querySelector('.nav-toggle');
+  const navOverlay = document.querySelector('.nav-overlay');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
 
-  toggle?.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.classList.toggle('active', open);
-    toggle.setAttribute('aria-expanded', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
+  function openMenu() {
+    navToggle.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navOverlay.classList.add('is-open');
+    navOverlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+  }
 
-  nav?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle?.classList.remove('active');
-      toggle?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+  function closeMenu() {
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navOverlay.classList.remove('is-open');
+    navOverlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
+  }
+
+  function toggleMenu() {
+    if (navOverlay.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  if (navToggle && navOverlay) {
+    navToggle.addEventListener('click', toggleMenu);
+
+    drawerLinks.forEach(function (link) {
+      link.addEventListener('click', closeMenu);
     });
-  });
 
-  // Scroll reveal + counter animation
-  const animated = new Set();
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navOverlay.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  }
 
-  const animateCounter = (el) => {
-    if (animated.has(el)) return;
-    animated.add(el);
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
 
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  /* ── Metric counters ── */
+  const metricEls = document.querySelectorAll('.metric-val[data-count]');
+
+  function animateCounter(el) {
     const target = parseFloat(el.dataset.count);
     const decimals = parseInt(el.dataset.decimals || '0', 10);
     const duration = 1800;
     const start = performance.now();
 
-    const step = (now) => {
+    function tick(now) {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const value = target * eased;
-      el.textContent = decimals ? value.toFixed(decimals) : Math.round(value);
-      if (progress < 1) requestAnimationFrame(step);
-    };
+      const current = target * eased;
 
-    if (prefersReducedMotion) {
-      el.textContent = decimals ? target.toFixed(decimals) : target;
-    } else {
-      requestAnimationFrame(step);
+      el.textContent = decimals > 0
+        ? current.toFixed(decimals)
+        : Math.floor(current).toString();
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = decimals > 0 ? target.toFixed(decimals) : String(target);
+      }
     }
-  };
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        entry.target.querySelectorAll('.metric-val[data-count]').forEach(animateCounter);
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-  document.querySelector('.metrics-strip')?.querySelectorAll('.metric').forEach((el) => observer.observe(el));
-
-  // Live tracker km tick
-  const liveKm = document.querySelector('[data-live]');
-  if (liveKm && !prefersReducedMotion) {
-    setInterval(() => {
-      const val = parseInt(liveKm.dataset.live, 10);
-      const next = Math.max(val - Math.floor(Math.random() * 3), 820);
-      liveKm.dataset.live = next;
-      liveKm.textContent = next;
-    }, 4000);
+    requestAnimationFrame(tick);
   }
 
-  // Quote calculator
-  const form = document.querySelector('.quote-form');
-  const resultEl = document.querySelector('.quote-result-value');
-  const weightInput = form?.querySelector('[name="weight"]');
+  if (metricEls.length && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-  const estimateRate = () => {
-    const weight = parseFloat(weightInput?.value);
-    if (!weight || weight <= 0) {
-      resultEl.textContent = '—';
-      return;
+    metricEls.forEach(function (el) {
+      counterObserver.observe(el);
+    });
+  }
+
+  /* ── Live tracker km countdown ── */
+  const liveKm = document.querySelector('[data-live="847"]');
+
+  if (liveKm) {
+    let km = 847;
+
+    setInterval(function () {
+      if (km > 820) {
+        km -= Math.floor(Math.random() * 3) + 1;
+        liveKm.textContent = km;
+      }
+    }, 8000);
+  }
+
+  /* ── Quote calculator ── */
+  const quoteForm = document.querySelector('.quote-form');
+  const quoteResult = document.querySelector('.quote-result-value');
+
+  if (quoteForm && quoteResult) {
+    const weightInput = quoteForm.querySelector('[name="weight"]');
+    const originInput = quoteForm.querySelector('[name="origin"]');
+    const destInput = quoteForm.querySelector('[name="destination"]');
+
+    function calculateQuote() {
+      const weight = parseFloat(weightInput.value) || 0;
+      const origin = originInput.value.trim();
+      const dest = destInput.value.trim();
+
+      if (weight <= 0 || !origin || !dest) {
+        quoteResult.textContent = '—';
+        return;
+      }
+
+      const baseRate = 0.85;
+      const distanceFactor = 1 + (origin.length + dest.length) * 0.02;
+      const total = weight * baseRate * distanceFactor;
+
+      quoteResult.textContent = '€' + total.toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
     }
-    const base = 120;
-    const perKg = 0.18;
-    const estimate = base + weight * perKg;
-    resultEl.textContent = `€${estimate.toFixed(0)}`;
-  };
 
-  weightInput?.addEventListener('input', estimateRate);
+    [weightInput, originInput, destInput].forEach(function (input) {
+      if (input) {
+        input.addEventListener('input', calculateQuote);
+      }
+    });
 
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    estimateRate();
-    const btn = form.querySelector('button');
-    const original = btn.textContent;
-    btn.textContent = 'Request Sent ✓';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
-      form.reset();
-      resultEl.textContent = '—';
-    }, 2800);
+    quoteForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!quoteForm.checkValidity()) {
+        quoteForm.reportValidity();
+        return;
+      }
+
+      calculateQuote();
+
+      const btn = quoteForm.querySelector('button');
+      const original = btn.textContent;
+      btn.textContent = 'Quote Calculated ✓';
+      btn.style.background = '#4ade80';
+
+      setTimeout(function () {
+        btn.textContent = original;
+        btn.style.background = '';
+      }, 2500);
+    });
+  }
+
+  /* ── Fleet carousel drag scroll ── */
+  const fleetScroll = document.querySelector('.fleet-scroll');
+
+  if (fleetScroll) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    fleetScroll.addEventListener('mousedown', function (e) {
+      isDown = true;
+      fleetScroll.style.cursor = 'grabbing';
+      startX = e.pageX - fleetScroll.offsetLeft;
+      scrollLeft = fleetScroll.scrollLeft;
+    });
+
+    fleetScroll.addEventListener('mouseleave', function () {
+      isDown = false;
+      fleetScroll.style.cursor = '';
+    });
+
+    fleetScroll.addEventListener('mouseup', function () {
+      isDown = false;
+      fleetScroll.style.cursor = '';
+    });
+
+    fleetScroll.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - fleetScroll.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      fleetScroll.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  /* ── Smooth anchor scroll offset for fixed header ── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      e.preventDefault();
+      const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--ticker-h'), 10)
+        + parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10);
+
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
   });
-
-  // Header scroll shadow
-  const header = document.querySelector('.top-bar');
-  window.addEventListener('scroll', () => {
-    header?.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
-});
+})();

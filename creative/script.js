@@ -1,115 +1,149 @@
 (function () {
   'use strict';
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  /* ---- Custom Cursor ---- */
+  const dot = document.querySelector('.cursor-dot');
+  const ring = document.querySelector('.cursor-ring');
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
 
-  /* Custom cursor */
-  if (!isTouchDevice && !isMobile && !prefersReducedMotion) {
-    const dot = document.querySelector('.cursor-dot');
-    const ring = document.querySelector('.cursor-ring');
-    let mouseX = 0;
-    let mouseY = 0;
-    let dotX = 0;
-    let dotY = 0;
-    let ringX = 0;
-    let ringY = 0;
-
-    document.addEventListener('mousemove', (e) => {
+  if (dot && ring && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      dot.style.left = mouseX + 'px';
+      dot.style.top = mouseY + 'px';
     });
 
-    function animateCursor() {
-      dotX += (mouseX - dotX) * 0.35;
-      dotY += (mouseY - dotY) * 0.35;
+    function animateRing() {
       ringX += (mouseX - ringX) * 0.15;
       ringY += (mouseY - ringY) * 0.15;
-
-      dot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
-      ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(animateCursor);
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+      requestAnimationFrame(animateRing);
     }
+    animateRing();
 
-    animateCursor();
-
-    const hoverTargets = document.querySelectorAll('a, button, input, .bento-block');
-    hoverTargets.forEach((el) => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-  } else {
-    document.body.classList.add('no-cursor');
-  }
-
-  /* Mobile nav */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+    const hoverTargets = document.querySelectorAll(
+      'a, button, input, textarea, .work-tile, .menu-trigger'
+    );
+    hoverTargets.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        document.body.classList.add('cursor-hover');
+      });
+      el.addEventListener('mouseleave', function () {
+        document.body.classList.remove('cursor-hover');
       });
     });
   }
 
-  /* Scroll reveal */
+  /* ---- Full-Screen Menu ---- */
+  const menuTrigger = document.querySelector('.menu-trigger');
+  const fullscreenMenu = document.getElementById('fullscreenMenu');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  function openMenu() {
+    menuTrigger.setAttribute('aria-expanded', 'true');
+    fullscreenMenu.classList.add('is-open');
+    fullscreenMenu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    menuTrigger.setAttribute('aria-expanded', 'false');
+    fullscreenMenu.classList.remove('is-open');
+    fullscreenMenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
+  }
+
+  function toggleMenu() {
+    if (menuTrigger.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  if (menuTrigger && fullscreenMenu) {
+    menuTrigger.addEventListener('click', toggleMenu);
+
+    menuLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && fullscreenMenu.classList.contains('is-open')) {
+        closeMenu();
+        menuTrigger.focus();
+      }
+    });
+  }
+
+  /* ---- Scroll Reveal ---- */
   const revealEls = document.querySelectorAll('.reveal');
 
-  if (!prefersReducedMotion && revealEls.length) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
     );
 
-    revealEls.forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-      observer.observe(el);
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
     });
   } else {
-    revealEls.forEach((el) => el.classList.add('visible'));
+    revealEls.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
   }
 
-  /* Contact form */
-  const form = document.getElementById('contactForm');
+  /* ---- Contact Form ---- */
+  const contactForm = document.getElementById('contactForm');
   const formMsg = document.getElementById('formMsg');
 
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  if (contactForm && formMsg) {
+    contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      const email = form.querySelector('#email').value.trim();
 
-      if (formMsg) {
-        formMsg.textContent = `Thanks! We'll hit you up at ${email} soon.`;
-        formMsg.classList.add('success');
+      const name = contactForm.querySelector('#name');
+      const email = contactForm.querySelector('#email');
+      const message = contactForm.querySelector('#message');
+
+      formMsg.classList.remove('success', 'error');
+      formMsg.textContent = '';
+
+      if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+        formMsg.textContent = 'Fill in all fields.';
+        formMsg.classList.add('error');
+        return;
       }
 
-      form.reset();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        formMsg.textContent = 'Enter a valid email.';
+        formMsg.classList.add('error');
+        return;
+      }
+
+      formMsg.textContent = 'Message sent. We\'ll be in touch.';
+      formMsg.classList.add('success');
+      contactForm.reset();
     });
   }
 
-  /* Pause marquee/tape on hover for accessibility */
-  document.querySelectorAll('.marquee-track, .tape-track').forEach((track) => {
-    track.closest('.marquee, .testimonials')?.addEventListener('mouseenter', () => {
-      track.style.animationPlayState = 'paused';
-    });
-    track.closest('.marquee, .testimonials')?.addEventListener('mouseleave', () => {
-      track.style.animationPlayState = 'running';
-    });
+  /* ---- Stagger work tiles on reveal ---- */
+  const workTiles = document.querySelectorAll('.work-tile.reveal');
+  workTiles.forEach(function (tile, i) {
+    tile.style.transitionDelay = i * 0.1 + 's';
   });
 })();

@@ -3,176 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obsidian Tech — Cinematic Digital Studio</title>
-  <meta name="description" content="Bespoke digital experiences for brands that demand excellence. Premium tech studio.">
+  <title>Obsidian Creative Studio — Cinematic Digital Craft</title>
+  <meta name="description" content="Obsidian Creative Studio crafts cinematic brand experiences, immersive web design, and luxury digital storytelling.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
+  <div class="neon-bleed" aria-hidden="true"></div>
 
-  <nav class="film-nav">
-    <a href="#" class="film-logo">OBSIDIAN</a>
-    <div class="film-dots" role="tablist" aria-label="Chapter navigation">
-      <button class="active" data-panel="0" aria-label="Chapter 1: Intro" aria-selected="true"></button>
-      <button data-panel="1" aria-label="Chapter 2: About"></button>
-      <button data-panel="2" aria-label="Chapter 3: Services"></button>
-      <button data-panel="3" aria-label="Chapter 4: Portfolio"></button>
-      <button data-panel="4" aria-label="Chapter 5: Testimonial"></button>
-      <button data-panel="5" aria-label="Chapter 6: Contact"></button>
-    </div>
-    <a href="#contact" class="film-cta">Inquire</a>
-  </nav>
+  <aside class="chapter-rail" aria-label="Chapter navigation">
+    <a href="#intro" class="rail-brand">OBSIDIAN</a>
+    <nav class="rail-dots" role="tablist">
+      <button class="rail-dot active" data-panel="0" data-label="Intro" aria-label="Intro" aria-selected="true">
+        <span class="rail-line"></span>
+        <span class="rail-label">Intro</span>
+      </button>
+      <button class="rail-dot" data-panel="1" data-label="Portfolio" aria-label="Portfolio">
+        <span class="rail-line"></span>
+        <span class="rail-label">Portfolio</span>
+      </button>
+      <button class="rail-dot" data-panel="2" data-label="Services" aria-label="Services">
+        <span class="rail-line"></span>
+        <span class="rail-label">Services</span>
+      </button>
+      <button class="rail-dot" data-panel="3" data-label="About" aria-label="About">
+        <span class="rail-line"></span>
+        <span class="rail-label">About</span>
+      </button>
+      <button class="rail-dot" data-panel="4" data-label="Voices" aria-label="Testimonial">
+        <span class="rail-line"></span>
+        <span class="rail-label">Voices</span>
+      </button>
+      <button class="rail-dot" data-panel="5" data-label="Contact" aria-label="Contact">
+        <span class="rail-line"></span>
+        <span class="rail-label">Contact</span>
+      </button>
+    </nav>
+    <span class="rail-counter"><em id="chapter-current">01</em> / 06</span>
+  </aside>
 
   <div class="scroll-progress" aria-hidden="true">
     <div class="scroll-progress-bar"></div>
   </div>
 
   <main class="horizontal-scroll" id="scroll-container">
-    <!-- Chapter 01: Hero -->
-    <section class="panel panel-hero" data-chapter="01">
-      <div class="panel-bg panel-bg--hero"></div>
+
+    <!-- 01 — Intro -->
+    <section id="intro" class="panel panel-intro" data-chapter="01">
+      <div class="panel-bg" style="--bg-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&h=1080&fit=crop&q=80');"></div>
+      <div class="panel-scrim panel-scrim--intro"></div>
       <div class="panel-content">
-        <p class="panel-num">01 — INTRO</p>
-        <h1 class="title-sequence">
-          <span class="title-line">ELEVATE</span>
-          <span class="title-line">YOUR</span>
-          <span class="title-line title-accent">DIGITAL</span>
-          <span class="title-line">PRESENCE</span>
+        <p class="eyebrow">Obsidian Creative Studio</p>
+        <h1 class="hero-title">
+          <span class="hero-word">CRAFT</span>
+          <span class="hero-word hero-word--accent">WORLDS</span>
+          <span class="hero-word">THAT</span>
+          <span class="hero-word">LINGER</span>
         </h1>
-        <p class="panel-sub">Bespoke digital experiences for brands that demand excellence. We craft cinematic interfaces that feel like opening credits.</p>
-        <div class="scroll-hint">
-          <span>Scroll to explore</span>
-          <div class="scroll-line"></div>
+        <p class="hero-lede">We sculpt cinematic digital experiences for luxury brands, cultural institutions, and visionaries who refuse the ordinary.</p>
+        <div class="scroll-cue">
+          <span class="scroll-cue-text">Drag or scroll</span>
+          <span class="scroll-cue-arrow">→</span>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 02: About -->
-    <section id="about" class="panel panel-about" data-chapter="02">
-      <div class="panel-bg panel-bg--about"></div>
-      <div class="panel-content panel-split">
-        <div class="panel-text">
-          <p class="panel-num">02 — ABOUT</p>
-          <h2>WE BUILD<br>FOR THE<br><span class="accent">BOLD</span></h2>
-          <p class="panel-body">Obsidian Tech partners with high-end businesses and technology leaders. Founded in 2018, we've delivered 120+ premium projects across finance, luxury retail, and enterprise SaaS — each one engineered to feel inevitable.</p>
-          <div class="stat-row">
-            <div><strong>120+</strong><span>Projects</span></div>
-            <div><strong>8yr</strong><span>Experience</span></div>
-            <div><strong>14</strong><span>Awards</span></div>
-          </div>
+    <!-- 02 — Portfolio -->
+    <section id="portfolio" class="panel panel-portfolio" data-chapter="02">
+      <div class="panel-bg" style="--bg-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&q=80');"></div>
+      <div class="panel-scrim panel-scrim--portfolio"></div>
+      <div class="panel-content panel-content--wide">
+        <header class="section-head">
+          <p class="eyebrow">Selected Work</p>
+          <h2>PORTFOLIO</h2>
+        </header>
+        <div class="portfolio-bleed">
+          <article class="port-item port-item--active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&h=1000&fit=crop&q=80" alt="Velvet Noir — luxury fashion campaign">
+            <div class="port-caption">
+              <span class="port-tag">01 / 03</span>
+              <h3>Velvet Noir</h3>
+              <p>Luxury Fashion · Campaign Site · 2025</p>
+            </div>
+          </article>
+          <article class="port-item" data-index="1">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=1000&fit=crop&q=80" alt="Atrium Architects — immersive studio">
+            <div class="port-caption">
+              <span class="port-tag">02 / 03</span>
+              <h3>Atrium Architects</h3>
+              <p>Architecture · Immersive Studio · 2025</p>
+            </div>
+          </article>
+          <article class="port-item" data-index="2">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=1000&fit=crop&q=80" alt="Lumen Spirits — brand experience">
+            <div class="port-caption">
+              <span class="port-tag">03 / 03</span>
+              <h3>Lumen Spirits</h3>
+              <p>Spirits Brand · Digital Experience · 2026</p>
+            </div>
+          </article>
         </div>
-        <div class="about-visual">
-          <div class="about-frame">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=700&h=900&fit=crop" alt="Obsidian workspace">
-            <div class="frame-glow"></div>
-          </div>
+        <div class="port-nav">
+          <button class="port-nav-btn port-prev" aria-label="Previous project">←</button>
+          <button class="port-nav-btn port-next" aria-label="Next project">→</button>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 03: Services -->
+    <!-- 03 — Services -->
     <section id="services" class="panel panel-services" data-chapter="03">
-      <div class="panel-bg panel-bg--services"></div>
+      <div class="panel-bg" style="--bg-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?w=1920&h=1080&fit=crop&q=80');"></div>
+      <div class="panel-scrim panel-scrim--services"></div>
       <div class="panel-content">
-        <p class="panel-num">03 — SERVICES</p>
-        <h2>WHAT WE<br><span class="accent">CREATE</span></h2>
+        <header class="section-head">
+          <p class="eyebrow">What We Offer</p>
+          <h2>SERVICES</h2>
+        </header>
         <div class="glass-grid">
           <article class="glass-card">
-            <span class="glass-num">01</span>
-            <h3>Custom Development</h3>
-            <p>Tailored web applications built with precision engineering and obsessive attention to detail.</p>
+            <div class="glass-glow"></div>
+            <span class="glass-index">01</span>
+            <h3>Brand Storytelling</h3>
+            <p>Narrative-driven experiences that unfold like film — every scroll, a new chapter in your brand's mythology.</p>
           </article>
           <article class="glass-card">
-            <span class="glass-num">02</span>
-            <h3>UI/UX Design</h3>
-            <p>Interfaces as premium as the brands they represent — cinematic, intuitive, unforgettable.</p>
+            <div class="glass-glow"></div>
+            <span class="glass-index">02</span>
+            <h3>Immersive Web Design</h3>
+            <p>Full-bleed, cinematic interfaces with motion choreography that feels deliberate, never decorative.</p>
           </article>
           <article class="glass-card">
-            <span class="glass-num">03</span>
-            <h3>Cloud Architecture</h3>
-            <p>Secure, scalable infrastructure for mission-critical systems that never sleep.</p>
+            <div class="glass-glow"></div>
+            <span class="glass-index">03</span>
+            <h3>Visual Identity Systems</h3>
+            <p>Cohesive design languages spanning digital, print, and environmental — obsidian-dark to luminous.</p>
           </article>
           <article class="glass-card">
-            <span class="glass-num">04</span>
-            <h3>Brand Digitalization</h3>
-            <p>Transform identity into cohesive digital experiences across every touchpoint.</p>
+            <div class="glass-glow"></div>
+            <span class="glass-index">04</span>
+            <h3>Creative Direction</h3>
+            <p>End-to-end art direction for campaigns, launches, and flagship moments that demand silence in the room.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 04: Portfolio -->
-    <section id="portfolio" class="panel panel-portfolio" data-chapter="04">
-      <div class="panel-content panel-content--full">
-        <p class="panel-num">04 — SELECTED WORK</p>
-        <h2 class="portfolio-heading">PORTFOLIO</h2>
-        <div class="slide-stack">
-          <article class="port-slide port-slide--active" data-index="0">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&h=900&fit=crop" alt="Meridian Finance">
-            <div class="port-overlay">
-              <span class="port-index">01 / 03</span>
-              <h3>Meridian Finance</h3>
-              <p>Fintech Platform · 2025</p>
-            </div>
-          </article>
-          <article class="port-slide" data-index="1">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&h=900&fit=crop" alt="DataPulse Analytics">
-            <div class="port-overlay">
-              <span class="port-index">02 / 03</span>
-              <h3>DataPulse Analytics</h3>
-              <p>Enterprise SaaS · 2025</p>
-            </div>
-          </article>
-          <article class="port-slide" data-index="2">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1400&h=900&fit=crop" alt="Nova Systems">
-            <div class="port-overlay">
-              <span class="port-index">03 / 03</span>
-              <h3>Nova Systems</h3>
-              <p>Premium Tech Brand · 2026</p>
-            </div>
-          </article>
+    <!-- 04 — About -->
+    <section id="about" class="panel panel-about" data-chapter="04">
+      <div class="panel-bg" style="--bg-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&h=1080&fit=crop&q=80');"></div>
+      <div class="panel-scrim panel-scrim--about"></div>
+      <div class="panel-content panel-split">
+        <div class="split-copy">
+          <p class="eyebrow">Our Studio</p>
+          <h2>BORN IN<br>THE <span class="text-neon">DARK</span><br>CRAFTED<br>IN LIGHT</h2>
+          <p class="split-body">Obsidian Creative Studio is a boutique collective of designers, filmmakers, and developers. Since 2017 we've shaped 90+ premium projects for fashion houses, galleries, and founders who treat their digital presence as art — not afterthought.</p>
+          <ul class="stat-strip">
+            <li><strong>90+</strong><span>Projects</span></li>
+            <li><strong>9yr</strong><span>Studio</span></li>
+            <li><strong>12</strong><span>Awards</span></li>
+          </ul>
         </div>
-        <div class="port-controls">
-          <button class="port-btn port-prev" aria-label="Previous project">←</button>
-          <button class="port-btn port-next" aria-label="Next project">→</button>
+        <div class="split-visual">
+          <div class="glass-frame">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=1000&fit=crop&q=80" alt="Obsidian Creative Studio team at work">
+            <div class="frame-edge"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Chapter 05: Testimonial -->
-    <section id="testimonials" class="panel panel-quote" data-chapter="05">
-      <div class="panel-bg panel-bg--quote"></div>
+    <!-- 05 — Quote -->
+    <section id="quote" class="panel panel-quote" data-chapter="05">
+      <div class="panel-bg" style="--bg-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&h=1080&fit=crop&q=80');"></div>
+      <div class="panel-scrim panel-scrim--quote"></div>
       <div class="panel-content panel-content--center">
-        <p class="panel-num">05 — VOICES</p>
-        <blockquote>
-          <span class="quote-mark">"</span>
-          Obsidian didn't just build us a platform — they elevated our entire brand into something that feels like a film opening sequence.
+        <p class="eyebrow">Client Voice</p>
+        <blockquote class="quote-block">
+          <span class="quote-glyph">"</span>
+          Obsidian didn't deliver a website — they delivered a universe. Our launch felt like the opening night of a film we'd been dreaming about for years.
         </blockquote>
-        <cite>
-          <span class="cite-name">Alexandra Reid</span>
-          <span class="cite-role">CEO, Meridian Finance</span>
-        </cite>
+        <footer class="quote-author">
+          <span class="author-name">Isabelle Chen</span>
+          <span class="author-role">Creative Director, Velvet Noir</span>
+        </footer>
       </div>
     </section>
 
-    <!-- Chapter 06: Contact -->
+    <!-- 06 — Contact -->
     <section id="contact" class="panel panel-contact" data-chapter="06">
-      <div class="panel-bg panel-bg--contact"></div>
+      <div class="panel-bg" style="--bg-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop&q=80');"></div>
+      <div class="panel-scrim panel-scrim--contact"></div>
       <div class="panel-content panel-content--center">
-        <p class="panel-num">06 — FIN</p>
-        <h2>LET'S CREATE<br>SOMETHING<br><span class="accent">EXCEPTIONAL</span></h2>
-        <div class="contact-minimal">
-          <a href="tel:+905338610067" class="contact-link contact-phone">+90 533 861 0067</a>
-          <a href="mailto:hello@obsidian.tech" class="contact-link contact-email">hello@obsidian.tech</a>
+        <p class="eyebrow">Begin Your Chapter</p>
+        <h2>LET'S BUILD<br>SOMETHING<br><span class="text-neon">UNFORGETTABLE</span></h2>
+        <div class="contact-links">
+          <a href="tel:+905338610067" class="contact-tile">
+            <span class="contact-label">Call</span>
+            <span class="contact-value">+90 533 861 0067</span>
+          </a>
+          <a href="mailto:hello@obsidian.studio" class="contact-tile contact-tile--accent">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">hello@obsidian.studio</span>
+          </a>
         </div>
-        <a href="../index.html" class="catalog-link">← Back to Catalog</a>
-        <p class="contact-footer">© 2026 Obsidian Tech</p>
+        <a href="../index.html" class="catalog-return">← Back to Catalog</a>
+        <p class="footer-note">© 2026 Obsidian Creative Studio · Mercy Sithole Template</p>
       </div>
     </section>
+
   </main>
 
   <script src="script.js"></script>

@@ -1,78 +1,101 @@
 (function () {
   'use strict';
 
-  /* ── Sticky header scroll state ── */
-  const header = document.querySelector('.site-header');
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    header.classList.toggle('scrolled', y > 20);
-    lastScroll = y;
-  }, { passive: true });
-
-  /* ── Mobile nav toggle ── */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  toggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    toggle.classList.toggle('active', open);
-    toggle.setAttribute('aria-expanded', open);
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      toggle.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  /* ── IntersectionObserver scroll reveals ── */
+  /* ── Scroll reveal ── */
   const revealEls = document.querySelectorAll('.reveal');
 
   const revealObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           revealObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
   );
 
-  revealEls.forEach(el => revealObserver.observe(el));
+  revealEls.forEach((el) => revealObserver.observe(el));
 
-  /* ── Animated stat counters ── */
-  const statNums = document.querySelectorAll('.stat-num[data-count]');
+  /* ── Service accordion ── */
+  const serviceRows = document.querySelectorAll('.service-row');
 
-  const counterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.dataset.count, 10);
-        const duration = 1800;
-        const start = performance.now();
+  function closeRow(row) {
+    const trigger = row.querySelector('.service-trigger');
+    row.classList.remove('is-open');
+    trigger.setAttribute('aria-expanded', 'false');
+  }
 
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(eased * target);
-          if (progress < 1) requestAnimationFrame(tick);
-        }
+  function openRow(row) {
+    const trigger = row.querySelector('.service-trigger');
+    row.classList.add('is-open');
+    trigger.setAttribute('aria-expanded', 'true');
+  }
 
-        requestAnimationFrame(tick);
-        counterObserver.unobserve(el);
+  serviceRows.forEach((row) => {
+    const trigger = row.querySelector('.service-trigger');
+
+    trigger.addEventListener('click', () => {
+      const isOpen = row.classList.contains('is-open');
+
+      serviceRows.forEach((other) => {
+        if (other !== row) closeRow(other);
       });
-    },
-    { threshold: 0.5 }
-  );
 
-  statNums.forEach(el => counterObserver.observe(el));
+      if (isOpen) {
+        closeRow(row);
+      } else {
+        openRow(row);
+      }
+    });
+  });
+
+  /* ── Bottom pill nav: active section tracking ── */
+  const navLinks = document.querySelectorAll('.pill-links a[data-nav]');
+  const sections = Array.from(navLinks).map((link) => ({
+    id: link.getAttribute('href').slice(1),
+    link,
+  }));
+
+  function setActiveNav() {
+    const scrollPos = window.scrollY + window.innerHeight * 0.35;
+
+    let current = sections[0].id;
+
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= scrollPos) {
+        current = id;
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.getAttribute('href') === `#${current}`);
+    });
+  }
+
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+
+  /* ── Smooth scroll with bottom nav offset ── */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const id = anchor.getAttribute('href');
+      if (id === '#') return;
+
+      const target = document.querySelector(id);
+      if (!target) return;
+
+      e.preventDefault();
+      const offset = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue('--nav-offset'),
+        10
+      ) || 88;
+      const top = target.getBoundingClientRect().top + window.scrollY - 24;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    });
+  });
 
   /* ── Contact form ── */
   const form = document.getElementById('contactForm');
@@ -90,17 +113,4 @@
     }, 3000);
   });
 
-  /* ── Smooth anchor offset for fixed header ── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const id = anchor.getAttribute('href');
-      if (id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'), 10) || 72;
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
-  });
 })();

@@ -3,278 +3,547 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ForgeSteel — Engineering Blueprint</title>
+  <title>ForgeSteel Engineering — Blueprint</title>
   <meta name="description" content="Precision steel fabrication, structural engineering, and industrial construction. ISO 9001 certified.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="blueprint-grid" aria-hidden="true"></div>
 
-  <header class="hero" id="top">
-    <nav class="nav">
-      <a href="#top" class="nav-logo">FORGESTEEL</a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#contact" class="nav-cta">RFQ</a></li>
-      </ul>
-    </nav>
+  <!-- Right-edge vertical nav tabs -->
+  <nav class="side-nav" aria-label="Section navigation">
+    <a href="../index.html" class="side-tab side-tab--catalog" title="Back to catalog">
+      <span class="side-tab__label">CAT</span>
+    </a>
+    <a href="#hero" class="side-tab side-tab--active" data-section="hero">
+      <span class="side-tab__label">DWG-001</span>
+    </a>
+    <a href="#specs" class="side-tab" data-section="specs">
+      <span class="side-tab__label">SPEC</span>
+    </a>
+    <a href="#capabilities" class="side-tab" data-section="capabilities">
+      <span class="side-tab__label">CAP</span>
+    </a>
+    <a href="#projects" class="side-tab" data-section="projects">
+      <span class="side-tab__label">PRJ</span>
+    </a>
+    <a href="#testimonial" class="side-tab" data-section="testimonial">
+      <span class="side-tab__label">REF</span>
+    </a>
+    <a href="#contact" class="side-tab side-tab--rfq" data-section="contact">
+      <span class="side-tab__label">RFQ</span>
+    </a>
+    <button class="side-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <div class="hero-meta">
-      <span>DWG NO: FS-2026-001</span>
-      <span>REV: A</span>
-      <span>SCALE: 1:100</span>
-      <span>STATUS: ACTIVE</span>
-    </div>
-
-    <div class="hero-layout">
-      <div class="hero-text">
-        <h1>FORGESTEEL<br>ENGINEERING</h1>
-        <p class="hero-sub">STEEL FABRICATION · INDUSTRIAL CONSTRUCTION · PROJECT MANAGEMENT</p>
-        <a href="#contact" class="hero-cta">[ REQUEST CONSULTATION ]</a>
+  <main>
+    <!-- Blueprint Hero — schematic only, no photo -->
+    <header class="hero" id="hero">
+      <div class="title-block">
+        <div class="title-block__row">
+          <span>FORGESTEEL ENGINEERING</span>
+          <span>DWG NO: FS-2026-001</span>
+        </div>
+        <div class="title-block__row">
+          <span>STEEL FABRICATION · INDUSTRIAL CONSTRUCTION</span>
+          <span>REV: B · SCALE 1:50</span>
+        </div>
+        <div class="title-block__row title-block__row--meta">
+          <span>ISO 9001:2015 · EST. 1978 · ANKARA, TR</span>
+          <span>SHEET 1 OF 6</span>
+        </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="hero-image-wrap">
-          <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=600&fit=crop" alt="Steel fabrication facility" loading="eager">
-          <div class="callout callout-1">
-            <span class="callout-line"></span>
-            <span class="callout-label">FAB CAPACITY<br>2,500 T/YR</span>
-          </div>
-          <div class="callout callout-2">
-            <span class="callout-line"></span>
-            <span class="callout-label">TOLERANCE<br>±1.0 MM</span>
-          </div>
-          <div class="callout callout-3">
-            <span class="callout-line"></span>
-            <span class="callout-label">ISO 9001<br>CERTIFIED</span>
-          </div>
+      <div class="hero-schematic">
+        <svg class="schematic-svg" viewBox="0 0 900 520" aria-labelledby="schematic-title">
+          <title id="schematic-title">ForgeSteel facility structural schematic</title>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="var(--line-bright)" />
+            </marker>
+            <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="var(--line-dim)" stroke-width="0.5" />
+            </pattern>
+          </defs>
+
+          <!-- Outer frame -->
+          <rect x="80" y="60" width="740" height="380" fill="none" stroke="var(--line-bright)" stroke-width="1.5" />
+          <rect x="100" y="80" width="700" height="340" fill="url(#hatch)" opacity="0.15" stroke="var(--line-dim)" stroke-width="0.5" stroke-dasharray="4 4" />
+
+          <!-- Primary truss structure -->
+          <g class="draw-animate" stroke="var(--line-bright)" fill="none" stroke-width="1.2">
+            <path d="M120 400 L450 120 L780 400" />
+            <line x1="120" y1="400" x2="780" y2="400" />
+            <line x1="200" y1="400" x2="350" y2="200" />
+            <line x1="350" y1="200" x2="550" y2="200" />
+            <line x1="550" y1="200" x2="700" y2="400" />
+            <line x1="285" y1="300" x2="615" y2="300" stroke-dasharray="6 4" />
+            <line x1="450" y1="120" x2="450" y2="400" stroke-dasharray="6 4" />
+            <!-- Column grid -->
+            <line x1="200" y1="400" x2="200" y2="360" />
+            <line x1="350" y1="400" x2="350" y2="360" />
+            <line x1="550" y1="400" x2="550" y2="360" />
+            <line x1="700" y1="400" x2="700" y2="360" />
+            <rect x="190" y="360" width="20" height="40" />
+            <rect x="340" y="360" width="20" height="40" />
+            <rect x="540" y="360" width="20" height="40" />
+            <rect x="690" y="360" width="20" height="40" />
+          </g>
+
+          <!-- Dimension lines — horizontal span -->
+          <g class="dim-line draw-animate" stroke="var(--accent)" fill="var(--accent)" stroke-width="0.8">
+            <line x1="120" y1="460" x2="780" y2="460" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+            <line x1="120" y1="455" x2="120" y2="465" />
+            <line x1="780" y1="455" x2="780" y2="465" />
+            <text x="450" y="478" text-anchor="middle" font-size="11" font-family="Share Tech Mono, monospace">120,000 MM — FACILITY SPAN</text>
+          </g>
+
+          <!-- Dimension lines — height -->
+          <g class="dim-line draw-animate" stroke="var(--accent)" fill="var(--accent)" stroke-width="0.8">
+            <line x1="40" y1="120" x2="40" y2="400" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+            <line x1="35" y1="120" x2="45" y2="120" />
+            <line x1="35" y1="400" x2="45" y2="400" />
+            <text x="28" y="265" text-anchor="middle" font-size="11" font-family="Share Tech Mono, monospace" transform="rotate(-90 28 265)">18,500 MM</text>
+          </g>
+
+          <!-- Annotation callouts — company info (replaces about section) -->
+          <g class="callout draw-animate">
+            <line x1="350" y1="200" x2="280" y2="140" stroke="var(--line-bright)" stroke-width="0.8" />
+            <circle cx="280" cy="140" r="3" fill="var(--accent)" />
+            <rect x="140" y="95" width="180" height="72" fill="var(--blueprint-deep)" stroke="var(--line-bright)" stroke-width="0.8" />
+            <text x="150" y="115" fill="var(--line-bright)" font-size="10" font-family="Share Tech Mono, monospace">NOTE 1 — COMPANY</text>
+            <text x="150" y="132" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">PRECISION STEEL FABRICATION</text>
+            <text x="150" y="146" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">±1.0 MM TOLERANCE ALL WORK</text>
+            <text x="150" y="160" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">120,000 SQ FT FACILITY</text>
+          </g>
+
+          <g class="callout draw-animate">
+            <line x1="550" y1="200" x2="620" y2="150" stroke="var(--line-bright)" stroke-width="0.8" />
+            <circle cx="620" cy="150" r="3" fill="var(--accent)" />
+            <rect x="630" y="105" width="170" height="72" fill="var(--blueprint-deep)" stroke="var(--line-bright)" stroke-width="0.8" />
+            <text x="640" y="125" fill="var(--line-bright)" font-size="10" font-family="Share Tech Mono, monospace">NOTE 2 — CAPACITY</text>
+            <text x="640" y="142" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">2,500 T/YR FABRICATION</text>
+            <text x="640" y="156" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">450+ PROJECTS DELIVERED</text>
+            <text x="640" y="170" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">48 YRS INDUSTRY EXP.</text>
+          </g>
+
+          <g class="callout draw-animate">
+            <line x1="450" y1="400" x2="450" y2="430" stroke="var(--line-bright)" stroke-width="0.8" />
+            <circle cx="450" cy="430" r="3" fill="var(--accent)" />
+            <rect x="370" y="435" width="160" height="56" fill="var(--blueprint-deep)" stroke="var(--line-bright)" stroke-width="0.8" />
+            <text x="380" y="455" fill="var(--line-bright)" font-size="10" font-family="Share Tech Mono, monospace">DETAIL A — CERT</text>
+            <text x="380" y="472" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">ISO 9001:2015 CERTIFIED</text>
+            <text x="380" y="486" fill="var(--text-muted)" font-size="9" font-family="Share Tech Mono, monospace">AWS D1.1 · ASTM A572</text>
+          </g>
+
+          <!-- Part reference markers -->
+          <g fill="var(--accent)" font-size="10" font-family="Share Tech Mono, monospace">
+            <circle cx="200" cy="380" r="10" fill="none" stroke="var(--accent)" stroke-width="0.8" />
+            <text x="200" y="384" text-anchor="middle">1</text>
+            <circle cx="700" cy="380" r="10" fill="none" stroke="var(--accent)" stroke-width="0.8" />
+            <text x="700" y="384" text-anchor="middle">2</text>
+            <circle cx="450" cy="130" r="10" fill="none" stroke="var(--accent)" stroke-width="0.8" />
+            <text x="450" y="134" text-anchor="middle">3</text>
+          </g>
+        </svg>
+
+        <div class="hero-heading">
+          <p class="hero-kicker">STRUCTURAL SCHEMATIC · SHEET 1</p>
+          <h1>FORGESTEEL<br>ENGINEERING</h1>
+          <p class="hero-tagline">STEEL FABRICATION · INDUSTRIAL CONSTRUCTION · PROJECT MANAGEMENT</p>
+          <a href="#contact" class="hero-cta">[ INITIATE RFQ ]</a>
         </div>
-        <div class="hero-drawing-id">FIG. 1 — FACILITY OVERVIEW</div>
       </div>
-    </div>
-  </header>
 
-  <section class="spec-bar" aria-label="Key specifications">
-    <div class="spec-item">
-      <div class="spec-value-wrap">
-        <span class="spec-val" data-count="2500">0</span>
-        <span class="spec-unit">TONS/YR</span>
+      <div class="revision-stamp">
+        <span class="stamp-approved">APPROVED</span>
+        <span>ENG: M.KAYA</span>
+        <span>DATE: 2026-07-06</span>
       </div>
-      <span class="spec-label">FABRICATION CAPACITY</span>
-    </div>
-    <div class="spec-item">
-      <div class="spec-value-wrap">
-        <span class="spec-val" data-count="450">0</span>
-        <span class="spec-unit">+</span>
+    </header>
+
+    <!-- Spec counter bar -->
+    <section class="spec-bar" id="specs" aria-label="Key specifications">
+      <div class="spec-bar__label">PERFORMANCE METRICS — TABULATED</div>
+      <div class="spec-bar__grid">
+        <div class="spec-item reveal">
+          <span class="spec-part">PN-001</span>
+          <div class="spec-value-wrap">
+            <span class="spec-val" data-count="2500">0</span>
+            <span class="spec-unit">T/YR</span>
+          </div>
+          <span class="spec-label">FABRICATION CAPACITY</span>
+        </div>
+        <div class="spec-item reveal">
+          <span class="spec-part">PN-002</span>
+          <div class="spec-value-wrap">
+            <span class="spec-val" data-count="450">0</span>
+            <span class="spec-unit">+</span>
+          </div>
+          <span class="spec-label">PROJECTS COMPLETED</span>
+        </div>
+        <div class="spec-item reveal">
+          <span class="spec-part">PN-003</span>
+          <div class="spec-value-wrap">
+            <span class="spec-val" data-count="48">0</span>
+            <span class="spec-unit">YRS</span>
+          </div>
+          <span class="spec-label">INDUSTRY EXPERIENCE</span>
+        </div>
+        <div class="spec-item reveal">
+          <span class="spec-part">PN-004</span>
+          <div class="spec-value-wrap">
+            <span class="spec-val" data-count="120">0</span>
+            <span class="spec-unit">K SQ FT</span>
+          </div>
+          <span class="spec-label">FACILITY SIZE</span>
+        </div>
       </div>
-      <span class="spec-label">PROJECTS COMPLETED</span>
-    </div>
-    <div class="spec-item">
-      <div class="spec-value-wrap">
-        <span class="spec-val" data-count="48">0</span>
-        <span class="spec-unit">YRS</span>
+    </section>
+
+    <!-- Capabilities — engineering spec table -->
+    <section class="drawing-sheet" id="capabilities">
+      <div class="sheet-inner reveal">
+        <header class="sheet-header">
+          <div class="sheet-header__left">
+            <span class="sheet-id">SHT-002</span>
+            <h2>CAPABILITIES MATRIX</h2>
+          </div>
+          <div class="sheet-header__right">
+            <span>REV: B</span>
+            <span>PART COUNT: 05</span>
+          </div>
+        </header>
+
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th scope="col">PART NO.</th>
+              <th scope="col">CAPABILITY</th>
+              <th scope="col">SPECIFICATION</th>
+              <th scope="col">STD / CODE</th>
+              <th scope="col">STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FS-CAP-001</td>
+              <td>Steel Fabrication</td>
+              <td>Custom structural components, ±1.0 mm tolerance</td>
+              <td>ASTM A36 / A572</td>
+              <td><span class="status-badge status-badge--active">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>FS-CAP-002</td>
+              <td>Plant Construction</td>
+              <td>Turnkey industrial facility design &amp; build</td>
+              <td>ISO 9001:2015</td>
+              <td><span class="status-badge status-badge--active">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>FS-CAP-003</td>
+              <td>Power Infrastructure</td>
+              <td>Steel frameworks for energy &amp; utility projects</td>
+              <td>IEC 61400</td>
+              <td><span class="status-badge status-badge--active">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>FS-CAP-004</td>
+              <td>Maintenance &amp; Repair</td>
+              <td>24/7 emergency repair &amp; inspection programs</td>
+              <td>API 653</td>
+              <td><span class="status-badge status-badge--active">ACTIVE</span></td>
+            </tr>
+            <tr>
+              <td>FS-CAP-005</td>
+              <td>Welding &amp; NDT</td>
+              <td>Certified welders, UT &amp; radiographic testing</td>
+              <td>AWS D1.1</td>
+              <td><span class="status-badge status-badge--active">ACTIVE</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <footer class="sheet-footer">
+          <span>ALL DIMENSIONS IN MM UNLESS NOTED</span>
+          <span>FORGESTEEL ENGINEERING — CONFIDENTIAL</span>
+        </footer>
       </div>
-      <span class="spec-label">INDUSTRY EXPERIENCE</span>
-    </div>
-    <div class="spec-item">
-      <div class="spec-value-wrap">
-        <span class="spec-val" data-count="120">0</span>
-        <span class="spec-unit">K SQ FT</span>
+    </section>
+
+    <!-- Projects — stacked technical drawing sheets -->
+    <section class="projects-section" id="projects">
+      <div class="section-intro reveal">
+        <span class="sheet-id">SHT-003</span>
+        <h2>PROJECT DRAWING LOG</h2>
+        <p>STACKED TECHNICAL SHEETS — SELECTED COMMISSIONS</p>
       </div>
-      <span class="spec-label">FACILITY SIZE</span>
-    </div>
-  </section>
 
-  <section id="about" class="sheet reveal">
-    <div class="sheet-frame">
-      <div class="sheet-label">SECTION A-A · ABOUT</div>
-      <h2>ENGINEERING STRENGTH AT SCALE</h2>
-      <p>ForgeSteel delivers precision steel fabrication, structural engineering, and industrial construction. ISO 9001 certified with a 120,000 sq ft fabrication facility. ±1mm tolerance on all structural components.</p>
-      <div class="sheet-annotation">← SEE DETAIL 3 · REV A</div>
-    </div>
-  </section>
-
-  <section id="projects" class="projects-section">
-    <div class="section-header reveal">
-      <div class="sheet-label">SECTION B-B · PROJECT LOG</div>
-      <h2>Selected Projects</h2>
-    </div>
-
-    <div class="project-bento">
-      <article class="bento-item bento-image reveal">
-        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop" alt="Power station construction" loading="lazy">
-        <div class="bento-overlay">
-          <span class="bento-id">PRJ-0425</span>
-          <h3>Northwind Power Station</h3>
-          <span class="bento-status active">ACTIVE</span>
-        </div>
-      </article>
-
-      <article class="bento-item bento-spec reveal">
-        <div class="spec-card">
-          <span class="spec-card-id">PRJ-0421</span>
-          <h3>Harbor Steel Bridge</h3>
-          <dl>
-            <div><dt>Sector</dt><dd>Infrastructure</dd></div>
-            <div><dt>Steel</dt><dd>14,200 T</dd></div>
-            <div><dt>Span</dt><dd>340 M</dd></div>
-            <div><dt>Year</dt><dd>2024</dd></div>
-          </dl>
-          <span class="bento-status complete">COMPLETE</span>
-        </div>
-      </article>
-
-      <article class="bento-item bento-image reveal">
-        <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=400&fit=crop" alt="Manufacturing plant" loading="lazy">
-        <div class="bento-overlay">
-          <span class="bento-id">PRJ-0418</span>
-          <h3>AutoParts Factory</h3>
-          <span class="bento-status complete">COMPLETE</span>
-        </div>
-      </article>
-
-      <article class="bento-item bento-spec reveal">
-        <div class="spec-card spec-card-accent">
-          <span class="spec-card-id">PRJ-0430</span>
-          <h3>Meridian Data Center</h3>
-          <dl>
-            <div><dt>Sector</dt><dd>Energy</dd></div>
-            <div><dt>Steel</dt><dd>8,750 T</dd></div>
-            <div><dt>Floor Area</dt><dd>45,000 M²</dd></div>
-            <div><dt>Year</dt><dd>2026</dd></div>
-          </dl>
-          <span class="bento-status active">ACTIVE</span>
-        </div>
-      </article>
-
-      <article class="bento-item bento-wide reveal">
-        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&h=400&fit=crop" alt="Industrial construction site" loading="lazy">
-        <div class="bento-overlay">
-          <span class="bento-id">PRJ-0412</span>
-          <h3>Pacific Refinery Expansion</h3>
-          <span class="bento-meta">Energy · 22,000 T Steel · 2023</span>
-          <span class="bento-status complete">COMPLETE</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section id="capabilities" class="sheet reveal">
-    <div class="sheet-frame">
-      <div class="sheet-label">SECTION C-C · CAPABILITIES</div>
-      <h2>Technical Capabilities</h2>
-      <table class="spec-table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Capability</th>
-            <th scope="col">Specification</th>
-            <th scope="col">Standard</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>CAP-01</td>
-            <td>Steel Fabrication</td>
-            <td>Custom structural components, ±1mm tolerance</td>
-            <td>ASTM A36 / A572</td>
-          </tr>
-          <tr>
-            <td>CAP-02</td>
-            <td>Plant Construction</td>
-            <td>Turnkey industrial facility design & build</td>
-            <td>ISO 9001</td>
-          </tr>
-          <tr>
-            <td>CAP-03</td>
-            <td>Power Infrastructure</td>
-            <td>Steel frameworks for energy & utility projects</td>
-            <td>IEC 61400</td>
-          </tr>
-          <tr>
-            <td>CAP-04</td>
-            <td>Maintenance & Repair</td>
-            <td>24/7 emergency repair programs</td>
-            <td>API 653</td>
-          </tr>
-          <tr>
-            <td>CAP-05</td>
-            <td>Welding & NDT</td>
-            <td>Certified welders, ultrasonic & radiographic testing</td>
-            <td>AWS D1.1</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="testimonials" class="sheet sheet-quote reveal">
-    <div class="sheet-frame">
-      <div class="sheet-label">SECTION D-D · CLIENT FEEDBACK</div>
-      <blockquote>"ForgeSteel completed our plant expansion 3 weeks ahead of schedule. Zero safety incidents across 18 months of construction."</blockquote>
-      <cite>— TITAN MANUFACTURING GROUP · PRJ-0418</cite>
-    </div>
-  </section>
-
-  <section id="contact" class="sheet reveal">
-    <div class="sheet-frame">
-      <div class="sheet-label">SECTION E-E · REQUEST FOR QUOTE</div>
-      <h2>Submit RFQ</h2>
-      <p class="contact-line">projects@forgesteel.com · <a href="tel:+905338610067">+90 533 861 0067</a></p>
-
-      <form class="rfq-form" id="rfqForm">
-        <div class="rfq-grid">
-          <div class="rfq-field">
-            <label for="company">COMPANY</label>
-            <input type="text" id="company" name="company" required autocomplete="organization">
+      <div class="sheet-stack">
+        <article class="project-sheet reveal">
+          <div class="project-sheet__grid"></div>
+          <header class="project-sheet__header">
+            <span class="project-sheet__id">PRJ-0425</span>
+            <span class="project-sheet__rev">REV A</span>
+            <span class="status-badge status-badge--active">IN PROGRESS</span>
+          </header>
+          <div class="project-sheet__body">
+            <div class="project-sheet__content">
+              <h3>NORTHWIND POWER STATION</h3>
+              <dl class="project-specs">
+                <div><dt>SECTOR</dt><dd>ENERGY</dd></div>
+                <div><dt>STEEL MASS</dt><dd>18,400 T</dd></div>
+                <div><dt>DEADLINE</dt><dd>Q4 2026</dd></div>
+                <div><dt>CLIENT REF</dt><dd>NW-PS-2025</dd></div>
+              </dl>
+            </div>
+            <figure class="fig-thumb">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=200&h=150&fit=crop" alt="Power station steel framework" loading="lazy" width="120" height="90">
+              <figcaption>FIG. 1 — TURBINE HALL FRAME</figcaption>
+            </figure>
           </div>
-          <div class="rfq-field">
-            <label for="email">EMAIL</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
+          <footer class="project-sheet__footer">
+            <span>DWG: FS-PRJ-0425-A</span>
+            <span>SCALE 1:200</span>
+          </footer>
+        </article>
+
+        <article class="project-sheet reveal">
+          <div class="project-sheet__grid"></div>
+          <header class="project-sheet__header">
+            <span class="project-sheet__id">PRJ-0421</span>
+            <span class="project-sheet__rev">REV C</span>
+            <span class="status-badge status-badge--complete">COMPLETE</span>
+          </header>
+          <div class="project-sheet__body">
+            <div class="project-sheet__content">
+              <h3>HARBOR STEEL BRIDGE</h3>
+              <dl class="project-specs">
+                <div><dt>SECTOR</dt><dd>INFRASTRUCTURE</dd></div>
+                <div><dt>STEEL MASS</dt><dd>14,200 T</dd></div>
+                <div><dt>SPAN</dt><dd>340 M</dd></div>
+                <div><dt>CLIENT REF</dt><dd>HB-2024-07</dd></div>
+              </dl>
+            </div>
+            <figure class="fig-thumb">
+              <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=200&h=150&fit=crop" alt="Bridge steel construction" loading="lazy" width="120" height="90">
+              <figcaption>FIG. 2 — MAIN SPAN TRUSS</figcaption>
+            </figure>
           </div>
-          <div class="rfq-field">
-            <label for="projectType">PROJECT TYPE</label>
-            <select id="projectType" name="projectType" required>
-              <option value="">SELECT TYPE</option>
-              <option value="structural">Structural Steel</option>
-              <option value="industrial">Industrial Plant</option>
-              <option value="energy">Energy / Power</option>
-              <option value="infrastructure">Infrastructure</option>
-              <option value="maintenance">Maintenance / Repair</option>
-            </select>
+          <footer class="project-sheet__footer">
+            <span>DWG: FS-PRJ-0421-C</span>
+            <span>SCALE 1:500</span>
+          </footer>
+        </article>
+
+        <article class="project-sheet reveal">
+          <div class="project-sheet__grid"></div>
+          <header class="project-sheet__header">
+            <span class="project-sheet__id">PRJ-0430</span>
+            <span class="project-sheet__rev">REV B</span>
+            <span class="status-badge status-badge--active">IN PROGRESS</span>
+          </header>
+          <div class="project-sheet__body">
+            <div class="project-sheet__content">
+              <h3>MERIDIAN DATA CENTER</h3>
+              <dl class="project-specs">
+                <div><dt>SECTOR</dt><dd>TECH / ENERGY</dd></div>
+                <div><dt>STEEL MASS</dt><dd>8,750 T</dd></div>
+                <div><dt>FLOOR AREA</dt><dd>45,000 M²</dd></div>
+                <div><dt>CLIENT REF</dt><dd>MDC-2026-01</dd></div>
+              </dl>
+            </div>
+            <figure class="fig-thumb">
+              <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=200&h=150&fit=crop" alt="Data center steel structure" loading="lazy" width="120" height="90">
+              <figcaption>FIG. 3 — RACK HALL GRID</figcaption>
+            </figure>
           </div>
-          <div class="rfq-field rfq-full">
-            <label for="scope">PROJECT SCOPE</label>
-            <textarea id="scope" name="scope" rows="4" required placeholder="Describe project requirements, timeline, and specifications..."></textarea>
+          <footer class="project-sheet__footer">
+            <span>DWG: FS-PRJ-0430-B</span>
+            <span>SCALE 1:100</span>
+          </footer>
+        </article>
+
+        <article class="project-sheet reveal">
+          <div class="project-sheet__grid"></div>
+          <header class="project-sheet__header">
+            <span class="project-sheet__id">PRJ-0412</span>
+            <span class="project-sheet__rev">REV D</span>
+            <span class="status-badge status-badge--complete">COMPLETE</span>
+          </header>
+          <div class="project-sheet__body">
+            <div class="project-sheet__content">
+              <h3>PACIFIC REFINERY EXPANSION</h3>
+              <dl class="project-specs">
+                <div><dt>SECTOR</dt><dd>ENERGY / OIL</dd></div>
+                <div><dt>STEEL MASS</dt><dd>22,000 T</dd></div>
+                <div><dt>DURATION</dt><dd>22 MONTHS</dd></div>
+                <div><dt>CLIENT REF</dt><dd>PRX-2023-09</dd></div>
+              </dl>
+            </div>
+            <figure class="fig-thumb">
+              <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=200&h=150&fit=crop" alt="Refinery steel piping support" loading="lazy" width="120" height="90">
+              <figcaption>FIG. 4 — PIPE RACK ASSEMBLY</figcaption>
+            </figure>
           </div>
-          <div class="rfq-field rfq-full">
-            <label>ATTACHMENTS</label>
-            <div class="file-upload" id="fileUpload">
-              <input type="file" id="fileInput" multiple accept=".pdf,.dwg,.dxf,.doc,.docx" hidden>
-              <div class="file-dropzone" id="fileDropzone">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 16V4M12 4L8 8M12 4l4 4" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-                <p>Drop drawings here or <button type="button" class="file-browse" id="fileBrowse">browse files</button></p>
-                <span class="file-hint">PDF, DWG, DXF, DOC — max 25MB each</span>
+          <footer class="project-sheet__footer">
+            <span>DWG: FS-PRJ-0412-D</span>
+            <span>SCALE 1:150</span>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- Testimonial — spec sheet format -->
+    <section class="drawing-sheet drawing-sheet--testimonial" id="testimonial">
+      <div class="sheet-inner reveal">
+        <header class="sheet-header">
+          <div class="sheet-header__left">
+            <span class="sheet-id">SHT-004</span>
+            <h2>CLIENT REFERENCE DATA</h2>
+          </div>
+          <div class="sheet-header__right">
+            <span>REV: A</span>
+            <span>REF NO: CR-0418</span>
+          </div>
+        </header>
+
+        <table class="spec-table spec-table--testimonial">
+          <thead>
+            <tr>
+              <th scope="col">FIELD</th>
+              <th scope="col">VALUE</th>
+              <th scope="col">VERIFIED</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CLIENT ORG</td>
+              <td>TITAN MANUFACTURING GROUP</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>PROJECT REF</td>
+              <td>PRJ-0418 — AUTOPARTS FACTORY</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>SCHEDULE DELTA</td>
+              <td>+21 DAYS AHEAD OF CONTRACT</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>SAFETY INCIDENTS</td>
+              <td>0 / 18 MONTH CONSTRUCTION PERIOD</td>
+              <td>✓</td>
+            </tr>
+            <tr class="testimonial-quote-row">
+              <td>CLIENT STATEMENT</td>
+              <td colspan="2">"ForgeSteel completed our plant expansion 3 weeks ahead of schedule. Zero safety incidents across 18 months of construction. Structural tolerances held within ±0.8 mm on all critical joints."</td>
+            </tr>
+            <tr>
+              <td>AUTHORIZED BY</td>
+              <td>D. VOLKOV — DIRECTOR OF OPERATIONS</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>DATE ISSUED</td>
+              <td>2025-11-14</td>
+              <td>✓</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="revision-stamp revision-stamp--inline">
+          <span class="stamp-approved">VERIFIED</span>
+          <span>QA: S. DEMIR</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RFQ Contact -->
+    <section class="drawing-sheet drawing-sheet--contact" id="contact">
+      <div class="sheet-inner reveal">
+        <header class="sheet-header">
+          <div class="sheet-header__left">
+            <span class="sheet-id">SHT-005</span>
+            <h2>REQUEST FOR QUOTE</h2>
+          </div>
+          <div class="sheet-header__right">
+            <span>FORM: RFQ-2026</span>
+            <span>REV: A</span>
+          </div>
+        </header>
+
+        <p class="contact-line">
+          projects@forgesteel.com ·
+          <a href="tel:+905338610067">+90 533 861 0067</a>
+        </p>
+
+        <form class="rfq-form" id="rfqForm" novalidate>
+          <div class="rfq-grid">
+            <div class="rfq-field">
+              <label for="company">COMPANY / ORG</label>
+              <input type="text" id="company" name="company" required autocomplete="organization">
+            </div>
+            <div class="rfq-field">
+              <label for="email">EMAIL</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="rfq-field">
+              <label for="projectRef">PROJECT REF NO.</label>
+              <input type="text" id="projectRef" name="projectRef" required placeholder="e.g. PRJ-2026-001">
+            </div>
+            <div class="rfq-field">
+              <label for="tonnage">EST. STEEL TONNAGE</label>
+              <input type="number" id="tonnage" name="tonnage" required min="1" placeholder="e.g. 5000">
+            </div>
+            <div class="rfq-field">
+              <label for="deadline">TARGET DEADLINE</label>
+              <input type="date" id="deadline" name="deadline" required>
+            </div>
+            <div class="rfq-field">
+              <label for="projectType">PROJECT TYPE</label>
+              <select id="projectType" name="projectType" required>
+                <option value="">SELECT TYPE</option>
+                <option value="structural">Structural Steel</option>
+                <option value="industrial">Industrial Plant</option>
+                <option value="energy">Energy / Power</option>
+                <option value="infrastructure">Infrastructure</option>
+                <option value="maintenance">Maintenance / Repair</option>
+              </select>
+            </div>
+            <div class="rfq-field rfq-full">
+              <label for="scope">PROJECT SCOPE / NOTES</label>
+              <textarea id="scope" name="scope" rows="4" required placeholder="Describe structural requirements, site conditions, and deliverables..."></textarea>
+            </div>
+            <div class="rfq-field rfq-full">
+              <label>DRAWING ATTACHMENTS</label>
+              <div class="file-upload" id="fileUpload">
+                <input type="file" id="fileInput" multiple accept=".pdf,.dwg,.dxf,.doc,.docx" hidden>
+                <div class="file-dropzone" id="fileDropzone">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 16V4M12 4L8 8M12 4l4 4" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  <p>DROP DWG / PDF HERE OR <button type="button" class="file-browse" id="fileBrowse">BROWSE</button></p>
+                  <span class="file-hint">PDF, DWG, DXF, DOC — MAX 25 MB EACH</span>
+                </div>
+                <ul class="file-list" id="fileList" aria-live="polite"></ul>
               </div>
-              <ul class="file-list" id="fileList" aria-live="polite"></ul>
             </div>
           </div>
-        </div>
-        <button type="submit" class="rfq-submit">[ SUBMIT RFQ ]</button>
-        <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
+          <button type="submit" class="rfq-submit">[ TRANSMIT RFQ ]</button>
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <span>© 2026 FORGESTEEL ENGINEERING · ALL DIMENSIONS IN MM UNLESS NOTED</span>

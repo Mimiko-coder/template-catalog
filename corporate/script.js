@@ -23,28 +23,46 @@
   closeBtn.addEventListener('click', closeSidebar);
   overlay.addEventListener('click', closeSidebar);
 
+  /* ── Live timestamp ── */
+  const timestampEl = document.getElementById('liveTimestamp');
+
+  function updateTimestamp() {
+    const now = new Date();
+    const formatted = now.toLocaleString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    timestampEl.textContent = 'Updated — ' + formatted;
+  }
+
+  updateTimestamp();
+  setInterval(updateTimestamp, 60000);
+
   /* ── Active nav on scroll ── */
   const navItems = document.querySelectorAll('.nav-item');
-  const sections = document.querySelectorAll('.section[id], .trust-strip');
+  const observedSections = document.querySelectorAll(
+    '#dashboard, #projects, #team, #capabilities, #trust, #about, #contact'
+  );
 
   const sectionObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        const id = entry.target.id || 'dashboard';
-        navItems.forEach(item => {
+        const id = entry.target.id;
+        navItems.forEach((item) => {
           item.classList.toggle('active', item.dataset.section === id);
         });
       });
     },
-    { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    { rootMargin: '-18% 0px -55% 0px', threshold: 0 }
   );
 
-  document.querySelectorAll('#dashboard, #about, #capabilities, #projects, #team, #contact').forEach(sec => {
-    sectionObserver.observe(sec);
-  });
+  observedSections.forEach((sec) => sectionObserver.observe(sec));
 
-  navItems.forEach(item => {
+  navItems.forEach((item) => {
     item.addEventListener('click', () => {
       if (window.innerWidth <= 900) closeSidebar();
     });
@@ -55,28 +73,28 @@
 
   const fadeObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           fadeObserver.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }
   );
 
-  fadeEls.forEach(el => fadeObserver.observe(el));
+  fadeEls.forEach((el) => fadeObserver.observe(el));
 
   /* ── KPI counter animation ── */
   const kpiCounters = document.querySelectorAll('[data-count]');
 
   const kpiObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
         const target = parseInt(el.dataset.count, 10);
-        const duration = 1600;
+        const duration = 1400;
         const start = performance.now();
 
         function tick(now) {
@@ -90,38 +108,101 @@
         kpiObserver.unobserve(el);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.4 }
   );
 
-  kpiCounters.forEach(el => kpiObserver.observe(el));
+  kpiCounters.forEach((el) => kpiObserver.observe(el));
 
-  /* ── Animated bar chart ── */
-  const barChart = document.getElementById('barChart');
-  const bars = barChart.querySelectorAll('.bar');
+  /* ── Mini bar charts in KPI tiles ── */
+  const miniCharts = document.querySelectorAll('.mini-chart');
 
-  const chartObserver = new IntersectionObserver(
+  const miniObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
+        const bars = entry.target.querySelectorAll('.mini-bar');
         bars.forEach((bar, i) => {
-          const h = bar.dataset.height;
-          bar.style.setProperty('--target-h', h);
-          setTimeout(() => bar.classList.add('animated'), i * 60);
+          const h = bar.dataset.h;
+          bar.style.setProperty('--bar-h', h);
+          setTimeout(() => bar.classList.add('animated'), i * 40);
         });
-        chartObserver.unobserve(entry.target);
+        miniObserver.unobserve(entry.target);
       });
     },
     { threshold: 0.3 }
   );
 
+  miniCharts.forEach((chart) => miniObserver.observe(chart));
+
+  /* ── Main bar chart ── */
+  const barChart = document.getElementById('barChart');
+  const bars = barChart.querySelectorAll('.bar');
+
+  const chartObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        bars.forEach((bar, i) => {
+          bar.style.setProperty('--target-h', bar.dataset.height);
+          setTimeout(() => bar.classList.add('animated'), i * 55);
+        });
+        chartObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.25 }
+  );
+
   chartObserver.observe(barChart);
 
-  /* ── Progress bar animation ── */
+  /* ── Utilization bars ── */
+  const utilFills = document.querySelectorAll('.util-fill');
+
+  const utilObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const fill = entry.target;
+        const width = fill.dataset.width + '%';
+        fill.style.width = '0';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            fill.style.width = width;
+          });
+        });
+        utilObserver.unobserve(fill);
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  utilFills.forEach((fill) => utilObserver.observe(fill));
+
+  /* ── Area chart (About) ── */
+  const areaChart = document.getElementById('areaChart');
+  const areaBars = areaChart.querySelectorAll('.area-bar');
+
+  const areaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        areaBars.forEach((bar, i) => {
+          bar.style.setProperty('--area-h', bar.dataset.height);
+          setTimeout(() => bar.classList.add('animated'), i * 80);
+        });
+        areaObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  areaObserver.observe(areaChart);
+
+  /* ── Table progress bars ── */
   const progressBars = document.querySelectorAll('.progress-fill');
 
   const progressObserver = new IntersectionObserver(
     (entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const bar = entry.target;
         const width = bar.style.width;
@@ -134,10 +215,10 @@
         progressObserver.unobserve(bar);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.4 }
   );
 
-  progressBars.forEach(bar => progressObserver.observe(bar));
+  progressBars.forEach((bar) => progressObserver.observe(bar));
 
   /* ── Inquiry form ── */
   const form = document.getElementById('inquiryForm');
@@ -146,7 +227,7 @@
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     const original = btn.textContent;
-    btn.textContent = 'Inquiry submitted — we\'ll be in touch';
+    btn.textContent = 'Inquiry submitted — we\u2019ll be in touch';
     btn.disabled = true;
     setTimeout(() => {
       form.reset();
@@ -156,14 +237,14 @@
   });
 
   /* ── Smooth scroll with offset ── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', (e) => {
       const id = anchor.getAttribute('href');
       if (id === '#') return;
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      const offset = window.innerWidth <= 900 ? 56 : 16;
+      const offset = window.innerWidth <= 900 ? 56 : 20;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     });

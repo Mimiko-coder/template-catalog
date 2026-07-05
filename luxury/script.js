@@ -1,90 +1,144 @@
-document.addEventListener('DOMContentLoaded', () => {
-  /* ── Hero slideshow ── */
-  const slides = document.querySelectorAll('.hero-slides img');
-  const dots = document.querySelectorAll('.progress-dot');
-  const parallax = document.querySelector('.hero-parallax');
-  const nav = document.querySelector('.mag-nav');
-  let current = 0;
-  const INTERVAL = 6000;
+(function () {
+  "use strict";
+
+  /* ─── Masthead: solid state after hero ─── */
+  const masthead = document.querySelector(".masthead");
+  const hero = document.querySelector(".hero");
+
+  function updateMasthead() {
+    if (!masthead || !hero) return;
+    const threshold = hero.offsetHeight * 0.15;
+    masthead.classList.toggle("is-solid", window.scrollY > threshold);
+  }
+
+  window.addEventListener("scroll", updateMasthead, { passive: true });
+  updateMasthead();
+
+  /* ─── Hero Ken Burns Slideshow ─── */
+  const slides = Array.from(document.querySelectorAll(".hero-slide"));
+  const dots = Array.from(document.querySelectorAll(".hero-dot"));
+  const SLIDE_INTERVAL = 6000;
+  let currentSlide = 0;
+  let slideTimer = null;
 
   function goToSlide(index) {
-    slides[current].classList.remove('active');
-    dots[current]?.classList.remove('active');
-    current = index;
-    slides[current].classList.add('active');
-    dots[current]?.classList.add('active');
+    if (!slides.length) return;
+
+    currentSlide = ((index % slides.length) + slides.length) % slides.length;
+
+    slides.forEach(function (slide, i) {
+      slide.classList.toggle("is-active", i === currentSlide);
+    });
+
+    dots.forEach(function (dot, i) {
+      var isActive = i === currentSlide;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
   }
 
-  function nextSlide() {
-    goToSlide((current + 1) % slides.length);
+  function startSlideshow() {
+    stopSlideshow();
+    slideTimer = setInterval(function () {
+      goToSlide(currentSlide + 1);
+    }, SLIDE_INTERVAL);
   }
 
-  let slideTimer = setInterval(nextSlide, INTERVAL);
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
+  function stopSlideshow() {
+    if (slideTimer) {
       clearInterval(slideTimer);
-      goToSlide(i);
-      slideTimer = setInterval(nextSlide, INTERVAL);
+      slideTimer = null;
+    }
+  }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener("click", function () {
+      var target = parseInt(dot.getAttribute("data-target"), 10);
+      goToSlide(target);
+      startSlideshow();
     });
   });
 
-  /* ── Hero parallax ── */
-  let ticking = false;
-
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const scrollY = window.scrollY;
-        const heroHeight = window.innerHeight;
-
-        if (parallax && scrollY < heroHeight) {
-          const offset = scrollY * 0.35;
-          parallax.style.transform = `translate3d(0, ${offset}px, 0)`;
-        }
-
-        nav?.classList.toggle('scrolled', scrollY > 60);
-        ticking = false;
-      });
-      ticking = true;
-    }
+  if (slides.length > 1) {
+    startSlideshow();
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  /* ── Scroll reveal ── */
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-  );
-
-  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
-
-  /* ── Inquiry form ── */
-  document.querySelector('.inquire-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const form = e.target;
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
+  /* Pause slideshow when tab is hidden */
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      stopSlideshow();
+    } else if (slides.length > 1) {
+      startSlideshow();
     }
-    const btn = form.querySelector('.inquire-submit');
-    const original = btn.textContent;
-    btn.textContent = 'Received';
-    btn.disabled = true;
-    setTimeout(() => {
-      alert('Thank you. A concierge will contact you within 24 hours.');
-      form.reset();
-      btn.textContent = original;
-      btn.disabled = false;
-    }, 600);
   });
-});
+
+  /* ─── Scroll Reveal Animations ─── */
+  var revealEls = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  /* ─── Inquiry Form ─── */
+  var form = document.querySelector(".inquiry-form");
+  var statusEl = document.querySelector(".form-status");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var name = form.querySelector("#name");
+      var email = form.querySelector("#email");
+      var interest = form.querySelector("#interest");
+
+      if (!name.value.trim() || !email.value.trim() || !interest.value) {
+        if (statusEl) {
+          statusEl.textContent = "Please complete all required fields.";
+        }
+        return;
+      }
+
+      if (statusEl) {
+        statusEl.textContent =
+          "Thank you. A member of our concierge team will be in touch shortly.";
+      }
+
+      form.reset();
+    });
+  }
+
+  /* ─── Smooth anchor offset for fixed masthead ─── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (e) {
+      var id = anchor.getAttribute("href");
+      if (id === "#") return;
+
+      var target = document.querySelector(id);
+      if (!target) return;
+
+      e.preventDefault();
+      var offset = masthead ? masthead.offsetHeight : 0;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({ top: top, behavior: "smooth" });
+    });
+  });
+})();

@@ -3,36 +3,58 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Mobile nav */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  /* Right-edge nav — mobile toggle */
+  const sideNav = document.querySelector('.side-nav');
+  const navToggle = document.querySelector('.side-nav-toggle');
+  const sideTabs = document.querySelectorAll('.side-tab[data-section]');
 
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
+  if (navToggle && sideNav) {
+    navToggle.addEventListener('click', () => {
+      const open = sideNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
     });
 
-    navLinks.querySelectorAll('a').forEach((link) => {
+    sideNav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
+        sideNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
 
-  /* Animated counters */
+  /* Active section highlight on scroll */
+  const sections = ['hero', 'specs', 'capabilities', 'projects', 'testimonial', 'contact'];
+
+  if (sideTabs.length && !prefersReducedMotion) {
+    const sectionEls = sections
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const navObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            sideTabs.forEach((tab) => {
+              tab.classList.toggle('side-tab--active', tab.dataset.section === id);
+            });
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+    );
+
+    sectionEls.forEach((el) => navObserver.observe(el));
+  }
+
+  /* Animated spec counters */
   function animateCounter(el, target, duration) {
     const start = performance.now();
-    const isDecimal = target % 1 !== 0;
 
     function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
+      const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(target * eased);
-
-      el.textContent = isDecimal ? (target * eased).toFixed(1) : current.toLocaleString();
+      el.textContent = Math.floor(target * eased).toLocaleString();
 
       if (progress < 1) {
         requestAnimationFrame(update);
@@ -59,14 +81,14 @@
               if (prefersReducedMotion) {
                 counter.textContent = target.toLocaleString();
               } else {
-                animateCounter(counter, target, 2000);
+                animateCounter(counter, target, 2200);
               }
             });
             counterObserver.disconnect();
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
 
     counterObserver.observe(specBar);
@@ -76,27 +98,36 @@
   const revealEls = document.querySelectorAll('.reveal');
 
   if (!prefersReducedMotion && revealEls.length) {
-    const observer = new IntersectionObserver(
+    const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }
     );
 
     revealEls.forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 5) * 0.06}s`;
-      observer.observe(el);
+      el.style.transitionDelay = `${(i % 6) * 0.07}s`;
+      revealObserver.observe(el);
     });
   } else {
     revealEls.forEach((el) => el.classList.add('visible'));
   }
 
-  /* File upload UI (styled only — no real upload) */
+  /* Staggered sheet stack entrance */
+  const projectSheets = document.querySelectorAll('.project-sheet.reveal');
+
+  if (!prefersReducedMotion && projectSheets.length) {
+    projectSheets.forEach((sheet, i) => {
+      sheet.style.transitionDelay = `${i * 0.12}s`;
+    });
+  }
+
+  /* File upload UI */
   const fileInput = document.getElementById('fileInput');
   const fileBrowse = document.getElementById('fileBrowse');
   const fileDropzone = document.getElementById('fileDropzone');
@@ -115,18 +146,16 @@
 
     uploadedFiles.forEach((file, index) => {
       const li = document.createElement('li');
-      li.innerHTML = `
-        <span>${file.name} (${formatSize(file.size)})</span>
-        <button type="button" class="file-remove" data-index="${index}">REMOVE</button>
-      `;
+      li.innerHTML =
+        '<span>' + file.name + ' (' + formatSize(file.size) + ')</span>' +
+        '<button type="button" class="file-remove" data-index="' + index + '">REMOVE</button>';
       fileList.appendChild(li);
     });
 
     fileList.querySelectorAll('.file-remove').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const idx = parseInt(btn.dataset.index, 10);
-        uploadedFiles.splice(idx, 1);
+        uploadedFiles.splice(parseInt(btn.dataset.index, 10), 1);
         renderFileList();
       });
     });
@@ -153,7 +182,7 @@
   }
 
   if (fileDropzone) {
-    fileDropzone.addEventListener('click', () => fileInput?.click());
+    fileDropzone.addEventListener('click', () => fileInput && fileInput.click());
 
     fileDropzone.addEventListener('dragover', (e) => {
       e.preventDefault();
@@ -180,10 +209,16 @@
       e.preventDefault();
 
       const company = rfqForm.querySelector('#company').value.trim();
-      const fileCount = uploadedFiles.length;
+      const projectRef = rfqForm.querySelector('#projectRef').value.trim();
+      const tonnage = rfqForm.querySelector('#tonnage').value;
+      const deadline = rfqForm.querySelector('#deadline').value;
+      const ref = 'FS-' + Date.now().toString().slice(-6);
 
       if (formMsg) {
-        formMsg.textContent = `RFQ received from ${company}. ${fileCount} file(s) attached. Reference: FS-${Date.now().toString().slice(-6)}`;
+        formMsg.textContent =
+          'RFQ ' + ref + ' received from ' + company +
+          '. REF: ' + projectRef + ' · ' + tonnage + ' T · DEADLINE: ' + deadline +
+          '. ' + uploadedFiles.length + ' file(s) attached.';
       }
 
       rfqForm.reset();
