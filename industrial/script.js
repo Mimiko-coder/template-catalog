@@ -1,35 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  toggle?.addEventListener('click', () => links.classList.toggle('open'));
-  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        const num = e.target.querySelector('.num[data-count]');
-        if (num) animateCount(num);
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-
-  function animateCount(el) {
-    const target = +el.dataset.count;
-    let current = 0;
-    const step = Math.ceil(target / 50);
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) { current = target; clearInterval(timer); }
-      el.textContent = current.toLocaleString() + '+';
-    }, 25);
-  }
-
-  document.querySelector('.contact-form')?.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Request submitted! Our team will contact you within 48 hours.');
-    e.target.reset();
-  });
+document.addEventListener('DOMContentLoaded',()=>{
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');
+      document.querySelectorAll('.spec-val[data-count]').forEach(el=>{const t=+el.dataset.count;let c=0;const s=Math.ceil(t/50);const i=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(i)}el.textContent=c.toLocaleString()},25)});
+      obs.unobserve(e.target);}
+  }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  obs.observe(document.querySelector('.spec-bar'));
+  document.querySelector('.rfq-form')?.addEventListener('submit',e=>{e.preventDefault();alert('RFQ submitted! Our team will contact you within 48 hours.');e.target.reset()});
 });

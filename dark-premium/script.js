@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  toggle?.addEventListener('click', () => links.classList.toggle('open'));
-  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-  document.querySelector('.contact-form')?.addEventListener('submit', e => { e.preventDefault(); alert('Thank you for your inquiry. We will be in touch shortly.'); e.target.reset(); });
+document.addEventListener('DOMContentLoaded',()=>{
+  const scroll=document.querySelector('.horizontal-scroll'),dots=document.querySelectorAll('.film-dots span'),panels=document.querySelectorAll('.panel');
+  scroll?.addEventListener('scroll',()=>{
+    const i=Math.round(scroll.scrollLeft/window.innerWidth);
+    dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+  });
+  let wheelTimeout;
+  document.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){e.preventDefault();clearTimeout(wheelTimeout);
+      wheelTimeout=setTimeout(()=>{scroll.scrollBy({left:e.deltaY>0?window.innerWidth:-window.innerWidth,behavior:'smooth'})},50);}
+  },{passive:false});
 });

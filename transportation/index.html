@@ -3,140 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TransFlow Logistics — Modern Logistics</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>TransFlow — Logistics Command Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="logo">Trans<span>Flow</span></a>
-      <ul class="nav-links">
-        <li><a href="#about">Why Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#fleet">Fleet</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#contact" class="nav-cta">Get Quote</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="status-ticker">
+    <div class="ticker-track">
+      <span class="live">● LIVE</span>
+      <span>Shipment #TF-4821 — <em>In Transit</em> — Istanbul → Berlin</span>
+      <span>Shipment #TF-4819 — <em>Delivered</em> — Ankara → London</span>
+      <span>Shipment #TF-4825 — <em>Loading</em> — Izmir Port</span>
+      <span>Shipment #TF-4817 — <em>Delivered</em> — Dubai → Munich</span>
+      <span>Shipment #TF-4821 — <em>In Transit</em> — Istanbul → Berlin</span>
+      <span>Shipment #TF-4819 — <em>Delivered</em> — Ankara → London</span>
+    </div>
+  </div>
+
+  <header class="top-bar">
+    <a href="#" class="logo">TRANS<span>FLOW</span></a>
+    <nav>
+      <a href="#tracking">Tracking</a>
+      <a href="#services">Services</a>
+      <a href="#fleet">Fleet</a>
+      <a href="#cases">Case Studies</a>
+      <a href="#contact">Quote</a>
     </nav>
+    <a href="#contact" class="track-btn">Track Shipment</a>
   </header>
 
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <span class="tag fade-in">Global Logistics Partner</span>
-        <h1 class="fade-in">Move Faster.<br>Deliver Smarter.</h1>
-        <p class="fade-in">Reliable freight, fleet management, and supply chain solutions for businesses that can't afford delays.</p>
-        <a href="#contact" class="btn btn-lg fade-in">Request a Quote →</a>
-      </div>
-      <div class="hero-img fade-in">
-        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&h=500&fit=crop" alt="Logistics truck on highway">
-      </div>
+  <section class="map-hero">
+    <div class="map-bg"></div>
+    <div class="route-line"></div>
+    <div class="hero-panel">
+      <p class="tag">Global Logistics Network</p>
+      <h1>Every mile.<br>Every minute.<br>Tracked.</h1>
+      <p>Real-time freight management across 50+ countries. 99.2% on-time delivery.</p>
+      <a href="#contact" class="cta">Get a Quote →</a>
+    </div>
+    <div class="tracker-widget">
+      <div class="widget-header"><span>Live Tracker</span><span class="widget-id">#TF-4821</span></div>
+      <div class="widget-route"><span class="dot active"></span><span>Istanbul</span><span class="line"></span><span class="dot"></span><span>Berlin</span></div>
+      <div class="widget-stats"><div><strong>847</strong><span>km left</span></div><div><strong>14h</strong><span>ETA</span></div><div><strong>On Time</strong><span>Status</span></div></div>
     </div>
   </section>
 
-  <section id="about" class="why section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <span class="tag">Why Choose Us</span>
-        <h2>The TransFlow Advantage</h2>
-      </div>
-      <div class="why-grid">
-        <div class="why-card" data-animate>
-          <div class="why-icon">🚚</div>
-          <h3>99.2% On-Time Delivery</h3>
-          <p>Industry-leading reliability backed by real-time GPS tracking on every shipment.</p>
-        </div>
-        <div class="why-card" data-animate>
-          <div class="why-icon">🌍</div>
-          <h3>50+ Countries</h3>
-          <p>Global network with local expertise in every major market we serve.</p>
-        </div>
-        <div class="why-card" data-animate>
-          <div class="why-icon">📦</div>
-          <h3>End-to-End Solutions</h3>
-          <p>From warehousing to last-mile delivery — one partner for your entire supply chain.</p>
-        </div>
-      </div>
+  <section id="tracking" class="metrics-strip">
+    <div class="metric"><span class="metric-val" data-count="99">0</span><span class="metric-unit">%</span><p>On-Time Delivery</p></div>
+    <div class="metric"><span class="metric-val" data-count="850">0</span><p>Active Vehicles</p></div>
+    <div class="metric"><span class="metric-val" data-count="50">0</span><span class="metric-unit">+</span><p>Countries Served</p></div>
+    <div class="metric"><span class="metric-val" data-count="120">0</span><p>Hub Locations</p></div>
+  </section>
+
+  <section id="about" class="about-block reveal">
+    <h2>Why TransFlow</h2>
+    <p>We don't just move cargo — we run a connected logistics network with GPS on every shipment, dedicated hubs in every major market, and end-to-end supply chain management.</p>
+  </section>
+
+  <section id="services" class="services-scroll">
+    <h2 class="section-title reveal">Services</h2>
+    <div class="scroll-track">
+      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1566576721346-d4a3aa4f7544?w=400&h=260&fit=crop" alt=""><h3>Freight Shipping</h3><p>FTL & LTL across Europe and Asia.</p><span class="card-code">SVC-001</span></div>
+      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&h=260&fit=crop" alt=""><h3>Warehousing</h3><p>Climate-controlled with inventory systems.</p><span class="card-code">SVC-002</span></div>
+      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=260&fit=crop" alt=""><h3>Express Delivery</h3><p>Same-day and next-day options.</p><span class="card-code">SVC-003</span></div>
+      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=260&fit=crop" alt=""><h3>Cross-Border</h3><p>Customs clearance and documentation.</p><span class="card-code">SVC-004</span></div>
     </div>
   </section>
 
-  <section id="services" class="services section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <span class="tag">Services</span>
-        <h2>What We Offer</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card" data-animate>
-          <img src="https://images.unsplash.com/photo-1566576721346-d4a3aa4f7544?w=400&h=260&fit=crop" alt="Freight shipping">
-          <div class="card-body"><h3>Freight Shipping</h3><p>Full truckload and LTL options across North America and Europe.</p><a href="#">Learn more →</a></div>
-        </div>
-        <div class="service-card" data-animate>
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&h=260&fit=crop" alt="Warehousing">
-          <div class="card-body"><h3>Warehousing</h3><p>Climate-controlled storage with inventory management systems.</p><a href="#">Learn more →</a></div>
-        </div>
-        <div class="service-card" data-animate>
-          <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=260&fit=crop" alt="Express delivery">
-          <div class="card-body"><h3>Express Delivery</h3><p>Same-day and next-day delivery for time-critical shipments.</p><a href="#">Learn more →</a></div>
-        </div>
-      </div>
+  <section id="fleet" class="fleet-section reveal">
+    <h2>Our Fleet</h2>
+    <div class="fleet-carousel">
+      <div class="fleet-item"><div class="fleet-spec"><span>Heavy Truck</span><strong>40T capacity</strong></div></div>
+      <div class="fleet-item"><div class="fleet-spec"><span>Refrigerated</span><strong>-25°C to +15°C</strong></div></div>
+      <div class="fleet-item"><div class="fleet-spec"><span>Container</span><strong>20ft / 40ft</strong></div></div>
+      <div class="fleet-item"><div class="fleet-spec"><span>Last Mile</span><strong>Urban delivery</strong></div></div>
     </div>
   </section>
 
-  <section id="fleet" class="fleet section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <span class="tag">Fleet</span>
-        <h2>Our Modern Fleet</h2>
-      </div>
-      <div class="fleet-grid">
-        <div class="fleet-stat" data-animate><span class="num" data-count="850">0</span><p>Active Vehicles</p></div>
-        <div class="fleet-stat" data-animate><span class="num" data-count="120">0</span><p>Warehouse Hubs</p></div>
-        <div class="fleet-stat" data-animate><span class="num" data-count="24">0</span><p>Hour Support</p></div>
-      </div>
-      <div class="fleet-img" data-animate>
-        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1200&h=400&fit=crop" alt="Fleet of trucks">
-      </div>
+  <section id="cases" class="case-studies reveal">
+    <h2>Case Studies</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="tl-before"><h4>Before</h4><p>RetailMax spent 30% above market on shipping with 78% on-time rate.</p></div><div class="tl-arrow">→</div><div class="tl-after"><h4>After TransFlow</h4><p><strong>-30% cost</strong> · <strong>99.1% on-time</strong> · Real-time tracking on every order.</p></div></div>
+      <div class="timeline-item"><div class="tl-before"><h4>Before</h4><p>No visibility on international shipments. 5-day average delays.</p></div><div class="tl-arrow">→</div><div class="tl-after"><h4>After TransFlow</h4><p><strong>Live GPS tracking</strong> · <strong>2-day delivery</strong> · Automated customs handling.</p></div></div>
     </div>
   </section>
 
-  <section id="testimonials" class="testimonials section">
-    <div class="container">
-      <div class="section-head" data-animate><span class="tag">Testimonials</span><h2>Trusted by Industry Leaders</h2></div>
-      <div class="testimonial-grid">
-        <div class="t-card" data-animate>
-          <div class="stars">★★★★★</div>
-          <p>"TransFlow cut our shipping costs by 30% while improving delivery times. Absolutely game-changing."</p>
-          <div class="t-author"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face" alt=""><div><strong>David Park</strong><span>COO, RetailMax</span></div></div>
-        </div>
-        <div class="t-card" data-animate>
-          <div class="stars">★★★★★</div>
-          <p>"Their real-time tracking and customer support are the best we've experienced in 15 years of logistics."</p>
-          <div class="t-author"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&fit=crop&crop=face" alt=""><div><strong>Lisa Morrison</strong><span>Supply Chain Director</span></div></div>
-        </div>
-      </div>
-    </div>
+  <section id="contact" class="quote-section reveal">
+    <h2>Request a Quote</h2>
+    <p>+90 533 861 0067</p>
+    <form class="quote-form">
+      <div class="form-grid"><input type="text" placeholder="Company" required><input type="email" placeholder="Email" required></div>
+      <div class="form-grid"><input type="text" placeholder="Origin city" required><input type="text" placeholder="Destination city" required></div>
+      <input type="text" placeholder="Cargo weight (kg)" required>
+      <button type="submit">Calculate Quote</button>
+    </form>
   </section>
 
-  <section id="contact" class="contact section">
-    <div class="container contact-box" data-animate>
-      <h2>Ready to Ship?</h2>
-      <p>Get a custom quote in under 24 hours. · +90 533 861 0067</p>
-      <form class="contact-form">
-        <div class="form-row"><input type="text" placeholder="Company" required><input type="email" placeholder="Email" required></div>
-        <textarea placeholder="Shipment details" rows="3" required></textarea>
-        <button type="submit" class="btn btn-lg">Get Free Quote</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container"><p>&copy; 2026 TransFlow Logistics. <a href="../index.html">← Back to Catalog</a></p></div>
-  </footer>
+  <footer><p>© 2026 TransFlow · <a href="../index.html">← Catalog</a></p></footer>
   <script src="script.js"></script>
 </body>
 </html>

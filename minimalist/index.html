@@ -3,113 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Nova — Minimalist</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Studio Nova — Editorial Minimalism</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="logo">Studio Nova</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Menu"><span></span><span></span></button>
+  <aside class="side-index">
+    <a href="#" class="brand">SN</a>
+    <nav>
+      <a href="#about">01 About</a>
+      <a href="#services">02 Work</a>
+      <a href="#testimonials">03 Voices</a>
+      <a href="#contact">04 Contact</a>
     </nav>
-  </header>
+    <span class="side-year">© 2026</span>
+  </aside>
 
-  <section class="hero">
-    <div class="container hero-inner">
-      <p class="label fade-in">Consulting & Strategy</p>
-      <h1 class="fade-in">Clarity for<br>your brand.</h1>
-      <p class="hero-text fade-in">We help small businesses and personal brands find their voice through thoughtful design and strategy.</p>
-      <a href="#contact" class="btn fade-in">Get in touch</a>
-    </div>
-  </section>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow reveal">Consulting · Strategy · Identity</p>
+      <h1 class="reveal">Clarity<br>is the<br>strategy.</h1>
+      <p class="hero-lead reveal">We help consultants and boutique firms communicate with precision — less noise, more impact.</p>
+      <a href="#contact" class="text-link reveal">Start a conversation →</a>
+    </header>
 
-  <section id="about" class="about section">
-    <div class="container about-grid">
-      <div class="about-img" data-animate>
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=700&fit=crop" alt="Minimal office space">
+    <section id="about" class="about">
+      <div class="about-visual reveal">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=1100&fit=crop" alt="Minimal workspace">
       </div>
-      <div class="about-text" data-animate>
-        <p class="label">About</p>
-        <h2>Less noise,<br>more impact.</h2>
-        <p>Studio Nova was founded on the belief that great design doesn't need to shout. We strip away the unnecessary and focus on what truly matters — your message, your audience, your growth.</p>
-        <p>With over a decade of experience working with consultants, coaches, and boutique firms, we deliver clarity at every touchpoint.</p>
+      <div class="about-copy reveal">
+        <span class="margin-label">About</span>
+        <h2>We remove everything that doesn't earn its place.</h2>
+        <p>Studio Nova was built on a single belief: the best brands don't shout. We work with consultants, coaches, and small firms to strip away clutter and sharpen every message.</p>
+        <p>Every project begins with listening — then we design only what your audience needs to see.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services" class="services section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <p class="label">Services</p>
-        <h2>What we do</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card" data-animate>
-          <span class="num">01</span>
-          <h3>Brand Strategy</h3>
-          <p>Define your positioning, voice, and visual identity with a clear, actionable roadmap.</p>
-        </div>
-        <div class="service-card" data-animate>
-          <span class="num">02</span>
-          <h3>Web Design</h3>
-          <p>Clean, fast, and responsive websites that convert visitors into clients.</p>
-        </div>
-        <div class="service-card" data-animate>
-          <span class="num">03</span>
-          <h3>Content Direction</h3>
-          <p>Editorial guidance that keeps your messaging consistent across every channel.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="services" class="services">
+      <span class="margin-label reveal">Services</span>
+      <ul class="service-index">
+        <li class="reveal"><span>01</span><div><h3>Brand Strategy</h3><p>Positioning, voice, and a visual system that holds together.</p></div></li>
+        <li class="reveal"><span>02</span><div><h3>Web Design</h3><p>Fast, responsive sites with nothing extra on the page.</p></div></li>
+        <li class="reveal"><span>03</span><div><h3>Content Direction</h3><p>Editorial guidance so your tone stays consistent everywhere.</p></div></li>
+      </ul>
+    </section>
 
-  <section id="testimonials" class="testimonials section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <p class="label">Testimonials</p>
-        <h2>What clients say</h2>
-      </div>
-      <div class="testimonial-grid">
-        <blockquote class="quote" data-animate>
-          <p>"Studio Nova transformed our brand from cluttered to confident. Our inquiries doubled within three months."</p>
-          <footer>— Sarah Chen, Independent Consultant</footer>
-        </blockquote>
-        <blockquote class="quote" data-animate>
-          <p>"The minimalist approach was exactly what we needed. Clean, professional, and effortless to maintain."</p>
-          <footer>— Marcus Webb, Webb & Co.</footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
+    <section id="testimonials" class="quote-band reveal">
+      <blockquote>"Studio Nova doubled our inquiries in three months. The work feels effortless — because it is."</blockquote>
+      <cite>— Sarah Chen, Independent Consultant</cite>
+    </section>
 
-  <section id="contact" class="contact section">
-    <div class="container contact-inner" data-animate>
-      <p class="label">Contact</p>
-      <h2>Let's work together.</h2>
-      <p>hello@studionova.com · +90 533 861 0067</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Email address" required>
-        <textarea placeholder="Tell us about your project" rows="4" required></textarea>
-        <button type="submit" class="btn">Send message</button>
+    <section id="contact" class="contact">
+      <span class="margin-label reveal">Contact</span>
+      <h2 class="reveal">Let's work<br>together.</h2>
+      <p class="reveal">hello@studionova.com · +90 533 861 0067</p>
+      <form class="contact-form reveal">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Tell us about your project" rows="3" required></textarea>
+        <button type="submit">Send message</button>
       </form>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Studio Nova. All rights reserved.</p>
-      <a href="../index.html">← Back to Catalog</a>
-    </div>
-  </footer>
+    <footer class="footer">
+      <a href="../index.html">← Catalog</a>
+      <span>Studio Nova</span>
+    </footer>
+  </main>
+
+  <button class="mobile-menu" aria-label="Menu"><span></span><span></span></button>
+  <nav class="mobile-nav">
+    <a href="#about">About</a>
+    <a href="#services">Work</a>
+    <a href="#testimonials">Voices</a>
+    <a href="#contact">Contact</a>
+  </nav>
   <script src="script.js"></script>
 </body>
 </html>

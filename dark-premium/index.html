@@ -3,131 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obsidian Tech — Dark Premium</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Obsidian Tech — Cinematic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="logo">Obsidian</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#testimonials">Clients</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Menu"><span></span><span></span></button>
-    </nav>
-  </header>
+  <div class="grain"></div>
+  <nav class="film-nav">
+    <a href="#" class="film-logo">OBSIDIAN</a>
+    <div class="film-dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+    <a href="#contact" class="film-cta">Inquire</a>
+  </nav>
 
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="container hero-inner">
-      <p class="gold-line fade-in">Premium Technology Solutions</p>
-      <h1 class="fade-in">Elevate Your<br><em>Digital Presence</em></h1>
-      <p class="hero-sub fade-in">We craft bespoke digital experiences for brands that demand excellence.</p>
-      <a href="#contact" class="btn fade-in">Begin Your Project</a>
-    </div>
-  </section>
+  <div class="horizontal-scroll">
+    <section class="panel panel-hero">
+      <p class="panel-num">01</p>
+      <h1>ELEVATE<br>YOUR<br><span>DIGITAL</span><br>PRESENCE</h1>
+      <p class="panel-sub">Bespoke digital experiences for brands that demand excellence.</p>
+    </section>
 
-  <section id="about" class="about section">
-    <div class="container about-grid">
-      <div data-animate>
-        <p class="gold-line">About</p>
-        <h2>Where Innovation Meets Elegance</h2>
-        <p>Obsidian Tech partners with high-end businesses and technology leaders to create digital products that command attention. Our approach blends cutting-edge engineering with refined design.</p>
-        <p>Founded in 2018, we've delivered 120+ premium projects for clients across finance, luxury retail, and enterprise SaaS.</p>
+    <section id="about" class="panel panel-about">
+      <p class="panel-num">02</p>
+      <h2>ABOUT</h2>
+      <p>Obsidian Tech partners with high-end businesses and technology leaders. Founded in 2018, we've delivered 120+ premium projects across finance, luxury retail, and enterprise SaaS.</p>
+      <div class="about-img"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop" alt="Workspace"></div>
+    </section>
+
+    <section id="services" class="panel panel-services">
+      <p class="panel-num">03</p>
+      <h2>SERVICES</h2>
+      <div class="service-stack">
+        <div class="svc-block"><span>01</span><h3>Custom Development</h3><p>Tailored web applications built with precision.</p></div>
+        <div class="svc-block"><span>02</span><h3>UI/UX Design</h3><p>Interfaces as premium as the brands they represent.</p></div>
+        <div class="svc-block"><span>03</span><h3>Cloud Architecture</h3><p>Secure infrastructure for mission-critical systems.</p></div>
+        <div class="svc-block"><span>04</span><h3>Brand Digitalization</h3><p>Transform identity into cohesive digital experiences.</p></div>
       </div>
-      <div class="about-visual" data-animate>
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=550&h=400&fit=crop" alt="Premium tech workspace">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="services" class="services section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <p class="gold-line">Services</p>
-        <h2>Our Expertise</h2>
+    <section id="portfolio" class="panel panel-portfolio">
+      <p class="panel-num">04</p>
+      <h2>SELECTED WORK</h2>
+      <div class="port-stack">
+        <div class="port-slide"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop" alt=""><div><h3>Meridian Finance</h3><p>Fintech Platform</p></div></div>
+        <div class="port-slide"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=350&fit=crop" alt=""><div><h3>DataPulse Analytics</h3><p>Enterprise SaaS</p></div></div>
+        <div class="port-slide"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&h=350&fit=crop" alt=""><div><h3>Maison Laurent</h3><p>Luxury E-Commerce</p></div></div>
       </div>
-      <div class="services-grid">
-        <div class="service-card" data-animate>
-          <span class="card-num">01</span>
-          <h3>Custom Development</h3>
-          <p>Tailored web applications built with precision and scalability in mind.</p>
-        </div>
-        <div class="service-card" data-animate>
-          <span class="card-num">02</span>
-          <h3>UI/UX Design</h3>
-          <p>Interfaces that feel as premium as the brands they represent.</p>
-        </div>
-        <div class="service-card" data-animate>
-          <span class="card-num">03</span>
-          <h3>Cloud Architecture</h3>
-          <p>Secure, high-performance infrastructure for mission-critical systems.</p>
-        </div>
-        <div class="service-card" data-animate>
-          <span class="card-num">04</span>
-          <h3>Brand Digitalization</h3>
-          <p>Transform your brand identity into a cohesive digital experience.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="portfolio" class="portfolio section">
-    <div class="container">
-      <div class="section-head" data-animate>
-        <p class="gold-line">Portfolio</p>
-        <h2>Selected Work</h2>
-      </div>
-      <div class="portfolio-grid">
-        <div class="port-item" data-animate>
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop" alt="Fintech dashboard">
-          <div class="port-overlay"><h3>Meridian Finance</h3><p>Fintech Platform</p></div>
-        </div>
-        <div class="port-item" data-animate>
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=350&fit=crop" alt="Analytics">
-          <div class="port-overlay"><h3>DataPulse Analytics</h3><p>Enterprise SaaS</p></div>
-        </div>
-        <div class="port-item" data-animate>
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&h=350&fit=crop" alt="Luxury brand">
-          <div class="port-overlay"><h3>Maison Laurent</h3><p>Luxury E-Commerce</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section id="testimonials" class="panel panel-quote">
+      <p class="panel-num">05</p>
+      <blockquote>"Obsidian didn't just build us a platform — they elevated our entire brand."</blockquote>
+      <cite>— Alexandra Reid, CEO at Meridian Finance</cite>
+    </section>
 
-  <section id="testimonials" class="testimonials section">
-    <div class="container">
-      <div class="section-head" data-animate><p class="gold-line">Testimonials</p><h2>Client Words</h2></div>
-      <blockquote class="quote" data-animate>
-        <p>"Obsidian didn't just build us a platform — they elevated our entire brand. The attention to detail is extraordinary."</p>
-        <footer>— Alexandra Reid, CEO at Meridian Finance</footer>
-      </blockquote>
-    </div>
-  </section>
+    <section id="contact" class="panel panel-contact">
+      <p class="panel-num">06</p>
+      <h2>LET'S CREATE<br>SOMETHING<br>EXCEPTIONAL</h2>
+      <p class="contact-phone">+90 533 861 0067</p>
+      <a href="mailto:hello@obsidian.tech" class="contact-email">hello@obsidian.tech</a>
+      <a href="../index.html" class="catalog-link">← Back to Catalog</a>
+    </section>
+  </div>
 
-  <section id="contact" class="contact section">
-    <div class="container contact-inner" data-animate>
-      <p class="gold-line">Contact</p>
-      <h2>Let's Create Something Exceptional</h2>
-      <p>+90 533 861 0067</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Tell us about your vision" rows="4" required></textarea>
-        <button type="submit" class="btn">Send Inquiry</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container"><p>&copy; 2026 Obsidian Tech. <a href="../index.html">← Back to Catalog</a></p></div>
-  </footer>
   <script src="script.js"></script>
 </body>
 </html>

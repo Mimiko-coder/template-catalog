@@ -3,86 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Élan Estates — Luxury</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <title>Élan Estates — Luxury Lookbook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Tenor+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="logo">Élan</a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#testimonials">Clients</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" aria-label="Menu"><span></span><span></span></button>
-    </nav>
-  </header>
+  <nav class="mag-nav">
+    <a href="#" class="mag-logo">Élan</a>
+    <span class="mag-issue">Collection 2026</span>
+    <a href="#inquire" class="mag-inquire">Inquire</a>
+  </nav>
 
-  <section class="hero">
-    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&h=900&fit=crop" alt="Luxury estate" class="hero-img">
-    <div class="hero-overlay"></div>
-    <div class="container hero-text">
-      <p class="fade-in">Luxury Real Estate</p>
-      <h1 class="fade-in">Extraordinary<br>Living</h1>
-      <a href="#contact" class="btn fade-in">Explore Properties</a>
+  <section class="spread-hero">
+    <div class="hero-slides">
+      <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&h=900&fit=crop" alt="Estate" class="active">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&h=900&fit=crop" alt="Villa">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&h=900&fit=crop" alt="Interior">
+    </div>
+    <div class="hero-caption">
+      <p>Extraordinary Living</p>
+      <h1>Élan Estates</h1>
     </div>
   </section>
 
-  <section id="about" class="about section">
-    <div class="container about-inner" data-animate>
-      <h2>Curating the Finest Properties</h2>
-      <p>Élan Estates represents the world's most exceptional properties. With over 25 years of experience in luxury real estate, we connect discerning clients with homes that define elegance.</p>
+  <section id="about" class="editors-letter reveal">
+    <div class="letter-col">
+      <span class="section-tag">Editor's Letter</span>
+      <p class="letter-text">For over twenty-five years, Élan has represented the world's most exceptional properties. We do not simply list homes — we curate experiences. Each residence in our collection has been selected for its architectural significance, its setting, and its ability to inspire.</p>
+      <p class="letter-sign">— Mercy Sithole, Curator</p>
     </div>
   </section>
 
-  <section id="services" class="services section">
-    <div class="container">
-      <div class="services-grid">
-        <div class="service-item" data-animate>
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=500&fit=crop" alt="Luxury home">
-          <div class="svc-text"><h3>Private Sales</h3><p>Exclusive off-market properties for qualified buyers.</p></div>
-        </div>
-        <div class="service-item" data-animate>
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop" alt="Interior">
-          <div class="svc-text"><h3>Interior Staging</h3><p>World-class staging to showcase every property at its finest.</p></div>
-        </div>
-        <div class="service-item" data-animate>
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=500&fit=crop" alt="Penthouse">
-          <div class="svc-text"><h3>Investment Advisory</h3><p>Strategic guidance for luxury property portfolios.</p></div>
-        </div>
-      </div>
+  <section id="services" class="collections">
+    <article class="collection-spread spread-left reveal">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=1000&fit=crop" alt="Private sales">
+      <div class="spread-text"><span class="section-tag">Collection I</span><h2>Private Sales</h2><p>Exclusive off-market properties for qualified buyers. Discretion is our foundation.</p></div>
+    </article>
+    <article class="collection-spread spread-right reveal">
+      <div class="spread-text"><span class="section-tag">Collection II</span><h2>Interior Staging</h2><p>World-class staging to showcase every property at its absolute finest.</p></div>
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=1000&fit=crop" alt="Staging">
+    </article>
+    <article class="collection-spread spread-left reveal">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=1000&fit=crop" alt="Advisory">
+      <div class="spread-text"><span class="section-tag">Collection III</span><h2>Investment Advisory</h2><p>Strategic guidance for luxury property portfolios across global markets.</p></div>
+    </article>
+  </section>
+
+  <section id="testimonials" class="portrait-quote reveal">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=800&fit=crop" alt="Property">
+    <div class="quote-col">
+      <blockquote>"Élan found us the home of our dreams — a waterfront estate we didn't even know existed."</blockquote>
+      <cite>— The Harrington Family</cite>
     </div>
   </section>
 
-  <section id="testimonials" class="testimonials section">
-    <div class="container">
-      <blockquote data-animate>
-        <p>"Élan found us the home of our dreams — a waterfront estate we didn't even know existed. Their discretion and expertise are unmatched."</p>
-        <footer>— The Harrington Family</footer>
-      </blockquote>
-    </div>
+  <section id="inquire" class="inquire-section reveal">
+    <h2>Private Inquiry</h2>
+    <p>concierge@elanetates.com · +90 533 861 0067</p>
+    <form class="inquire-form">
+      <input type="text" placeholder="Full name" required>
+      <select required><option value="">Property interest</option><option>Residential</option><option>Waterfront</option><option>Commercial</option><option>Investment</option></select>
+      <select><option>Preferred contact</option><option>Email</option><option>Phone</option><option>WhatsApp</option></select>
+      <button type="submit">Submit Inquiry</button>
+    </form>
+    <a href="../index.html" class="catalog-link">← Catalog</a>
   </section>
 
-  <section id="contact" class="contact section">
-    <div class="container contact-inner" data-animate>
-      <h2>Begin Your Journey</h2>
-      <p>concierge@elanetates.com · +90 533 861 0067</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Full name" required>
-        <input type="email" placeholder="Email address" required>
-        <textarea placeholder="Tell us what you're looking for" rows="3" required></textarea>
-        <button type="submit" class="btn">Send Inquiry</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container"><p>&copy; 2026 Élan Estates. <a href="../index.html">← Back to Catalog</a></p></div>
-  </footer>
+  <footer class="mag-footer"><span>Élan Estates © 2026</span></footer>
   <script src="script.js"></script>
 </body>
 </html>
