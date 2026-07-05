@@ -3,70 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pixel & Ink — Brutalist Agency</title>
+  <title>Pixel & Ink — Brutalist Creative Agency</title>
+  <meta name="description" content="Brooklyn design agency for brands that refuse to be boring. Branding, digital, campaigns, motion.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="cursor-dot"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
 
-  <header class="brutal-hero">
-    <nav class="brutal-nav">
-      <a href="#">P&I</a>
-      <div class="nav-right">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="nav-hi">SAY HI</a>
-      </div>
+  <header class="hero" id="top">
+    <nav class="nav">
+      <a href="#top" class="nav-logo">P&I</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">SAY HI</a></li>
+      </ul>
     </nav>
-    <h1 class="brutal-title">WE MAKE<br>BRANDS<br><span class="stroke">LOUD</span></h1>
-    <p class="brutal-sub">Design · Strategy · Motion · Chaos</p>
+
+    <div class="hero-split">
+      <div class="hero-left">
+        <p class="hero-tag">Brooklyn · Est. 2019</p>
+        <h1 class="hero-title">
+          WE MAKE<br>
+          BRANDS<br>
+          <span class="stroke">LOUD</span>
+        </h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-desc">Design · Strategy · Motion · Chaos. We build brands that hit harder than your competitors' entire marketing budget.</p>
+        <a href="#work" class="hero-scroll">
+          <span>Scroll</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-accent"></div>
   </header>
 
-  <section id="work" class="work-section">
-    <a href="#" class="work-block block-1 reveal"><span>01</span><h2>BRANDING</h2><p>Identity systems that refuse to blend in.</p></a>
-    <a href="#" class="work-block block-2 reveal"><span>02</span><h2>DIGITAL</h2><p>Websites with personality and punch.</p></a>
-    <a href="#" class="work-block block-3 reveal"><span>03</span><h2>CAMPAIGNS</h2><p>Integrated campaigns across every channel.</p></a>
-    <a href="#" class="work-block block-4 reveal"><span>04</span><h2>MOTION</h2><p>Animation that moves people literally.</p></a>
+  <section id="work" class="work">
+    <div class="section-head reveal">
+      <span class="section-num">01</span>
+      <h2>What we do</h2>
+    </div>
+    <div class="bento-grid">
+      <a href="#" class="bento-block bento-green reveal">
+        <span class="bento-index">01</span>
+        <h3>BRANDING</h3>
+        <p>Identity systems that refuse to blend in. Logos, type, color — weaponized.</p>
+        <span class="bento-arrow">↗</span>
+      </a>
+      <a href="#" class="bento-block bento-pink reveal">
+        <span class="bento-index">02</span>
+        <h3>DIGITAL</h3>
+        <p>Websites with personality, punch, and zero template energy.</p>
+        <span class="bento-arrow">↗</span>
+      </a>
+      <a href="#" class="bento-block bento-white reveal">
+        <span class="bento-index">03</span>
+        <h3>CAMPAIGNS</h3>
+        <p>Integrated campaigns across every channel. Loud on purpose.</p>
+        <span class="bento-arrow">↗</span>
+      </a>
+      <a href="#" class="bento-block bento-black reveal">
+        <span class="bento-index">04</span>
+        <h3>MOTION</h3>
+        <p>Animation that moves people — literally and emotionally.</p>
+        <span class="bento-arrow">↗</span>
+      </a>
+    </div>
   </section>
 
-  <section id="about" class="about-brutal reveal">
-    <div class="about-text">
-      <h2>DESIGNERS WHO<br>THINK LIKE<br>MARKETERS</h2>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>NO BORING BRANDS</span><span class="marquee-star">★</span>
+      <span>PIXEL & INK</span><span class="marquee-star">★</span>
+      <span>BROOKLYN NYC</span><span class="marquee-star">★</span>
+      <span>MAKE IT LOUD</span><span class="marquee-star">★</span>
+      <span>NO BORING BRANDS</span><span class="marquee-star">★</span>
+      <span>PIXEL & INK</span><span class="marquee-star">★</span>
+      <span>BROOKLYN NYC</span><span class="marquee-star">★</span>
+      <span>MAKE IT LOUD</span><span class="marquee-star">★</span>
+    </div>
+  </div>
+
+  <section id="about" class="about">
+    <div class="about-content reveal">
+      <span class="section-num">02</span>
+      <h2>Designers who<br>think like<br>marketers</h2>
       <p>Pixel & Ink is a Brooklyn agency for brands that refuse to be boring. We partner with ambitious companies to create work that's as strategic as it is visually aggressive.</p>
+      <ul class="about-stats">
+        <li><strong>47</strong> brands launched</li>
+        <li><strong>12</strong> awards won</li>
+        <li><strong>0</strong> boring projects</li>
+      </ul>
     </div>
-    <div class="about-sticker">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop" alt="Team">
-      <div class="sticker-tag">EST. 2019</div>
-    </div>
-  </section>
-
-  <section class="marquee-brutal">
-    <div class="marquee-inner">
-      <span>NO BORING BRANDS</span><span>★</span><span>PIXEL & INK</span><span>★</span><span>BROOKLYN NYC</span><span>★</span>
-      <span>NO BORING BRANDS</span><span>★</span><span>PIXEL & INK</span><span>★</span><span>BROOKLYN NYC</span><span>★</span>
-    </div>
-  </section>
-
-  <section id="testimonials" class="tape-section">
-    <div class="tape-scroll">
-      <p>"They reimagined our brand. Social engagement up 400%." — Nova Skincare</p>
-      <p>"The most creative team we've ever worked with. Period." — Bolt Athletics</p>
-      <p>"Bold, smart, and impossible to ignore." — Drift Studio</p>
-      <p>"They reimagined our brand. Social engagement up 400%." — Nova Skincare</p>
-      <p>"The most creative team we've ever worked with. Period." — Bolt Athletics</p>
+    <div class="about-visual reveal">
+      <div class="sticker sticker-1">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&h=500&fit=crop" alt="Creative team at work" loading="lazy">
+      </div>
+      <div class="sticker sticker-2">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="Design studio" loading="lazy">
+      </div>
+      <div class="sticker-tag">RAW · BOLD · ANTI-CORP</div>
     </div>
   </section>
 
-  <section id="contact" class="contact-brutal">
-    <h2>SAY<br>HI.</h2>
-    <p class="contact-phone">+90 533 861 0067</p>
-    <form class="hi-form">
-      <input type="email" placeholder="your@email.com" required>
-      <button type="submit">→</button>
-    </form>
-    <a href="../index.html" class="catalog-link">← Catalog</a>
+  <section id="testimonials" class="testimonials">
+    <div class="tape-wrap">
+      <div class="tape-track">
+        <article class="tape-card">
+          <p>"They reimagined our brand from scratch. Social engagement up 400% in six months."</p>
+          <cite>— Nova Skincare</cite>
+        </article>
+        <article class="tape-card">
+          <p>"The most creative team we've ever worked with. Period. No notes."</p>
+          <cite>— Bolt Athletics</cite>
+        </article>
+        <article class="tape-card">
+          <p>"Bold, smart, and impossible to ignore. Exactly what we needed."</p>
+          <cite>— Drift Studio</cite>
+        </article>
+        <article class="tape-card">
+          <p>"Our rebrand doubled inbound leads. These people don't play safe."</p>
+          <cite>— Kinetic Labs</cite>
+        </article>
+        <article class="tape-card">
+          <p>"They reimagined our brand from scratch. Social engagement up 400% in six months."</p>
+          <cite>— Nova Skincare</cite>
+        </article>
+        <article class="tape-card">
+          <p>"The most creative team we've ever worked with. Period. No notes."</p>
+          <cite>— Bolt Athletics</cite>
+        </article>
+        <article class="tape-card">
+          <p>"Bold, smart, and impossible to ignore. Exactly what we needed."</p>
+          <cite>— Drift Studio</cite>
+        </article>
+        <article class="tape-card">
+          <p>"Our rebrand doubled inbound leads. These people don't play safe."</p>
+          <cite>— Kinetic Labs</cite>
+        </article>
+      </div>
+    </div>
   </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-inner reveal">
+      <h2>SAY<br>HI<span class="contact-dot">.</span></h2>
+      <p class="contact-sub">Got a project? A wild idea? We want to hear it.</p>
+      <a href="tel:+905338610067" class="contact-phone">+90 533 861 0067</a>
+      <form class="contact-form" id="contactForm">
+        <label for="email" class="sr-only">Your email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit" aria-label="Send">
+          <span>Send</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </button>
+      </form>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 Pixel & Ink</span>
+    <a href="../index.html">← Catalog</a>
+  </footer>
 
   <script src="script.js"></script>
 </body>

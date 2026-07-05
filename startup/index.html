@@ -3,42 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flowbase — Developer Docs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Flowbase — Developer Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <aside class="docs-sidebar">
+  <aside class="docs-sidebar" aria-label="Documentation navigation">
     <a href="#" class="docs-logo">flowbase<span>.dev</span></a>
     <nav class="docs-nav">
       <span class="nav-group">Getting Started</span>
       <a href="#hero" class="active">Introduction</a>
       <a href="#features">Features</a>
+      <a href="#bento">Platform</a>
       <a href="#pricing">Pricing</a>
       <span class="nav-group">Resources</span>
+      <a href="#code">API Reference</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Sign Up</a>
     </nav>
-    <div class="docs-version">v2.4.1 · stable</div>
+    <div class="docs-version">
+      <span class="version-dot"></span>
+      v2.4.1 · stable
+    </div>
   </aside>
 
   <main class="docs-content">
     <section id="hero" class="terminal-hero">
-      <div class="terminal-window">
-        <div class="term-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="term-title">flowbase — bash</span></div>
-        <div class="term-body">
-          <p><span class="prompt">$</span> flowbase init my-project</p>
-          <p class="output">✓ Workspace created</p>
-          <p class="output">✓ AI assistant connected</p>
-          <p class="output">✓ Modules: meetings, email, tasks, analytics</p>
-          <p class="output dim">→ Dashboard ready at localhost:3000</p>
-          <p><span class="prompt">$</span> flowbase deploy<span class="cursor-blink">_</span></p>
+      <div class="terminal-window glass">
+        <div class="term-bar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="term-title">flowbase — bash</span>
+        </div>
+        <div class="term-body" id="terminal-output">
+          <p class="term-line"><span class="prompt">$</span> <span class="typed-cmd"></span><span class="cursor-blink">▋</span></p>
         </div>
       </div>
       <div class="hero-text">
         <span class="beta-tag">public beta</span>
         <h1>The all-in-one platform for modern teams</h1>
-        <p>Meetings, emails, tasks, and analytics in one connected system. Ship faster, collaborate better.</p>
+        <p>Meetings, emails, tasks, and analytics in one connected system. Ship faster, collaborate better — without switching tabs.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">Start Free Trial</a>
           <a href="#features" class="btn-ghost">Read the docs →</a>
@@ -48,91 +55,270 @@
 
     <section class="used-by">
       <span>Used by teams at</span>
-      <code>stripe</code><code>notion</code><code>vercel</code><code>linear</code><code>figma</code>
+      <div class="logo-strip">
+        <code>stripe</code>
+        <code>notion</code>
+        <code>vercel</code>
+        <code>linear</code>
+        <code>figma</code>
+        <code>raycast</code>
+      </div>
     </section>
 
     <section id="about" class="docs-section reveal">
       <h2>Introduction</h2>
-      <p>Flowbase was born from frustration with fragmented tools. One platform replaces your project manager, wiki, and analytics dashboard. Founded in 2024, powering 10,000+ teams worldwide.</p>
-      <div class="inline-stats"><span><strong>10K+</strong> teams</span><span><strong>99.9%</strong> uptime</span><span><strong>4.9★</strong> rating</span></div>
+      <p>Flowbase was born from frustration with fragmented tools. One platform replaces your project manager, wiki, and analytics dashboard. Founded in 2024, now powering 10,000+ teams worldwide.</p>
+      <div class="inline-stats">
+        <span><strong>10K+</strong> teams</span>
+        <span><strong>99.9%</strong> uptime</span>
+        <span><strong>4.9★</strong> rating</span>
+        <span><strong>&lt;50ms</strong> latency</span>
+      </div>
+    </section>
+
+    <section id="bento" class="docs-section reveal">
+      <h2>Platform</h2>
+      <p class="section-lead">Everything your team needs — modular, connected, and fast.</p>
+      <div class="bento-grid">
+        <article class="bento-card bento-large glass">
+          <div class="bento-icon">◈</div>
+          <h3>Unified Workspace</h3>
+          <p>Docs, tasks, and meetings in a single canvas. No more context-switching between twelve different tabs.</p>
+          <div class="bento-visual">
+            <div class="mini-window">
+              <div class="mini-bar"><span></span><span></span><span></span></div>
+              <div class="mini-body">
+                <div class="mini-row active"></div>
+                <div class="mini-row"></div>
+                <div class="mini-row short"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bento-card glass">
+          <div class="bento-icon">⚡</div>
+          <h3>Real-time Sync</h3>
+          <p>Sub-50ms updates across every connected client. See changes as they happen.</p>
+        </article>
+
+        <article class="bento-card glass">
+          <div class="bento-icon">⌘</div>
+          <h3>Command Palette</h3>
+          <p>Navigate, search, and act from anywhere with <kbd>⌘K</kbd>.</p>
+        </article>
+
+        <article class="bento-card glass">
+          <div class="bento-icon">◉</div>
+          <h3>Live Analytics</h3>
+          <p>Velocity, health scores, and KPIs — streaming in real time.</p>
+        </article>
+
+        <article class="bento-card glass">
+          <div class="bento-icon">⟳</div>
+          <h3>Automations</h3>
+          <p>Trigger workflows on any event. No code required.</p>
+        </article>
+
+        <article class="bento-card glass">
+          <div class="bento-icon">⬡</div>
+          <h3>API-First</h3>
+          <p>Full REST &amp; GraphQL access. SDKs for TypeScript, Python, Go.</p>
+        </article>
+      </div>
     </section>
 
     <section id="features" class="docs-section reveal">
       <h2>Features</h2>
-      <div class="feature-tabs">
-        <button class="tab active" data-tab="analytics">Analytics</button>
-        <button class="tab" data-tab="docs">Docs</button>
-        <button class="tab" data-tab="automate">Automate</button>
+      <p class="section-lead">Explore the core modules powering your workflow.</p>
+      <div class="feature-highlights">
+        <div class="highlight glass">
+          <span class="highlight-num">01</span>
+          <div>
+            <strong>Meetings</strong>
+            <span>AI notes, action items, calendar sync</span>
+          </div>
+        </div>
+        <div class="highlight glass">
+          <span class="highlight-num">02</span>
+          <div>
+            <strong>Email</strong>
+            <span>Shared inboxes with smart routing</span>
+          </div>
+        </div>
+        <div class="highlight glass">
+          <span class="highlight-num">03</span>
+          <div>
+            <strong>Tasks</strong>
+            <span>Kanban, sprints, dependencies</span>
+          </div>
+        </div>
       </div>
-      <div class="code-block">
-        <pre class="tab-content active" id="analytics"><code><span class="kw">import</span> { flowbase } <span class="kw">from</span> <span class="str">'@flowbase/sdk'</span>
+    </section>
+
+    <section id="code" class="docs-section reveal">
+      <h2>API Reference</h2>
+      <div class="feature-tabs" role="tablist">
+        <button class="tab active" data-tab="analytics" role="tab" aria-selected="true">Analytics</button>
+        <button class="tab" data-tab="docs" role="tab" aria-selected="false">Docs</button>
+        <button class="tab" data-tab="automate" role="tab" aria-selected="false">Automate</button>
+      </div>
+      <div class="code-block glass">
+        <pre class="tab-content active" id="analytics" role="tabpanel"><code><span class="kw">import</span> { flowbase } <span class="kw">from</span> <span class="str">'@flowbase/sdk'</span>
 
 <span class="kw">const</span> dashboard = <span class="kw">await</span> flowbase.analytics.create({
   metrics: [<span class="str">'velocity'</span>, <span class="str">'health'</span>, <span class="str">'kpis'</span>],
-  realtime: <span class="bool">true</span>
+  realtime: <span class="bool">true</span>,
+  refresh: <span class="num">5000</span>
 })
 
 dashboard.onUpdate((data) => {
   console.log(data.velocity) <span class="cmt">// live updates</span>
+  chart.render(data.kpis)
 })</code></pre>
-        <pre class="tab-content" id="docs"><code><span class="kw">const</span> doc = <span class="kw">await</span> flowbase.docs.create({
+        <pre class="tab-content" id="docs" role="tabpanel"><code><span class="kw">const</span> doc = <span class="kw">await</span> flowbase.docs.create({
   title: <span class="str">'Sprint Planning'</span>,
   collaborators: [<span class="str">'@team'</span>],
-  versionHistory: <span class="bool">true</span>
+  versionHistory: <span class="bool">true</span>,
+  template: <span class="str">'meeting-notes'</span>
 })
 
-<span class="cmt">// Real-time editing with comments</span>
-doc.onEdit((change) => sync(change))</code></pre>
-        <pre class="tab-content" id="automate"><code><span class="kw">const</span> workflow = flowbase.automate.build({
+<span class="cmt">// Real-time editing with inline comments</span>
+doc.onEdit((change) => sync(change))
+doc.export(<span class="str">'markdown'</span>)</code></pre>
+        <pre class="tab-content" id="automate" role="tabpanel"><code><span class="kw">const</span> workflow = flowbase.automate.build({
   trigger: <span class="str">'task.completed'</span>,
+  conditions: [{ field: <span class="str">'priority'</span>, eq: <span class="str">'high'</span> }],
   actions: [
     { type: <span class="str">'notify.slack'</span>, channel: <span class="str">'#team'</span> },
-    { type: <span class="str">'update.analytics'</span> }
+    { type: <span class="str">'update.analytics'</span> },
+    { type: <span class="str">'create.doc'</span>, template: <span class="str">'retro'</span> }
   ]
 })
 
-workflow.run() <span class="cmt">// no code required</span></code></pre>
+workflow.run() <span class="cmt">// deploy in one line</span></code></pre>
       </div>
     </section>
 
     <section id="pricing" class="docs-section reveal">
       <h2>Pricing</h2>
-      <table class="pricing-matrix">
-        <thead><tr><th>Feature</th><th>Starter</th><th>Pro</th><th>Enterprise</th></tr></thead>
-        <tbody>
-          <tr><td>Price</td><td>$0/mo</td><td>$29/mo</td><td>Custom</td></tr>
-          <tr><td>Members</td><td>5</td><td>Unlimited</td><td>Unlimited</td></tr>
-          <tr><td>Analytics</td><td>Basic</td><td>✓ Advanced</td><td>✓ Advanced</td></tr>
-          <tr><td>Automations</td><td>—</td><td>✓</td><td>✓</td></tr>
-          <tr><td>SSO / SAML</td><td>—</td><td>—</td><td>✓</td></tr>
-          <tr><td>Support</td><td>Community</td><td>Priority</td><td>Dedicated</td></tr>
-        </tbody>
-      </table>
-      <a href="#contact" class="btn-primary" style="margin-top:20px;display:inline-block">Start Free Trial</a>
+      <p class="section-lead">Transparent plans that scale with your team.</p>
+      <div class="matrix-wrap glass">
+        <table class="pricing-matrix">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Starter</th>
+              <th>Pro</th>
+              <th class="highlight-col">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Price</td>
+              <td><span class="price">$0</span>/mo</td>
+              <td><span class="price">$29</span>/mo</td>
+              <td class="highlight-col">Custom</td>
+            </tr>
+            <tr>
+              <td>Members</td>
+              <td>5</td>
+              <td>Unlimited</td>
+              <td class="highlight-col">Unlimited</td>
+            </tr>
+            <tr>
+              <td>Analytics</td>
+              <td>Basic</td>
+              <td><span class="check">✓</span> Advanced</td>
+              <td class="highlight-col"><span class="check">✓</span> Advanced</td>
+            </tr>
+            <tr>
+              <td>Automations</td>
+              <td>—</td>
+              <td><span class="check">✓</span> 50/mo</td>
+              <td class="highlight-col"><span class="check">✓</span> Unlimited</td>
+            </tr>
+            <tr>
+              <td>API Access</td>
+              <td>Read-only</td>
+              <td><span class="check">✓</span> Full</td>
+              <td class="highlight-col"><span class="check">✓</span> Full + SLA</td>
+            </tr>
+            <tr>
+              <td>SSO / SAML</td>
+              <td>—</td>
+              <td>—</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>Community</td>
+              <td>Priority</td>
+              <td class="highlight-col">Dedicated</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <a href="#contact" class="btn-primary pricing-cta">Start Free Trial</a>
     </section>
 
     <section id="testimonials" class="docs-section reveal">
       <h2>Reviews</h2>
       <div class="tweet-cards">
-        <div class="tweet"><div class="tweet-head"><strong>Jamie Lee</strong><span>@jamielee · CTO, Stackline</span></div><p>"Flowbase replaced 4 tools for us. Our team ships 2x faster now."</p></div>
-        <div class="tweet"><div class="tweet-head"><strong>Chris Patel</strong><span>@cpatel · Founder, Brightpath</span></div><p>"The cleanest project management tool I've ever used."</p></div>
-        <div class="tweet"><div class="tweet-head"><strong>Morgan Taylor</strong><span>@mtaylor · VP Product, Relay</span></div><p>"Analytics + docs + tasks in one place. Why didn't this exist before?"</p></div>
+        <article class="tweet glass">
+          <div class="tweet-head">
+            <div class="avatar">JL</div>
+            <div>
+              <strong>Jamie Lee</strong>
+              <span>@jamielee · CTO, Stackline</span>
+            </div>
+          </div>
+          <p>Flowbase replaced 4 tools for us. Our team ships 2x faster now. The CLI onboarding alone saved us a week of setup.</p>
+          <time>Mar 12, 2026</time>
+        </article>
+        <article class="tweet glass">
+          <div class="tweet-head">
+            <div class="avatar">CP</div>
+            <div>
+              <strong>Chris Patel</strong>
+              <span>@cpatel · Founder, Brightpath</span>
+            </div>
+          </div>
+          <p>The cleanest project management tool I've ever used. Docs + tasks + analytics in one place. Why didn't this exist before?</p>
+          <time>Feb 28, 2026</time>
+        </article>
+        <article class="tweet glass">
+          <div class="tweet-head">
+            <div class="avatar">MT</div>
+            <div>
+              <strong>Morgan Taylor</strong>
+              <span>@mtaylor · VP Product, Relay</span>
+            </div>
+          </div>
+          <p>We migrated 200 people in a weekend. Zero downtime. The bento-style dashboard is genuinely delightful to use every day.</p>
+          <time>Jan 15, 2026</time>
+        </article>
       </div>
     </section>
 
     <section id="contact" class="docs-section cli-cta reveal">
       <h2>Get Started</h2>
-      <p>+90 533 861 0067</p>
-      <div class="cli-command">
+      <p>Questions? Call us at <a href="tel:+905338610067">+90 533 861 0067</a></p>
+      <div class="cli-command glass">
         <span class="prompt">$</span>
-        <span>npx flowbase signup --email</span>
-        <form class="cli-form"><input type="email" placeholder="you@company.com" required><button type="submit">↵</button></form>
+        <span class="cli-prefix">npx flowbase signup --email</span>
+        <form class="cli-form">
+          <input type="email" placeholder="you@company.com" required aria-label="Email address">
+          <button type="submit" aria-label="Submit">↵</button>
+        </form>
       </div>
       <a href="../index.html" class="catalog-link">← Back to Catalog</a>
     </section>
   </main>
 
-  <button class="sidebar-toggle">☰</button>
+  <button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <div class="sidebar-overlay" aria-hidden="true"></div>
+
   <script src="script.js"></script>
 </body>
 </html>

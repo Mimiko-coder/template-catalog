@@ -3,67 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obsidian Tech — Cinematic</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Obsidian Tech — Cinematic Digital Studio</title>
+  <meta name="description" content="Bespoke digital experiences for brands that demand excellence. Premium tech studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="grain"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
   <nav class="film-nav">
     <a href="#" class="film-logo">OBSIDIAN</a>
-    <div class="film-dots"><span class="active"></span><span></span><span></span><span></span><span></span></div>
+    <div class="film-dots" role="tablist" aria-label="Chapter navigation">
+      <button class="active" data-panel="0" aria-label="Chapter 1: Intro" aria-selected="true"></button>
+      <button data-panel="1" aria-label="Chapter 2: About"></button>
+      <button data-panel="2" aria-label="Chapter 3: Services"></button>
+      <button data-panel="3" aria-label="Chapter 4: Portfolio"></button>
+      <button data-panel="4" aria-label="Chapter 5: Testimonial"></button>
+      <button data-panel="5" aria-label="Chapter 6: Contact"></button>
+    </div>
     <a href="#contact" class="film-cta">Inquire</a>
   </nav>
 
-  <div class="horizontal-scroll">
-    <section class="panel panel-hero">
-      <p class="panel-num">01</p>
-      <h1>ELEVATE<br>YOUR<br><span>DIGITAL</span><br>PRESENCE</h1>
-      <p class="panel-sub">Bespoke digital experiences for brands that demand excellence.</p>
-    </section>
-
-    <section id="about" class="panel panel-about">
-      <p class="panel-num">02</p>
-      <h2>ABOUT</h2>
-      <p>Obsidian Tech partners with high-end businesses and technology leaders. Founded in 2018, we've delivered 120+ premium projects across finance, luxury retail, and enterprise SaaS.</p>
-      <div class="about-img"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop" alt="Workspace"></div>
-    </section>
-
-    <section id="services" class="panel panel-services">
-      <p class="panel-num">03</p>
-      <h2>SERVICES</h2>
-      <div class="service-stack">
-        <div class="svc-block"><span>01</span><h3>Custom Development</h3><p>Tailored web applications built with precision.</p></div>
-        <div class="svc-block"><span>02</span><h3>UI/UX Design</h3><p>Interfaces as premium as the brands they represent.</p></div>
-        <div class="svc-block"><span>03</span><h3>Cloud Architecture</h3><p>Secure infrastructure for mission-critical systems.</p></div>
-        <div class="svc-block"><span>04</span><h3>Brand Digitalization</h3><p>Transform identity into cohesive digital experiences.</p></div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="panel panel-portfolio">
-      <p class="panel-num">04</p>
-      <h2>SELECTED WORK</h2>
-      <div class="port-stack">
-        <div class="port-slide"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=350&fit=crop" alt=""><div><h3>Meridian Finance</h3><p>Fintech Platform</p></div></div>
-        <div class="port-slide"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=350&fit=crop" alt=""><div><h3>DataPulse Analytics</h3><p>Enterprise SaaS</p></div></div>
-        <div class="port-slide"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&h=350&fit=crop" alt=""><div><h3>Maison Laurent</h3><p>Luxury E-Commerce</p></div></div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="panel panel-quote">
-      <p class="panel-num">05</p>
-      <blockquote>"Obsidian didn't just build us a platform — they elevated our entire brand."</blockquote>
-      <cite>— Alexandra Reid, CEO at Meridian Finance</cite>
-    </section>
-
-    <section id="contact" class="panel panel-contact">
-      <p class="panel-num">06</p>
-      <h2>LET'S CREATE<br>SOMETHING<br>EXCEPTIONAL</h2>
-      <p class="contact-phone">+90 533 861 0067</p>
-      <a href="mailto:hello@obsidian.tech" class="contact-email">hello@obsidian.tech</a>
-      <a href="../index.html" class="catalog-link">← Back to Catalog</a>
-    </section>
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-bar"></div>
   </div>
+
+  <main class="horizontal-scroll" id="scroll-container">
+    <!-- Chapter 01: Hero -->
+    <section class="panel panel-hero" data-chapter="01">
+      <div class="panel-bg panel-bg--hero"></div>
+      <div class="panel-content">
+        <p class="panel-num">01 — INTRO</p>
+        <h1 class="title-sequence">
+          <span class="title-line">ELEVATE</span>
+          <span class="title-line">YOUR</span>
+          <span class="title-line title-accent">DIGITAL</span>
+          <span class="title-line">PRESENCE</span>
+        </h1>
+        <p class="panel-sub">Bespoke digital experiences for brands that demand excellence. We craft cinematic interfaces that feel like opening credits.</p>
+        <div class="scroll-hint">
+          <span>Scroll to explore</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 02: About -->
+    <section id="about" class="panel panel-about" data-chapter="02">
+      <div class="panel-bg panel-bg--about"></div>
+      <div class="panel-content panel-split">
+        <div class="panel-text">
+          <p class="panel-num">02 — ABOUT</p>
+          <h2>WE BUILD<br>FOR THE<br><span class="accent">BOLD</span></h2>
+          <p class="panel-body">Obsidian Tech partners with high-end businesses and technology leaders. Founded in 2018, we've delivered 120+ premium projects across finance, luxury retail, and enterprise SaaS — each one engineered to feel inevitable.</p>
+          <div class="stat-row">
+            <div><strong>120+</strong><span>Projects</span></div>
+            <div><strong>8yr</strong><span>Experience</span></div>
+            <div><strong>14</strong><span>Awards</span></div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-frame">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=700&h=900&fit=crop" alt="Obsidian workspace">
+            <div class="frame-glow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 03: Services -->
+    <section id="services" class="panel panel-services" data-chapter="03">
+      <div class="panel-bg panel-bg--services"></div>
+      <div class="panel-content">
+        <p class="panel-num">03 — SERVICES</p>
+        <h2>WHAT WE<br><span class="accent">CREATE</span></h2>
+        <div class="glass-grid">
+          <article class="glass-card">
+            <span class="glass-num">01</span>
+            <h3>Custom Development</h3>
+            <p>Tailored web applications built with precision engineering and obsessive attention to detail.</p>
+          </article>
+          <article class="glass-card">
+            <span class="glass-num">02</span>
+            <h3>UI/UX Design</h3>
+            <p>Interfaces as premium as the brands they represent — cinematic, intuitive, unforgettable.</p>
+          </article>
+          <article class="glass-card">
+            <span class="glass-num">03</span>
+            <h3>Cloud Architecture</h3>
+            <p>Secure, scalable infrastructure for mission-critical systems that never sleep.</p>
+          </article>
+          <article class="glass-card">
+            <span class="glass-num">04</span>
+            <h3>Brand Digitalization</h3>
+            <p>Transform identity into cohesive digital experiences across every touchpoint.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 04: Portfolio -->
+    <section id="portfolio" class="panel panel-portfolio" data-chapter="04">
+      <div class="panel-content panel-content--full">
+        <p class="panel-num">04 — SELECTED WORK</p>
+        <h2 class="portfolio-heading">PORTFOLIO</h2>
+        <div class="slide-stack">
+          <article class="port-slide port-slide--active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400&h=900&fit=crop" alt="Meridian Finance">
+            <div class="port-overlay">
+              <span class="port-index">01 / 03</span>
+              <h3>Meridian Finance</h3>
+              <p>Fintech Platform · 2025</p>
+            </div>
+          </article>
+          <article class="port-slide" data-index="1">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&h=900&fit=crop" alt="DataPulse Analytics">
+            <div class="port-overlay">
+              <span class="port-index">02 / 03</span>
+              <h3>DataPulse Analytics</h3>
+              <p>Enterprise SaaS · 2025</p>
+            </div>
+          </article>
+          <article class="port-slide" data-index="2">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1400&h=900&fit=crop" alt="Nova Systems">
+            <div class="port-overlay">
+              <span class="port-index">03 / 03</span>
+              <h3>Nova Systems</h3>
+              <p>Premium Tech Brand · 2026</p>
+            </div>
+          </article>
+        </div>
+        <div class="port-controls">
+          <button class="port-btn port-prev" aria-label="Previous project">←</button>
+          <button class="port-btn port-next" aria-label="Next project">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 05: Testimonial -->
+    <section id="testimonials" class="panel panel-quote" data-chapter="05">
+      <div class="panel-bg panel-bg--quote"></div>
+      <div class="panel-content panel-content--center">
+        <p class="panel-num">05 — VOICES</p>
+        <blockquote>
+          <span class="quote-mark">"</span>
+          Obsidian didn't just build us a platform — they elevated our entire brand into something that feels like a film opening sequence.
+        </blockquote>
+        <cite>
+          <span class="cite-name">Alexandra Reid</span>
+          <span class="cite-role">CEO, Meridian Finance</span>
+        </cite>
+      </div>
+    </section>
+
+    <!-- Chapter 06: Contact -->
+    <section id="contact" class="panel panel-contact" data-chapter="06">
+      <div class="panel-bg panel-bg--contact"></div>
+      <div class="panel-content panel-content--center">
+        <p class="panel-num">06 — FIN</p>
+        <h2>LET'S CREATE<br>SOMETHING<br><span class="accent">EXCEPTIONAL</span></h2>
+        <div class="contact-minimal">
+          <a href="tel:+905338610067" class="contact-link contact-phone">+90 533 861 0067</a>
+          <a href="mailto:hello@obsidian.tech" class="contact-link contact-email">hello@obsidian.tech</a>
+        </div>
+        <a href="../index.html" class="catalog-link">← Back to Catalog</a>
+        <p class="contact-footer">© 2026 Obsidian Tech</p>
+      </div>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>

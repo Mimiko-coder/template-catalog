@@ -4,102 +4,409 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TransFlow — Logistics Command Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="Real-time freight management across 50+ countries. Global logistics command center.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="status-ticker">
+  <div class="status-ticker" aria-label="Live shipment updates">
     <div class="ticker-track">
-      <span class="live">● LIVE</span>
+      <span class="live"><span class="pulse"></span> LIVE</span>
       <span>Shipment #TF-4821 — <em>In Transit</em> — Istanbul → Berlin</span>
       <span>Shipment #TF-4819 — <em>Delivered</em> — Ankara → London</span>
       <span>Shipment #TF-4825 — <em>Loading</em> — Izmir Port</span>
       <span>Shipment #TF-4817 — <em>Delivered</em> — Dubai → Munich</span>
+      <span>Shipment #TF-4823 — <em>In Transit</em> — Warsaw → Paris</span>
+      <span>Shipment #TF-4815 — <em>Customs</em> — Rotterdam Hub</span>
+      <span class="live"><span class="pulse"></span> LIVE</span>
       <span>Shipment #TF-4821 — <em>In Transit</em> — Istanbul → Berlin</span>
       <span>Shipment #TF-4819 — <em>Delivered</em> — Ankara → London</span>
+      <span>Shipment #TF-4825 — <em>Loading</em> — Izmir Port</span>
+      <span>Shipment #TF-4817 — <em>Delivered</em> — Dubai → Munich</span>
+      <span>Shipment #TF-4823 — <em>In Transit</em> — Warsaw → Paris</span>
+      <span>Shipment #TF-4815 — <em>Customs</em> — Rotterdam Hub</span>
     </div>
   </div>
 
   <header class="top-bar">
     <a href="#" class="logo">TRANS<span>FLOW</span></a>
-    <nav>
+    <nav class="main-nav" aria-label="Main navigation">
       <a href="#tracking">Tracking</a>
       <a href="#services">Services</a>
       <a href="#fleet">Fleet</a>
       <a href="#cases">Case Studies</a>
       <a href="#contact">Quote</a>
     </nav>
-    <a href="#contact" class="track-btn">Track Shipment</a>
+    <div class="header-actions">
+      <a href="tel:+905338610067" class="header-phone">+90 533 861 0067</a>
+      <a href="#contact" class="track-btn">Track Shipment</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <section class="map-hero">
-    <div class="map-bg"></div>
-    <div class="route-line"></div>
-    <div class="hero-panel">
-      <p class="tag">Global Logistics Network</p>
-      <h1>Every mile.<br>Every minute.<br>Tracked.</h1>
-      <p>Real-time freight management across 50+ countries. 99.2% on-time delivery.</p>
-      <a href="#contact" class="cta">Get a Quote →</a>
+    <div class="map-bg">
+      <div class="map-grid"></div>
+      <div class="map-glow map-glow--cyan"></div>
+      <div class="map-glow map-glow--orange"></div>
     </div>
-    <div class="tracker-widget">
-      <div class="widget-header"><span>Live Tracker</span><span class="widget-id">#TF-4821</span></div>
-      <div class="widget-route"><span class="dot active"></span><span>Istanbul</span><span class="line"></span><span class="dot"></span><span>Berlin</span></div>
-      <div class="widget-stats"><div><strong>847</strong><span>km left</span></div><div><strong>14h</strong><span>ETA</span></div><div><strong>On Time</strong><span>Status</span></div></div>
+
+    <svg class="route-svg" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#22d3ee"/>
+          <stop offset="100%" stop-color="#ff6b00"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <path class="route-path route-path--bg" d="M80,220 C200,180 350,280 480,200 S720,120 900,180 S1050,240 1120,160"/>
+      <path class="route-path route-path--active" d="M80,220 C200,180 350,280 480,200 S720,120 900,180 S1050,240 1120,160"/>
+      <circle class="route-node route-node--start" cx="80" cy="220" r="6"/>
+      <circle class="route-node route-node--end" cx="1120" cy="160" r="6"/>
+      <circle class="route-pulse" cx="620" cy="155" r="8"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-panel reveal">
+        <p class="tag"><span class="tag-dot"></span> Global Logistics Network</p>
+        <h1>Every mile.<br>Every minute.<br><span class="highlight">Tracked.</span></h1>
+        <p class="hero-desc">Real-time freight management across 50+ countries. Command-center visibility on every shipment, every route, every hub.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="cta">Get a Quote</a>
+          <a href="#tracking" class="cta-secondary">View Metrics</a>
+        </div>
+      </div>
+
+      <div class="tracker-widget reveal" aria-label="Live shipment tracker">
+        <div class="widget-glow"></div>
+        <div class="widget-header">
+          <span class="widget-label"><span class="pulse"></span> Live Tracker</span>
+          <span class="widget-id">#TF-4821</span>
+        </div>
+        <div class="widget-route">
+          <div class="route-point">
+            <span class="dot active"></span>
+            <span class="city">Istanbul</span>
+            <span class="time">Departed 06:42</span>
+          </div>
+          <div class="route-line-wrap">
+            <div class="route-progress"></div>
+          </div>
+          <div class="route-point">
+            <span class="dot"></span>
+            <span class="city">Berlin</span>
+            <span class="time">ETA 20:15</span>
+          </div>
+        </div>
+        <div class="widget-stats">
+          <div class="stat">
+            <strong data-live="847">847</strong>
+            <span>km remaining</span>
+          </div>
+          <div class="stat">
+            <strong>14h</strong>
+            <span>ETA</span>
+          </div>
+          <div class="stat stat--status">
+            <strong class="status-ok">On Time</strong>
+            <span>Status</span>
+          </div>
+        </div>
+        <div class="widget-bar">
+          <div class="widget-bar-fill" style="width: 62%"></div>
+        </div>
+        <p class="widget-foot">Last ping: 2 min ago · GPS active</p>
+      </div>
     </div>
   </section>
 
   <section id="tracking" class="metrics-strip">
-    <div class="metric"><span class="metric-val" data-count="99">0</span><span class="metric-unit">%</span><p>On-Time Delivery</p></div>
-    <div class="metric"><span class="metric-val" data-count="850">0</span><p>Active Vehicles</p></div>
-    <div class="metric"><span class="metric-val" data-count="50">0</span><span class="metric-unit">+</span><p>Countries Served</p></div>
-    <div class="metric"><span class="metric-val" data-count="120">0</span><p>Hub Locations</p></div>
-  </section>
-
-  <section id="about" class="about-block reveal">
-    <h2>Why TransFlow</h2>
-    <p>We don't just move cargo — we run a connected logistics network with GPS on every shipment, dedicated hubs in every major market, and end-to-end supply chain management.</p>
-  </section>
-
-  <section id="services" class="services-scroll">
-    <h2 class="section-title reveal">Services</h2>
-    <div class="scroll-track">
-      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1566576721346-d4a3aa4f7544?w=400&h=260&fit=crop" alt=""><h3>Freight Shipping</h3><p>FTL & LTL across Europe and Asia.</p><span class="card-code">SVC-001</span></div>
-      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=400&h=260&fit=crop" alt=""><h3>Warehousing</h3><p>Climate-controlled with inventory systems.</p><span class="card-code">SVC-002</span></div>
-      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=260&fit=crop" alt=""><h3>Express Delivery</h3><p>Same-day and next-day options.</p><span class="card-code">SVC-003</span></div>
-      <div class="scroll-card reveal"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=260&fit=crop" alt=""><h3>Cross-Border</h3><p>Customs clearance and documentation.</p><span class="card-code">SVC-004</span></div>
+    <div class="metric reveal">
+      <div class="metric-inner">
+        <span class="metric-val" data-count="99.2" data-decimals="1">0</span><span class="metric-unit">%</span>
+        <p>On-Time Delivery</p>
+      </div>
+    </div>
+    <div class="metric reveal">
+      <div class="metric-inner">
+        <span class="metric-val" data-count="850">0</span>
+        <p>Active Vehicles</p>
+      </div>
+    </div>
+    <div class="metric reveal">
+      <div class="metric-inner">
+        <span class="metric-val" data-count="50">0</span><span class="metric-unit">+</span>
+        <p>Countries Served</p>
+      </div>
+    </div>
+    <div class="metric reveal">
+      <div class="metric-inner">
+        <span class="metric-val" data-count="120">0</span>
+        <p>Hub Locations</p>
+      </div>
     </div>
   </section>
 
-  <section id="fleet" class="fleet-section reveal">
-    <h2>Our Fleet</h2>
-    <div class="fleet-carousel">
-      <div class="fleet-item"><div class="fleet-spec"><span>Heavy Truck</span><strong>40T capacity</strong></div></div>
-      <div class="fleet-item"><div class="fleet-spec"><span>Refrigerated</span><strong>-25°C to +15°C</strong></div></div>
-      <div class="fleet-item"><div class="fleet-spec"><span>Container</span><strong>20ft / 40ft</strong></div></div>
-      <div class="fleet-item"><div class="fleet-spec"><span>Last Mile</span><strong>Urban delivery</strong></div></div>
+  <section id="about" class="about-block">
+    <div class="about-inner reveal">
+      <span class="section-label">Command Center</span>
+      <h2>Logistics built for<br>real-time decisions</h2>
+      <p>We don't just move cargo — we run a connected logistics network with GPS on every shipment, dedicated hubs in every major market, and end-to-end supply chain management. Your operations desk, always on.</p>
+    </div>
+    <div class="about-visual reveal" aria-hidden="true">
+      <div class="radar">
+        <div class="radar-ring"></div>
+        <div class="radar-ring"></div>
+        <div class="radar-ring"></div>
+        <div class="radar-sweep"></div>
+        <div class="radar-blip"></div>
+      </div>
     </div>
   </section>
 
-  <section id="cases" class="case-studies reveal">
-    <h2>Case Studies</h2>
+  <section id="services" class="services-section">
+    <div class="section-head reveal">
+      <span class="section-label">Capabilities</span>
+      <h2>Services</h2>
+    </div>
+    <div class="bento-grid">
+      <article class="bento-card bento-card--hero reveal">
+        <div class="bento-bg" style="background-image: url('https://images.unsplash.com/photo-1566576721346-d4a3aa4f7544?w=800&h=600&fit=crop')"></div>
+        <div class="bento-overlay"></div>
+        <div class="bento-content">
+          <span class="card-code">SVC-001</span>
+          <h3>Freight Shipping</h3>
+          <p>FTL & LTL across Europe and Asia with live GPS tracking on every load.</p>
+          <ul class="bento-tags">
+            <li>FTL</li><li>LTL</li><li>Cross-border</li>
+          </ul>
+        </div>
+      </article>
+      <article class="bento-card bento-card--tall reveal">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span class="card-code">SVC-002</span>
+        <h3>Warehousing</h3>
+        <p>Climate-controlled facilities with real-time inventory systems and automated picking.</p>
+      </article>
+      <article class="bento-card reveal">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="card-code">SVC-003</span>
+        <h3>Express Delivery</h3>
+        <p>Same-day and next-day options for time-critical shipments.</p>
+      </article>
+      <article class="bento-card bento-card--wide reveal">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <span class="card-code">SVC-004</span>
+        <h3>Cross-Border Logistics</h3>
+        <p>Customs clearance, documentation, and compliance handled end-to-end. No delays at the border.</p>
+        <div class="bento-stat-row">
+          <div><strong>48h</strong><span>Avg clearance</span></div>
+          <div><strong>99%</strong><span>First-pass rate</span></div>
+        </div>
+      </article>
+      <article class="bento-card reveal">
+        <div class="bento-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="card-code">SVC-005</span>
+        <h3>Cold Chain</h3>
+        <p>Temperature-controlled transport from -25°C to +15°C.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="fleet" class="fleet-section">
+    <div class="section-head reveal">
+      <span class="section-label">Assets</span>
+      <h2>Our Fleet</h2>
+    </div>
+    <div class="fleet-scroll">
+      <article class="fleet-card reveal">
+        <div class="fleet-card-top">
+          <span class="fleet-type">01</span>
+          <span class="fleet-badge">Heavy</span>
+        </div>
+        <h3>Heavy Truck</h3>
+        <p class="fleet-desc">Long-haul freight across continental routes</p>
+        <dl class="fleet-specs">
+          <div><dt>Capacity</dt><dd>40T</dd></div>
+          <div><dt>Range</dt><dd>2,400 km</dd></div>
+          <div><dt>GPS</dt><dd>Real-time</dd></div>
+        </dl>
+      </article>
+      <article class="fleet-card reveal">
+        <div class="fleet-card-top">
+          <span class="fleet-type">02</span>
+          <span class="fleet-badge fleet-badge--cyan">Cold</span>
+        </div>
+        <h3>Refrigerated</h3>
+        <p class="fleet-desc">Pharma-grade temperature control</p>
+        <dl class="fleet-specs">
+          <div><dt>Range</dt><dd>-25°C to +15°C</dd></div>
+          <div><dt>Monitoring</dt><dd>24/7 sensors</dd></div>
+          <div><dt>Units</dt><dd>120+</dd></div>
+        </dl>
+      </article>
+      <article class="fleet-card reveal">
+        <div class="fleet-card-top">
+          <span class="fleet-type">03</span>
+          <span class="fleet-badge">Ocean</span>
+        </div>
+        <h3>Container</h3>
+        <p class="fleet-desc">Standard and high-cube intermodal</p>
+        <dl class="fleet-specs">
+          <div><dt>Sizes</dt><dd>20ft / 40ft</dd></div>
+          <div><dt>Tracking</dt><dd>Port-to-door</dd></div>
+          <div><dt>Hubs</dt><dd>12 ports</dd></div>
+        </dl>
+      </article>
+      <article class="fleet-card reveal">
+        <div class="fleet-card-top">
+          <span class="fleet-type">04</span>
+          <span class="fleet-badge fleet-badge--cyan">Urban</span>
+        </div>
+        <h3>Last Mile</h3>
+        <p class="fleet-desc">Same-day urban delivery fleet</p>
+        <dl class="fleet-specs">
+          <div><dt>Coverage</dt><dd>45 cities</dd></div>
+          <div><dt>Window</dt><dd>2-hour slots</dd></div>
+          <div><dt>Fleet</dt><dd>380 vans</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="cases" class="case-studies">
+    <div class="section-head reveal">
+      <span class="section-label">Results</span>
+      <h2>Before & After</h2>
+    </div>
     <div class="timeline">
-      <div class="timeline-item"><div class="tl-before"><h4>Before</h4><p>RetailMax spent 30% above market on shipping with 78% on-time rate.</p></div><div class="tl-arrow">→</div><div class="tl-after"><h4>After TransFlow</h4><p><strong>-30% cost</strong> · <strong>99.1% on-time</strong> · Real-time tracking on every order.</p></div></div>
-      <div class="timeline-item"><div class="tl-before"><h4>Before</h4><p>No visibility on international shipments. 5-day average delays.</p></div><div class="tl-arrow">→</div><div class="tl-after"><h4>After TransFlow</h4><p><strong>Live GPS tracking</strong> · <strong>2-day delivery</strong> · Automated customs handling.</p></div></div>
+      <article class="timeline-item reveal">
+        <div class="timeline-meta">
+          <span class="case-id">CASE-001</span>
+          <span class="case-client">RetailMax · E-Commerce</span>
+        </div>
+        <div class="timeline-grid">
+          <div class="tl-before">
+            <h4>Before</h4>
+            <p>RetailMax spent 30% above market on shipping with a 78% on-time delivery rate. No visibility on international routes.</p>
+            <div class="tl-metrics tl-metrics--before">
+              <span>78% on-time</span>
+              <span>+30% cost</span>
+              <span>0% tracking</span>
+            </div>
+          </div>
+          <div class="tl-divider">
+            <div class="tl-line"></div>
+            <span class="tl-arrow">→</span>
+          </div>
+          <div class="tl-after">
+            <h4>After TransFlow</h4>
+            <p>Full command-center integration with real-time tracking on every order and optimized routing across 12 hubs.</p>
+            <div class="tl-metrics tl-metrics--after">
+              <span><strong>99.1%</strong> on-time</span>
+              <span><strong>-30%</strong> cost</span>
+              <span><strong>100%</strong> tracked</span>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="timeline-item reveal">
+        <div class="timeline-meta">
+          <span class="case-id">CASE-002</span>
+          <span class="case-client">NordicParts · Manufacturing</span>
+        </div>
+        <div class="timeline-grid">
+          <div class="tl-before">
+            <h4>Before</h4>
+            <p>No visibility on international shipments. 5-day average delays at customs with manual documentation.</p>
+            <div class="tl-metrics tl-metrics--before">
+              <span>5-day delays</span>
+              <span>Manual docs</span>
+              <span>No GPS</span>
+            </div>
+          </div>
+          <div class="tl-divider">
+            <div class="tl-line"></div>
+            <span class="tl-arrow">→</span>
+          </div>
+          <div class="tl-after">
+            <h4>After TransFlow</h4>
+            <p>Live GPS tracking, automated customs handling, and dedicated cross-border team reduced delays dramatically.</p>
+            <div class="tl-metrics tl-metrics--after">
+              <span><strong>2-day</strong> delivery</span>
+              <span><strong>Live GPS</strong></span>
+              <span><strong>Auto</strong> customs</span>
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="contact" class="quote-section reveal">
-    <h2>Request a Quote</h2>
-    <p>+90 533 861 0067</p>
-    <form class="quote-form">
-      <div class="form-grid"><input type="text" placeholder="Company" required><input type="email" placeholder="Email" required></div>
-      <div class="form-grid"><input type="text" placeholder="Origin city" required><input type="text" placeholder="Destination city" required></div>
-      <input type="text" placeholder="Cargo weight (kg)" required>
-      <button type="submit">Calculate Quote</button>
-    </form>
+  <section id="contact" class="quote-section">
+    <div class="quote-grid">
+      <div class="quote-info reveal">
+        <span class="section-label">Estimate</span>
+        <h2>Request a Quote</h2>
+        <p>Get an instant freight estimate. Our team responds within 24 hours with a detailed breakdown.</p>
+        <a href="tel:+905338610067" class="quote-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +90 533 861 0067
+        </a>
+      </div>
+      <form class="quote-form reveal" novalidate>
+        <div class="form-row">
+          <label>
+            <span>Company</span>
+            <input type="text" name="company" placeholder="Your company" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@company.com" required>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            <span>Origin</span>
+            <input type="text" name="origin" placeholder="City, Country" required>
+          </label>
+          <label>
+            <span>Destination</span>
+            <input type="text" name="destination" placeholder="City, Country" required>
+          </label>
+        </div>
+        <label>
+          <span>Cargo Weight (kg)</span>
+          <input type="number" name="weight" placeholder="e.g. 2500" min="1" required>
+        </label>
+        <div class="quote-result" aria-live="polite">
+          <span class="quote-result-label">Estimated rate</span>
+          <span class="quote-result-value">—</span>
+        </div>
+        <button type="submit">Calculate Quote</button>
+      </form>
+    </div>
   </section>
 
-  <footer><p>© 2026 TransFlow · <a href="../index.html">← Catalog</a></p></footer>
+  <footer>
+    <p>© 2026 TransFlow Logistics · <a href="../index.html">← Back to Catalog</a></p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

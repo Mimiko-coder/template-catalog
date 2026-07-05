@@ -3,73 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Élan Estates — Luxury Lookbook</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <title>Élan Estates — Collection 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Tenor+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav class="mag-nav">
+  <nav class="mag-nav" aria-label="Main navigation">
     <a href="#" class="mag-logo">Élan</a>
     <span class="mag-issue">Collection 2026</span>
     <a href="#inquire" class="mag-inquire">Inquire</a>
   </nav>
 
-  <section class="spread-hero">
-    <div class="hero-slides">
-      <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&h=900&fit=crop" alt="Estate" class="active">
-      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&h=900&fit=crop" alt="Villa">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&h=900&fit=crop" alt="Interior">
+  <section class="spread-hero" aria-label="Featured properties">
+    <div class="hero-parallax">
+      <div class="hero-slides">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1600&h=1000&fit=crop&q=80" alt="Mediterranean villa at golden hour" class="active" data-index="0">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=1000&fit=crop&q=80" alt="Contemporary estate with infinity pool" data-index="1">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&h=1000&fit=crop&q=80" alt="Refined interior with natural light" data-index="2">
+      </div>
+      <div class="hero-veil"></div>
     </div>
     <div class="hero-caption">
-      <p>Extraordinary Living</p>
+      <p class="hero-eyebrow">Extraordinary Living</p>
       <h1>Élan Estates</h1>
+      <div class="hero-progress" aria-hidden="true">
+        <span class="progress-dot active"></span>
+        <span class="progress-dot"></span>
+        <span class="progress-dot"></span>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
   <section id="about" class="editors-letter reveal">
-    <div class="letter-col">
+    <div class="letter-inner">
       <span class="section-tag">Editor's Letter</span>
-      <p class="letter-text">For over twenty-five years, Élan has represented the world's most exceptional properties. We do not simply list homes — we curate experiences. Each residence in our collection has been selected for its architectural significance, its setting, and its ability to inspire.</p>
+      <p class="letter-text">For over twenty-five years, Élan has represented the world's most exceptional properties. We do not simply list homes — we curate experiences. Each residence in our collection has been selected for its architectural significance, its setting, and its ability to inspire a life well lived.</p>
+      <p class="letter-text">This season, we invite you to discover spaces where light, proportion, and landscape converge — homes that feel less like acquisitions and more like inheritances.</p>
       <p class="letter-sign">— Mercy Sithole, Curator</p>
     </div>
   </section>
 
-  <section id="services" class="collections">
+  <section id="services" class="collections" aria-label="Collections">
     <article class="collection-spread spread-left reveal">
-      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=1000&fit=crop" alt="Private sales">
-      <div class="spread-text"><span class="section-tag">Collection I</span><h2>Private Sales</h2><p>Exclusive off-market properties for qualified buyers. Discretion is our foundation.</p></div>
+      <div class="spread-image">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&h=1200&fit=crop&q=80" alt="Private sales estate">
+        <span class="spread-number">I</span>
+      </div>
+      <div class="spread-text">
+        <span class="section-tag">Collection I</span>
+        <h2>Private Sales</h2>
+        <p>Exclusive off-market properties for qualified buyers. Every introduction is made with discretion — the foundation upon which our reputation was built.</p>
+        <a href="#inquire" class="spread-link">Request access</a>
+      </div>
     </article>
+
     <article class="collection-spread spread-right reveal">
-      <div class="spread-text"><span class="section-tag">Collection II</span><h2>Interior Staging</h2><p>World-class staging to showcase every property at its absolute finest.</p></div>
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=1000&fit=crop" alt="Staging">
+      <div class="spread-text">
+        <span class="section-tag">Collection II</span>
+        <h2>Interior Staging</h2>
+        <p>World-class staging to showcase every property at its absolute finest. We collaborate with leading designers to present homes as living works of art.</p>
+        <a href="#inquire" class="spread-link">Learn more</a>
+      </div>
+      <div class="spread-image">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&h=1200&fit=crop&q=80" alt="Staged luxury interior">
+        <span class="spread-number">II</span>
+      </div>
     </article>
+
     <article class="collection-spread spread-left reveal">
-      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=1000&fit=crop" alt="Advisory">
-      <div class="spread-text"><span class="section-tag">Collection III</span><h2>Investment Advisory</h2><p>Strategic guidance for luxury property portfolios across global markets.</p></div>
+      <div class="spread-image">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&h=1200&fit=crop&q=80" alt="Investment property advisory">
+        <span class="spread-number">III</span>
+      </div>
+      <div class="spread-text">
+        <span class="section-tag">Collection III</span>
+        <h2>Investment Advisory</h2>
+        <p>Strategic guidance for luxury property portfolios across global markets. Insight, timing, and access — the three pillars of exceptional returns.</p>
+        <a href="#inquire" class="spread-link">Schedule consultation</a>
+      </div>
     </article>
   </section>
 
   <section id="testimonials" class="portrait-quote reveal">
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=800&fit=crop" alt="Property">
+    <div class="quote-image">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=1100&fit=crop&q=80" alt="Waterfront estate at dusk">
+    </div>
     <div class="quote-col">
-      <blockquote>"Élan found us the home of our dreams — a waterfront estate we didn't even know existed."</blockquote>
+      <span class="section-tag light">Client Reflection</span>
+      <blockquote>"Élan found us the home of our dreams — a waterfront estate we didn't even know existed. Their discretion and taste are unmatched."</blockquote>
       <cite>— The Harrington Family</cite>
+      <p class="quote-detail">Waterfront Collection · Pacific Northwest</p>
     </div>
   </section>
 
   <section id="inquire" class="inquire-section reveal">
-    <h2>Private Inquiry</h2>
-    <p>concierge@elanetates.com · +90 533 861 0067</p>
-    <form class="inquire-form">
-      <input type="text" placeholder="Full name" required>
-      <select required><option value="">Property interest</option><option>Residential</option><option>Waterfront</option><option>Commercial</option><option>Investment</option></select>
-      <select><option>Preferred contact</option><option>Email</option><option>Phone</option><option>WhatsApp</option></select>
-      <button type="submit">Submit Inquiry</button>
-    </form>
-    <a href="../index.html" class="catalog-link">← Catalog</a>
+    <div class="inquire-inner">
+      <span class="section-tag">Private Inquiry</span>
+      <h2>Begin the Conversation</h2>
+      <p class="inquire-contact">concierge@elanetates.com · <a href="tel:+905338610067">+90 533 861 0067</a></p>
+      <form class="inquire-form" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="interest">Property interest</label>
+          <select id="interest" name="interest" required>
+            <option value="" disabled selected>Select interest</option>
+            <option value="residential">Residential</option>
+            <option value="waterfront">Waterfront</option>
+            <option value="commercial">Commercial</option>
+            <option value="investment">Investment</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="contact">Preferred contact</label>
+          <select id="contact" name="contact">
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="whatsapp">WhatsApp</option>
+          </select>
+        </div>
+        <button type="submit" class="inquire-submit">Submit Inquiry</button>
+      </form>
+      <a href="../index.html" class="catalog-link">← Back to Catalog</a>
+    </div>
   </section>
 
-  <footer class="mag-footer"><span>Élan Estates © 2026</span></footer>
+  <footer class="mag-footer">
+    <span>Élan Estates © 2026</span>
+    <span class="footer-divider">·</span>
+    <span>All rights reserved</span>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

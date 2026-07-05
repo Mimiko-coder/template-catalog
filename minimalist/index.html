@@ -3,81 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Nova — Editorial Minimalism</title>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Studio Nova — Clarity-Led Strategy</title>
+  <meta name="description" content="Studio Nova helps consultants and boutique firms communicate with precision. Strategy, identity, and digital clarity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <aside class="side-index">
-    <a href="#" class="brand">SN</a>
-    <nav>
-      <a href="#about">01 About</a>
-      <a href="#services">02 Work</a>
-      <a href="#testimonials">03 Voices</a>
-      <a href="#contact">04 Contact</a>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#" class="logo">Studio<span>Nova</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Start a project</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
     </nav>
-    <span class="side-year">© 2026</span>
-  </aside>
+  </header>
 
-  <main class="page">
-    <header class="hero">
-      <p class="eyebrow reveal">Consulting · Strategy · Identity</p>
-      <h1 class="reveal">Clarity<br>is the<br>strategy.</h1>
-      <p class="hero-lead reveal">We help consultants and boutique firms communicate with precision — less noise, more impact.</p>
-      <a href="#contact" class="text-link reveal">Start a conversation →</a>
-    </header>
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow reveal">Consulting · Strategy · Identity</p>
+        <h1 class="hero-title reveal">
+          <span class="line">Clarity is</span>
+          <span class="line accent">the strategy.</span>
+        </h1>
+        <p class="hero-lead reveal">We help consultants and boutique firms cut through noise — shaping positioning, visual identity, and digital presence that earns trust at first glance.</p>
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn-primary">Book a discovery call</a>
+          <a href="#services" class="btn-ghost">Explore services</a>
+        </div>
+      </div>
+      <div class="hero-scroll reveal" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
 
     <section id="about" class="about">
-      <div class="about-visual reveal">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=1100&fit=crop" alt="Minimal workspace">
-      </div>
-      <div class="about-copy reveal">
-        <span class="margin-label">About</span>
-        <h2>We remove everything that doesn't earn its place.</h2>
-        <p>Studio Nova was built on a single belief: the best brands don't shout. We work with consultants, coaches, and small firms to strip away clutter and sharpen every message.</p>
-        <p>Every project begins with listening — then we design only what your audience needs to see.</p>
+      <div class="container">
+        <div class="section-label reveal">About</div>
+        <div class="bento bento-about">
+          <article class="bento-card bento-stat reveal">
+            <span class="stat-num" data-count="12">0</span>
+            <span class="stat-label">Years refining clarity for professional services</span>
+          </article>
+          <article class="bento-card bento-image reveal">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Modern workspace with natural light" loading="lazy">
+            <div class="image-caption">Istanbul · Remote-first studio</div>
+          </article>
+          <article class="bento-card bento-text reveal">
+            <h2>We believe great brands are built on restraint.</h2>
+            <p>Studio Nova was founded on a simple premise: the most effective communication is often the quietest. We partner with management consultants, financial advisors, and boutique law firms who need their expertise to speak before they do.</p>
+            <p>Every engagement begins with listening — understanding your audience, your differentiators, and the story only you can tell. Then we distill it into systems that scale.</p>
+          </article>
+          <article class="bento-card bento-stat bento-stat-sm reveal">
+            <span class="stat-num" data-count="140">0</span>
+            <span class="stat-label">Projects delivered across 18 countries</span>
+          </article>
+          <article class="bento-card bento-stat bento-stat-sm reveal">
+            <span class="stat-num" data-count="98">0</span>
+            <span class="stat-suffix">%</span>
+            <span class="stat-label">Client retention over three years</span>
+          </article>
+        </div>
       </div>
     </section>
 
     <section id="services" class="services">
-      <span class="margin-label reveal">Services</span>
-      <ul class="service-index">
-        <li class="reveal"><span>01</span><div><h3>Brand Strategy</h3><p>Positioning, voice, and a visual system that holds together.</p></div></li>
-        <li class="reveal"><span>02</span><div><h3>Web Design</h3><p>Fast, responsive sites with nothing extra on the page.</p></div></li>
-        <li class="reveal"><span>03</span><div><h3>Content Direction</h3><p>Editorial guidance so your tone stays consistent everywhere.</p></div></li>
-      </ul>
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-label">Services</div>
+          <h2>What we do</h2>
+          <p>Three disciplines, one outcome — a brand that feels inevitable.</p>
+        </div>
+        <div class="bento bento-services">
+          <article class="bento-card service-card service-large reveal">
+            <span class="service-num">01</span>
+            <h3>Brand Strategy & Positioning</h3>
+            <p>Define who you serve, why you matter, and how you sound. We deliver messaging frameworks, competitive audits, and narrative architecture that your entire team can use.</p>
+            <ul class="service-tags">
+              <li>Messaging architecture</li>
+              <li>Competitive positioning</li>
+              <li>Audience research</li>
+            </ul>
+          </article>
+          <article class="bento-card service-card reveal">
+            <span class="service-num">02</span>
+            <h3>Visual Identity</h3>
+            <p>Logos, typography, color systems, and brand guidelines designed for longevity — not trends.</p>
+          </article>
+          <article class="bento-card service-card reveal">
+            <span class="service-num">03</span>
+            <h3>Digital Presence</h3>
+            <p>Websites, pitch decks, and content systems that translate strategy into every touchpoint.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="testimonials" class="quote-band reveal">
-      <blockquote>"Studio Nova doubled our inquiries in three months. The work feels effortless — because it is."</blockquote>
-      <cite>— Sarah Chen, Independent Consultant</cite>
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <blockquote class="testimonial-quote reveal">
+          <p>"Studio Nova didn't just redesign our website — they helped us articulate what we'd been trying to say for years. Our inbound inquiries doubled within six months, and every prospect mentions how professional we look."</p>
+          <footer>
+            <cite>Elif Kaya</cite>
+            <span>Managing Partner, Meridian Advisory Group</span>
+          </footer>
+        </blockquote>
+      </div>
     </section>
 
     <section id="contact" class="contact">
-      <span class="margin-label reveal">Contact</span>
-      <h2 class="reveal">Let's work<br>together.</h2>
-      <p class="reveal">hello@studionova.com · +90 533 861 0067</p>
-      <form class="contact-form reveal">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Tell us about your project" rows="3" required></textarea>
-        <button type="submit">Send message</button>
-      </form>
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-label">Contact</div>
+          <h2>Let's build something clear.</h2>
+          <p>Tell us about your firm and what you're trying to achieve. We respond within one business day.</p>
+          <div class="contact-details">
+            <a href="tel:+905338610067" class="contact-link">+90 533 861 0067</a>
+            <a href="mailto:hello@studionova.co" class="contact-link">hello@studionova.co</a>
+            <span class="contact-link">Levent, Istanbul</span>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <div class="field">
+            <input type="text" id="name" name="name" required autocomplete="name">
+            <label for="name">Your name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="email" name="email" required autocomplete="email">
+            <label for="email">Email address</label>
+          </div>
+          <div class="field">
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <label for="message">Tell us about your project</label>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Send message</button>
+        </form>
+      </div>
     </section>
-
-    <footer class="footer">
-      <a href="../index.html">← Catalog</a>
-      <span>Studio Nova</span>
-    </footer>
   </main>
 
-  <button class="mobile-menu" aria-label="Menu"><span></span><span></span></button>
-  <nav class="mobile-nav">
-    <a href="#about">About</a>
-    <a href="#services">Work</a>
-    <a href="#testimonials">Voices</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Studio<span>Nova</span></span>
+        <p>Clarity-led strategy for professional services.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">← Back to Catalog</a>
+        <span>© 2026 Studio Nova</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
