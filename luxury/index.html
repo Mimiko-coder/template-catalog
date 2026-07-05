@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Élan Estates — Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo">Élan</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&h=900&fit=crop" alt="Luxury estate" class="hero-img">
+    <div class="hero-overlay"></div>
+    <div class="container hero-text">
+      <p class="fade-in">Luxury Real Estate</p>
+      <h1 class="fade-in">Extraordinary<br>Living</h1>
+      <a href="#contact" class="btn fade-in">Explore Properties</a>
+    </div>
+  </section>
+
+  <section id="about" class="about section">
+    <div class="container about-inner" data-animate>
+      <h2>Curating the Finest Properties</h2>
+      <p>Élan Estates represents the world's most exceptional properties. With over 25 years of experience in luxury real estate, we connect discerning clients with homes that define elegance.</p>
+    </div>
+  </section>
+
+  <section id="services" class="services section">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service-item" data-animate>
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=500&fit=crop" alt="Luxury home">
+          <div class="svc-text"><h3>Private Sales</h3><p>Exclusive off-market properties for qualified buyers.</p></div>
+        </div>
+        <div class="service-item" data-animate>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop" alt="Interior">
+          <div class="svc-text"><h3>Interior Staging</h3><p>World-class staging to showcase every property at its finest.</p></div>
+        </div>
+        <div class="service-item" data-animate>
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=500&fit=crop" alt="Penthouse">
+          <div class="svc-text"><h3>Investment Advisory</h3><p>Strategic guidance for luxury property portfolios.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials section">
+    <div class="container">
+      <blockquote data-animate>
+        <p>"Élan found us the home of our dreams — a waterfront estate we didn't even know existed. Their discretion and expertise are unmatched."</p>
+        <footer>— The Harrington Family</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="contact" class="contact section">
+    <div class="container contact-inner" data-animate>
+      <h2>Begin Your Journey</h2>
+      <p>concierge@elanetates.com · +90 533 861 0067</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Full name" required>
+        <input type="email" placeholder="Email address" required>
+        <textarea placeholder="Tell us what you're looking for" rows="3" required></textarea>
+        <button type="submit" class="btn">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2026 Élan Estates. <a href="../index.html">← Back to Catalog</a></p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

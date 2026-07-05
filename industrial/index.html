@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ForgeSteel Engineering — Industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo">FORGE<span>STEEL</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-stripes"></div>
+    <div class="container hero-content">
+      <p class="tag fade-in">Industrial Engineering Since 1978</p>
+      <h1 class="fade-in">BUILT TO<br>WITHSTAND</h1>
+      <p class="fade-in">Heavy-duty steel fabrication and engineering for the world's toughest industrial projects.</p>
+      <a href="#contact" class="btn fade-in">Request Consultation</a>
+    </div>
+  </section>
+
+  <section class="stats-bar">
+    <div class="container stats-grid">
+      <div class="stat" data-animate><span class="num" data-count="2500">0</span><p>Tons Fabricated Yearly</p></div>
+      <div class="stat" data-animate><span class="num" data-count="450">0</span><p>Projects Completed</p></div>
+      <div class="stat" data-animate><span class="num" data-count="48">0</span><p>Years Experience</p></div>
+      <div class="stat" data-animate><span class="num" data-count="180">0</span><p>Skilled Workers</p></div>
+    </div>
+  </section>
+
+  <section id="about" class="about section">
+    <div class="container about-grid">
+      <div class="about-img" data-animate>
+        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=550&h=400&fit=crop" alt="Steel fabrication">
+      </div>
+      <div data-animate>
+        <span class="tag">About</span>
+        <h2>Engineering Strength at Scale</h2>
+        <p>ForgeSteel Engineering delivers precision steel fabrication, structural engineering, and industrial construction services. From power plants to bridges, we build infrastructure that lasts generations.</p>
+        <p>ISO 9001 certified with state-of-the-art fabrication facilities spanning 120,000 sq ft.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services section">
+    <div class="container">
+      <div class="section-head" data-animate><span class="tag">Services</span><h2>What We Build</h2></div>
+      <div class="services-grid">
+        <div class="svc" data-animate><div class="svc-icon">🔩</div><h3>Steel Fabrication</h3><p>Custom structural steel components with ±1mm precision tolerance.</p></div>
+        <div class="svc" data-animate><div class="svc-icon">🏭</div><h3>Plant Construction</h3><p>Turnkey industrial facility design and construction.</p></div>
+        <div class="svc" data-animate><div class="svc-icon">⚡</div><h3>Power Infrastructure</h3><p>Steel frameworks for energy and utility projects.</p></div>
+        <div class="svc" data-animate><div class="svc-icon">🔧</div><h3>Maintenance & Repair</h3><p>24/7 emergency repair and scheduled maintenance programs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-head" data-animate><span class="tag">Projects</span><h2>Recent Builds</h2></div>
+      <div class="projects-grid">
+        <div class="proj" data-animate>
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=280&fit=crop" alt="Industrial plant">
+          <div class="proj-info"><h3>Northwind Power Station</h3><p>Energy · 2025</p></div>
+        </div>
+        <div class="proj" data-animate>
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=280&fit=crop" alt="Steel structure">
+          <div class="proj-info"><h3>Harbor Steel Bridge</h3><p>Infrastructure · 2024</p></div>
+        </div>
+        <div class="proj" data-animate>
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=280&fit=crop" alt="Manufacturing">
+          <div class="proj-info"><h3>AutoParts Factory</h3><p>Manufacturing · 2024</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials section">
+    <div class="container">
+      <div class="section-head" data-animate><span class="tag">Testimonials</span><h2>Industry Trust</h2></div>
+      <blockquote data-animate>
+        <p>"ForgeSteel completed our plant expansion 3 weeks ahead of schedule. Their engineering team is world-class."</p>
+        <cite>— Titan Manufacturing Group</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="contact" class="contact section">
+    <div class="container contact-grid">
+      <div data-animate>
+        <span class="tag">Contact</span>
+        <h2>Start Your Build</h2>
+        <p>projects@forgesteel.com</p>
+        <p>+90 533 861 0067</p>
+      </div>
+      <form class="contact-form" data-animate>
+        <input type="text" placeholder="Company" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Project scope" rows="4" required></textarea>
+        <button type="submit" class="btn">Submit Request</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container"><p>&copy; 2026 ForgeSteel Engineering. <a href="../index.html">← Back to Catalog</a></p></div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
