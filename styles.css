@@ -536,6 +536,12 @@ body {
 
 .about-text strong { color: var(--text); }
 
+.about-name { font-size: 1.15rem; color: var(--text) !important; margin-bottom: 4px !important; }
+
+.about-role { font-size: 0.95rem; color: var(--accent-hover) !important; font-weight: 600; margin-bottom: 16px !important; letter-spacing: 0.02em; }
+
+.about-intro { font-size: 1.05rem; color: var(--text) !important; line-height: 1.65; margin-bottom: 16px !important; }
+
 
 
 .process-title {
@@ -649,6 +655,22 @@ body {
 
 
 
+/* Testimonials */
+
+.testimonials { border-top: 1px solid var(--border); }
+
+.testimonial-card {
+  max-width: 640px; margin: 0 auto; text-align: center;
+  padding: 40px 32px; background: var(--surface);
+  border: 1px solid var(--border); border-radius: var(--radius);
+}
+
+.testimonial-card p { font-size: 1.15rem; font-style: italic; line-height: 1.6; color: var(--text); margin-bottom: 16px; }
+
+.testimonial-card cite { font-size: 0.85rem; color: var(--muted); font-style: normal; }
+
+
+
 /* FAQ */
 
 .faq { background: var(--surface); border-top: 1px solid var(--border); }
@@ -731,7 +753,9 @@ body {
 
 .contact-info h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
 
-.contact-info > p { color: var(--muted); margin-bottom: 32px; line-height: 1.6; }
+.contact-info > p { color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+
+.contact-help { font-size: 0.95rem; color: var(--accent-hover) !important; margin-bottom: 28px !important; padding: 14px 18px; background: rgba(99,102,241,0.08); border-radius: 10px; border-left: 3px solid var(--accent); }
 
 
 
