@@ -13,12 +13,14 @@
 <body>
   <header class="header">
     <nav class="nav container">
-      <a href="#" class="logo">Mercy<span>Designs</span></a>
+      <a href="#home" class="logo">Mercy<span>Designs</span></a>
       <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
         <li><a href="#templates">Templates</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="https://mimiko-coder.github.io/" target="_blank" rel="noopener">Portfolio</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -29,7 +31,7 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section id="home" class="hero">
       <div class="hero-bg">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -290,12 +292,60 @@
     <section id="testimonials" class="testimonials section">
       <div class="container">
         <div class="section-header">
-          <h2>Client Testimonials</h2>
-          <p>What clients say after working with me — updated as projects are completed.</p>
+          <h2>Client Reviews</h2>
+          <p>Real feedback from clients who picked a template and got a site customized for their business.</p>
         </div>
-        <div class="testimonial-card" data-animate>
-          <p>"Mercy delivered a clean and professional website exactly as we envisioned."</p>
-          <cite>— Future Client</cite>
+
+        <div class="reviews-summary" data-animate aria-label="Overall rating">
+          <div class="reviews-score">
+            <span class="reviews-avg" id="reviewsAvg">4.5</span>
+            <div class="reviews-stars reviews-stars--lg" id="reviewsAvgStars" aria-hidden="true">
+              <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span>
+            </div>
+            <p class="reviews-count"><span id="reviewsCount">4</span> client reviews</p>
+          </div>
+          <p class="reviews-note">Rated <strong id="reviewsAvgText">4.5 out of 5</strong> — clients chose different templates and each got a site tailored to their brand.</p>
+        </div>
+
+        <div class="testimonials-grid" id="testimonialsGrid" aria-live="polite"></div>
+
+        <div class="add-review" data-animate>
+          <div class="add-review-header">
+            <h3>Share Your Experience</h3>
+            <p>Worked with me on a website? Leave a review below. Your feedback helps other clients choose with confidence.</p>
+          </div>
+          <form class="review-form" id="reviewForm">
+            <div class="review-form-row">
+              <input type="text" name="name" placeholder="Your name" required>
+              <input type="text" name="business" placeholder="Business name">
+            </div>
+            <select name="template" required aria-label="Template you chose">
+              <option value="" disabled selected>Which template did you choose?</option>
+              <option value="Minimalist">Minimalist</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Transportation">Transportation / Logistics</option>
+              <option value="Dark Premium">Dark Premium</option>
+              <option value="Creative">Creative Agency</option>
+              <option value="Industrial">Industrial Engineering</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Startup">Startup SaaS</option>
+            </select>
+            <div class="star-rating-input">
+              <span class="star-rating-label">Your rating</span>
+              <div class="star-picker" id="starPicker" role="radiogroup" aria-label="Star rating">
+                <button type="button" class="star-btn" data-value="1" aria-label="1 star">★</button>
+                <button type="button" class="star-btn" data-value="2" aria-label="2 stars">★</button>
+                <button type="button" class="star-btn" data-value="3" aria-label="3 stars">★</button>
+                <button type="button" class="star-btn" data-value="4" aria-label="4 stars">★</button>
+                <button type="button" class="star-btn" data-value="5" aria-label="5 stars">★</button>
+              </div>
+              <input type="hidden" name="rating" id="ratingInput" value="" required>
+            </div>
+            <textarea name="review" placeholder="Tell others about your experience — what template you picked, how the process went, and what you liked about the final site." rows="4" required></textarea>
+            <button type="submit" class="btn btn-primary btn-full">Submit Review</button>
+            <p class="review-form-note">Reviews are saved on this device and shown on the page. You can also <a href="#contact">contact me directly</a> if you prefer.</p>
+            <p class="review-success" id="reviewSuccess" hidden>Thank you! Your review has been added.</p>
+          </form>
         </div>
       </div>
     </section>
