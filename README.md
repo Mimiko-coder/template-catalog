@@ -44,33 +44,6 @@ catalog/
 
 ---
 
-## Preview locally
-
-Open `index.html` directly in your browser, or run a local server:
-
-```bash
-# Python
-python -m http.server 8080
-
-# Node (npx)
-npx serve .
-```
-
-Then visit `http://localhost:8080`.
-
----
-
-## Deploy to GitHub Pages
-
-1. Push the `main` branch to [github.com/Mimiko-coder/template-catalog](https://github.com/Mimiko-coder/template-catalog)
-2. Go to **Settings → Pages**
-3. Set **Source** to `main` branch, `/ (root)` folder
-4. Wait 1–2 minutes, then visit `https://mimiko-coder.github.io/template-catalog/`
-
-If changes don’t appear, hard-refresh with **Ctrl + Shift + R**.
-
----
-
 ## Regenerate preview screenshots
 
 Preview images (`preview.png` in each template folder) can be regenerated with Playwright:
