@@ -65,7 +65,7 @@ Every template can be fully customized:
 - Sections added, removed, or reordered
 - Contact forms wired to your email or WhatsApp
 
-Typical delivery: **3–7 days** depending on scope and how quickly content is provided.
+Typical delivery: **7+ days** depending on complexity, scope, and how quickly content is provided.
 
 ---
 
